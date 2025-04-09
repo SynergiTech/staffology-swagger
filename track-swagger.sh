@@ -14,15 +14,28 @@ CURRENT_NORMALIZED=$(mktemp)  # normalized existing file
 # === FETCH RAW SWAGGER FILE ===
 curl -s "$SWAGGER_URL" -o "$TMP_RAW"
 
+# === CHECK FOR EMPTY OR INVALID JSON ===
+if [ ! -s "$TMP_RAW" ]; then
+    echo "[ERROR] Downloaded Swagger file is empty. Aborting."
+    rm -f "$TMP_RAW" "$TMP_NORMALIZED" "$CURRENT_NORMALIZED"
+    exit 1
+fi
+
+if ! jq empty "$TMP_RAW" >/dev/null 2>&1; then
+    echo "[ERROR] Downloaded Swagger file is not valid JSON. Aborting."
+    rm -f "$TMP_RAW" "$TMP_NORMALIZED" "$CURRENT_NORMALIZED"
+    exit 1
+fi
+
 # === NORMALIZE WITH JQ ===
-jq -S . "$TMP_RAW" > "$TMP_NORMALIZED" || { echo "[ERROR] Failed to normalize new swagger.json"; exit 1; }
-jq -S . "$SWAGGER_FILE" > "$CURRENT_NORMALIZED" || touch "$CURRENT_NORMALIZED"  # if no existing file, treat as empty
+jq -S . "$TMP_RAW" > "$TMP_NORMALIZED"
+jq -S . "$SWAGGER_FILE" > "$CURRENT_NORMALIZED" 2>/dev/null || touch "$CURRENT_NORMALIZED"  # ignore error if file doesn't exist
 
 # === CHECK FOR CHANGES ===
 if ! diff -q "$CURRENT_NORMALIZED" "$TMP_NORMALIZED" >/dev/null; then
     echo "[INFO] Swagger file has changed. Preparing commit..."
 
-    # Generate a summary diff (you can tweak the grep/head filters)
+    # Generate a summary diff
     DIFF_SUMMARY=$(diff --unified=0 "$CURRENT_NORMALIZED" "$TMP_NORMALIZED" | grep '^[-+]' | grep -vE '^[-+]{3}' | head -n 20)
 
     # Save the pretty, sorted new file as the committed version
