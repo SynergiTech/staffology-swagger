@@ -5375,6 +5375,9 @@
           "bereavementLeaveProRataRule": {
             "$ref": "#/components/schemas/LeaveProRataRule"
           },
+          "betaFeatures": {
+            "$ref": "#/components/schemas/EmployerBetaFeatures"
+          },
           "canUseBureauFeatures": {
             "type": "boolean"
           },
@@ -5569,6 +5572,9 @@
           },
           "bereavementLeaveProRataRule": {
             "$ref": "#/components/schemas/LeaveProRataRule"
+          },
+          "betaFeatures": {
+            "$ref": "#/components/schemas/EmployerBetaFeatures"
           },
           "canUseBureauFeatures": {
             "type": "boolean"
@@ -13388,6 +13394,12 @@
           }
         },
         "type": "object"
+      },
+      "EmployerBetaFeatures": {
+        "enum": [
+          "MultiRoleAe"
+        ],
+        "type": "string"
       },
       "EmployerDefaults": {
         "additionalProperties": false,
@@ -22294,6 +22306,9 @@
           },
           "isNetToGross": {
             "description": "If the PayLine is a fixed amount addition without multiplier then this property may be set to true so that the amount of the addition to be considered a take home pay target.",
+            "type": "boolean"
+          },
+          "isTaxable": {
             "type": "boolean"
           },
           "isZeroHoursTeachersBackPayLine": {
