@@ -26887,6 +26887,11 @@
             "description": "if an employee as a member of the 50/50 LGPS scheme, they can enable contribution to 50% of the normal contributions.",
             "type": "boolean"
           },
+          "leaveDaysUnderHalfPay": {
+            "description": "The numer of leave days where less than half the normal pay is received",
+            "format": "int32",
+            "type": "integer"
+          },
           "name": {
             "description": "[readonly] The name of the PensionScheme to which contributions have been made.",
             "nullable": true,
