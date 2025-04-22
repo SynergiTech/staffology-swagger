@@ -28835,6 +28835,11 @@
           "directorsProratePrimaryThreshold": {
             "$ref": "#/components/schemas/PeriodValue"
           },
+          "eligibleAeAge": {
+            "description": "[readonly]",
+            "format": "int32",
+            "type": "integer"
+          },
           "employmentAllowance": {
             "description": "[readonly]",
             "format": "double",
@@ -28869,6 +28874,11 @@
           "lowerEarningsLimit": {
             "$ref": "#/components/schemas/PeriodValue"
           },
+          "maximumAeAge": {
+            "description": "[readonly]",
+            "format": "int32",
+            "type": "integer"
+          },
           "mileageAllowancePaymentsRates": {
             "description": "[readonly]",
             "items": {
@@ -28876,6 +28886,11 @@
             },
             "nullable": true,
             "type": "array"
+          },
+          "minimumAeAge": {
+            "description": "[readonly]",
+            "format": "int32",
+            "type": "integer"
           },
           "minimumWage": {
             "description": "[readonly]",
@@ -45987,6 +46002,13 @@
             "name": "accept",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "bankHoliday",
+            "schema": {
+              "$ref": "#/components/schemas/BankHolidayCollection"
             }
           }
         ],
