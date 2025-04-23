@@ -12920,35 +12920,6 @@
         },
         "type": "object"
       },
-      "EmployeePaymentsReport": {
-        "additionalProperties": false,
-        "properties": {
-          "isDraft": {
-            "type": "boolean"
-          },
-          "isEducationSettingsEnabled": {
-            "type": "boolean"
-          },
-          "lines": {
-            "items": {
-              "$ref": "#/components/schemas/EmployeePaymentsReportLine"
-            },
-            "nullable": true,
-            "type": "array"
-          },
-          "report": {
-            "$ref": "#/components/schemas/Report"
-          },
-          "taxYear": {
-            "$ref": "#/components/schemas/TaxYear"
-          },
-          "title": {
-            "nullable": true,
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
       "EmployeePaymentsReportLine": {
         "additionalProperties": false,
         "properties": {
@@ -13099,7 +13070,7 @@
         },
         "type": "object"
       },
-      "EmployeePaymentsReportReportResponse": {
+      "EmployeePaymentsReportLineListReportResponse": {
         "additionalProperties": false,
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
@@ -13109,7 +13080,12 @@
             "type": "string"
           },
           "model": {
-            "$ref": "#/components/schemas/EmployeePaymentsReport"
+            "description": "[readonly] If the type is application.json then this will contain a JSON representation of the relevant model",
+            "items": {
+              "$ref": "#/components/schemas/EmployeePaymentsReportLine"
+            },
+            "nullable": true,
+            "type": "array"
           },
           "stream": {
             "description": "byte array",
@@ -24892,6 +24868,10 @@
             "type": "boolean"
           },
           "takeHome": {
+            "format": "double",
+            "type": "number"
+          },
+          "taxablePay": {
             "format": "double",
             "type": "number"
           }
@@ -58764,12 +58744,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EmployeePaymentsReportReportResponse"
+                  "$ref": "#/components/schemas/EmployeePaymentsReportLineListReportResponse"
                 }
               },
               "text/csv": {
                 "schema": {
-                  "$ref": "#/components/schemas/EmployeePaymentsReportReportResponse"
+                  "$ref": "#/components/schemas/EmployeePaymentsReportLineListReportResponse"
                 }
               }
             },
