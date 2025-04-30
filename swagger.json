@@ -22751,6 +22751,10 @@
             "readOnly": true,
             "type": "boolean"
           },
+          "isCombinedPayRun": {
+            "description": "Indicates if the payRun is a combined pay run or not",
+            "type": "boolean"
+          },
           "isLatestVersion": {
             "description": "[readonly] Indicates whether this is the latest version of the PayRun.",
             "type": "boolean"
@@ -22793,6 +22797,9 @@
             "description": "[readonly] The period (i.e, Tax Week or Tax Month) that this PayRun is for.",
             "format": "int32",
             "type": "integer"
+          },
+          "previousVersionTotals": {
+            "$ref": "#/components/schemas/PayRunTotals"
           },
           "startDate": {
             "description": "[readonly] The start date of the period this PayRun covers",
@@ -23634,6 +23641,11 @@
             "description": "[readonly] The Net Pay for this Employee",
             "format": "double",
             "type": "number"
+          },
+          "newEmployeesInCurrentSupplementaryPayRun": {
+            "description": "[readonly] The number of new Employees included in the current supplementary PayRun",
+            "format": "int32",
+            "type": "integer"
           },
           "nilPaid": {
             "description": "[readonly] The number of employees with NilPaid on the PayRun",
@@ -51368,6 +51380,15 @@
               "format": "int32",
               "type": "integer"
             }
+          },
+          {
+            "description": "If supplementary pay runs have been created this can be used to retrieve the combined latest version of the pay run with all latest version pay run entries",
+            "in": "query",
+            "name": "combinePayRuns",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
           }
         ],
         "responses": {
@@ -62216,6 +62237,15 @@
             "schema": {
               "default": false,
               "type": "boolean"
+            }
+          },
+          {
+            "description": "Will indicate what version of the payrun will be shown. If left empty, will show full pay run.",
+            "in": "query",
+            "name": "version",
+            "schema": {
+              "format": "int32",
+              "type": "integer"
             }
           }
         ],
