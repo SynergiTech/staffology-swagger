@@ -5499,8 +5499,15 @@
             "type": "integer"
           },
           "supportAccessEnabled": {
-            "description": "If set to true then the support team can access this employer to help resolve\r\nsupport queries",
+            "deprecated": true,
+            "description": "[Deprecated] If set to true then the support team can access this employer to help resolve support queries.\r\nIf SupportAccessExpires is not provided support access will be turned off after 30 days.",
             "type": "boolean"
+          },
+          "supportAccessExpires": {
+            "description": "The date and time when the support access expires",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
           },
           "umbrellaSettings": {
             "$ref": "#/components/schemas/Contract.UmbrellaSettingsRequest"
@@ -5697,8 +5704,15 @@
             "type": "integer"
           },
           "supportAccessEnabled": {
-            "description": "If set to true then the support team can access this employer to help resolve\r\nsupport queries",
+            "deprecated": true,
+            "description": "[Deprecated] If set to true then the support team can access this employer to help resolve support queries.\r\nIf SupportAccessExpires is not provided support access will be turned off after 30 days.",
             "type": "boolean"
+          },
+          "supportAccessExpires": {
+            "description": "The date and time when the support access expires",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
           },
           "umbrellaSettings": {
             "$ref": "#/components/schemas/Contract.UmbrellaSettingsResponse"
