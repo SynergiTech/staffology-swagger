@@ -14780,6 +14780,14 @@
       "Fps": {
         "additionalProperties": false,
         "properties": {
+          "correctionEmployees": {
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            },
+            "nullable": true,
+            "type": "array"
+          },
           "employeeCount": {
             "format": "int32",
             "type": "integer"
@@ -35912,6 +35920,83 @@
           }
         },
         "summary": "Mark as Leavers",
+        "tags": [
+          "Employee"
+        ]
+      }
+    },
+    "/employers/{employerId}/employees/list": {
+      "post": {
+        "operationId": "FpsEmployeesEmployee",
+        "parameters": [
+          {
+            "description": "The Id of the Employer to which the Employee belongs.",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "List of Employee Ids"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Contract.EmployeeResponse"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Get list of FPS Employees for EYFPS for the given Ids",
         "tags": [
           "Employee"
         ]
@@ -65281,6 +65366,145 @@
         ]
       }
     },
+    "/employers/{employerId}/rti/fps/multiple/{taxYear}": {
+      "post": {
+        "description": "Creates a new Full Payment Submission.  This is limited to corrections, to a previous year, for multiple employees.",
+        "operationId": "CreateFpsWithMultipleEmployeesFps",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "taxYear",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/TaxYear"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Fps"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Fps"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Fps"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Fps"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Fps"
+                }
+              }
+            },
+            "description": "Created"
+          }
+        },
+        "summary": "Create FPS with multiple employees",
+        "tags": [
+          "Fps"
+        ]
+      }
+    },
+    "/employers/{employerId}/rti/fps/multiple/{taxYear}/{id}": {
+      "put": {
+        "description": "Updates an existing Full Payment Submission with multiple employees.",
+        "operationId": "UpdateFpsWithMultipleEmployeesFps",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "taxYear",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/TaxYear"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Fps"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Fps"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Fps"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Fps"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Fps"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Update FPS with multiple employees",
+        "tags": [
+          "Fps"
+        ]
+      }
+    },
     "/employers/{employerId}/rti/fps/requiringattention": {
       "get": {
         "description": "Returns all Full Payment Submissions that have a Submission Status of NotSubmitted or ErrorResponse",
@@ -65481,6 +65705,102 @@
           }
         },
         "summary": "Get most recent FPS for Employee",
+        "tags": [
+          "Fps"
+        ]
+      }
+    },
+    "/employers/{employerId}/rti/fps/{taxYear}/mostrecentforemployees": {
+      "post": {
+        "description": "Returns the most recent Full Payment Submission that includes the specified employees",
+        "operationId": "MostRecentForEmployeesFps",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "taxYear",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/TaxYear"
+            }
+          },
+          {
+            "description": "Only search for FPS's submitted as a correction to a previous year",
+            "in": "query",
+            "name": "correction",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Fps"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Get most recent FPS for Employees",
         "tags": [
           "Fps"
         ]
