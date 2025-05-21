@@ -566,6 +566,11 @@
           "title": {
             "nullable": true,
             "type": "string"
+          },
+          "version": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
           }
         },
         "type": "object"
@@ -1025,6 +1030,11 @@
           "title": {
             "nullable": true,
             "type": "string"
+          },
+          "version": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
           }
         },
         "type": "object"
@@ -1300,6 +1310,11 @@
           "title": {
             "nullable": true,
             "type": "string"
+          },
+          "version": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
           }
         },
         "type": "object"
@@ -11883,6 +11898,11 @@
             "format": "double",
             "readOnly": true,
             "type": "number"
+          },
+          "version": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
           }
         },
         "type": "object"
@@ -12014,6 +12034,11 @@
           "title": {
             "nullable": true,
             "type": "string"
+          },
+          "version": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
           }
         },
         "type": "object"
@@ -15721,6 +15746,11 @@
           "title": {
             "nullable": true,
             "type": "string"
+          },
+          "version": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
           }
         },
         "type": "object"
@@ -15945,6 +15975,11 @@
           "totalGrossPay": {
             "format": "double",
             "type": "number"
+          },
+          "version": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
           }
         },
         "type": "object"
@@ -16374,6 +16409,11 @@
           "title": {
             "nullable": true,
             "type": "string"
+          },
+          "version": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
           }
         },
         "type": "object"
@@ -17046,6 +17086,11 @@
           "title": {
             "nullable": true,
             "type": "string"
+          },
+          "version": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
           }
         },
         "type": "object"
@@ -18952,6 +18997,11 @@
           "title": {
             "nullable": true,
             "type": "string"
+          },
+          "version": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
           }
         },
         "type": "object"
@@ -22044,6 +22094,11 @@
           "title": {
             "nullable": true,
             "type": "string"
+          },
+          "version": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
           }
         },
         "type": "object"
@@ -22197,6 +22252,11 @@
           "autoAdjustForLeave": {
             "description": "This sets whether the PayLine should be automatically adjusted or not for:\r\nLeave Entries;\r\nStarters/Leavers;\r\nPayLine effectiveFrom and effectiveTo values falling mid-way through a PayRun",
             "type": "boolean"
+          },
+          "benefitId": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
           },
           "calculateAsWhenPaid": {
             "description": "Indicates whether this pay line should be treated as When Paid rather than When Earned",
@@ -22895,6 +22955,14 @@
             "description": "[readonly] A randomly generated string for use with the RTI Hash Cross Reference",
             "nullable": true,
             "type": "string"
+          },
+          "differencePensionSummaries": {
+            "description": "[readonly] A summary of the details for the Pensions (if any) that the Employee is assigned to.",
+            "items": {
+              "$ref": "#/components/schemas/PensionSummary"
+            },
+            "nullable": true,
+            "type": "array"
           },
           "emailId": {
             "description": "If the Payslip for this PayRunEntry has been emailed to the employee then the Id for an EmployerEmail will be provided here.\r\nif the value is all zeroes then the email is in the process of being created.",
@@ -24624,6 +24692,11 @@
           "title": {
             "nullable": true,
             "type": "string"
+          },
+          "version": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
           }
         },
         "type": "object"
@@ -24852,6 +24925,11 @@
           "title": {
             "nullable": true,
             "type": "string"
+          },
+          "version": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
           }
         },
         "type": "object"
@@ -25139,6 +25217,9 @@
         "additionalProperties": false,
         "description": "After finalising a PayRun, employees need to actually be paid.\r\nThis model is returned by the Reports API and is used to provide details of a payment that needs to be made.",
         "properties": {
+          "allowRepost": {
+            "type": "boolean"
+          },
           "connectedExternalDataProvider": {
             "$ref": "#/components/schemas/ExternalDataProvider"
           },
@@ -25208,6 +25289,11 @@
           "title": {
             "nullable": true,
             "type": "string"
+          },
+          "version": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
           }
         },
         "type": "object"
@@ -25337,6 +25423,10 @@
             "description": "[readonly] Indicates if the Payrun has been finalised",
             "type": "boolean"
           },
+          "isSupplementary": {
+            "description": "Indicates if this payslip is for a supplementary pay run",
+            "type": "boolean"
+          },
           "lines": {
             "description": "[readonly] The lines to display on the Payslip",
             "items": {
@@ -25352,6 +25442,12 @@
           },
           "note": {
             "description": "[readonly] Any note that should appear on the payslip",
+            "nullable": true,
+            "type": "string"
+          },
+          "originalPayRunPaymentDate": {
+            "description": "Original PayRun's Payment Date",
+            "format": "date",
             "nullable": true,
             "type": "string"
           },
@@ -26256,6 +26352,11 @@
           "title": {
             "nullable": true,
             "type": "string"
+          },
+          "version": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
           }
         },
         "type": "object"
@@ -28389,6 +28490,11 @@
           "title": {
             "nullable": true,
             "type": "string"
+          },
+          "version": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
           }
         },
         "type": "object"
@@ -29746,6 +29852,11 @@
           "title": {
             "nullable": true,
             "type": "string"
+          },
+          "version": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
           }
         },
         "type": "object"
@@ -45865,6 +45976,15 @@
               "format": "date-time",
               "type": "string"
             }
+          },
+          {
+            "description": "Will indicate what version of the payrun will be the source for the payments. If left empty, will post full pay run payments.",
+            "in": "query",
+            "name": "version",
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
           }
         ],
         "responses": {
@@ -53488,6 +53608,15 @@
               "default": 1,
               "format": "int32",
               "type": "integer"
+            }
+          },
+          {
+            "description": "If the PayRunEntry is part of a supplementary PayRun and this is set to true, the PayRunEntry will contain the differences between the current pay run version of the PayRunEntry and its previous version",
+            "in": "query",
+            "name": "differenceOnly",
+            "schema": {
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -61114,6 +61243,15 @@
               "default": false,
               "type": "boolean"
             }
+          },
+          {
+            "description": "Will indicate what version of the payrun will be shown. If left empty, will show full pay run.",
+            "in": "query",
+            "name": "version",
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
           }
         ],
         "responses": {
@@ -62487,6 +62625,15 @@
               "default": false,
               "type": "boolean"
             }
+          },
+          {
+            "description": "Will indicate what version of the payrun will be shown. If left empty, will show full pay run.",
+            "in": "query",
+            "name": "version",
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
           }
         ],
         "responses": {
@@ -62899,6 +63046,24 @@
               "default": false,
               "type": "boolean"
             }
+          },
+          {
+            "description": "Will indicate what version of the payrun will be shown. If left empty, will show full pay run.",
+            "in": "query",
+            "name": "version",
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "If the selected pay run is supplementary run and this is set to true, this will contain the differences between the current pay run version of the PayRunEntry and its previous version",
+            "in": "query",
+            "name": "differenceOnly",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
           }
         ],
         "responses": {
@@ -63070,6 +63235,15 @@
               "default": 1,
               "format": "int32",
               "type": "integer"
+            }
+          },
+          {
+            "description": "If the PayRunEntry is part of a supplementary PayRun and this is set to true, the PayRunEntry will contain the differences between the current pay run version of the PayRunEntry and its previous version",
+            "in": "query",
+            "name": "differenceOnly",
+            "schema": {
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
