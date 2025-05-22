@@ -21180,6 +21180,10 @@
           "identity": {
             "$ref": "#/components/schemas/PapdisEmployeeIdentity"
           },
+          "isPreviousTaxYearRefund": {
+            "description": "Indicates whether the employee has a pension refund from the previous tax year.",
+            "type": "boolean"
+          },
           "jobTitle": {
             "nullable": true,
             "type": "string"
@@ -21426,6 +21430,10 @@
           },
           "isHalfContributionMember": {
             "description": "[readonly]",
+            "type": "boolean"
+          },
+          "isPensionAvcPayLine": {
+            "description": "Indicates whether the pay run entry includes a pension AVC pay line.",
             "type": "boolean"
           },
           "isPensionRefund": {
