@@ -8806,6 +8806,126 @@
         },
         "type": "object"
       },
+      "Contract.PaymentImportRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "amount": {
+            "description": "The amount regularly paid to the Employee",
+            "format": "double",
+            "nullable": true,
+            "type": "number"
+          },
+          "contributesToBasicPay": {
+            "description": "ContributesToBasicPay for imported pay lines\r\nOnly import if 'Effective date salary changes' is enabled",
+            "type": "boolean"
+          },
+          "costCentre": {
+            "description": "Associated costcentre of the employee",
+            "nullable": true,
+            "type": "string"
+          },
+          "days": {
+            "description": "Payment Days",
+            "format": "double",
+            "nullable": true,
+            "type": "number"
+          },
+          "department": {
+            "description": "Associated department of the employee",
+            "nullable": true,
+            "type": "string"
+          },
+          "description": {
+            "description": "Description",
+            "nullable": true,
+            "type": "string"
+          },
+          "effectiveFrom": {
+            "description": "EffectiveFrom date for imported pay lines",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "effectiveTo": {
+            "description": "EffectiveTo date for imported pay lines",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "hours": {
+            "description": "Payment Hours",
+            "format": "double",
+            "nullable": true,
+            "type": "number"
+          },
+          "isAlreadyPaid": {
+            "description": "IsAlreadyPaid\r\nOnly import if 'Effective date salary changes' is enabled",
+            "type": "boolean"
+          },
+          "isAutomaticBackPay": {
+            "description": "IsAutomaticBackPay for imported pay lines \r\nOnly import if 'Effective date salary changes' is enabled",
+            "type": "boolean"
+          },
+          "isNetToGross": {
+            "description": "IsNetToGross (True/False)",
+            "type": "boolean"
+          },
+          "londonAllowance": {
+            "$ref": "#/components/schemas/LondonAllowanceType"
+          },
+          "payCode": {
+            "description": "If you want to override the PayCode used for the Basic Pay then set the code here, otherwise leave this blank and the default will be used.",
+            "nullable": true,
+            "type": "string"
+          },
+          "payGrade": {
+            "description": "PayGrade for imported pay lines \r\nOnly import if Pay Spines exist",
+            "nullable": true,
+            "type": "string"
+          },
+          "paySpine": {
+            "description": "PaySpine for imported pay lines\r\nOnly import if Pay Spines exist",
+            "nullable": true,
+            "type": "string"
+          },
+          "payrollCode": {
+            "description": "The payroll code of the employee to update",
+            "nullable": true,
+            "type": "string"
+          },
+          "percentage": {
+            "description": "Perentage",
+            "format": "double",
+            "nullable": true,
+            "type": "number"
+          },
+          "proRataAdjustments": {
+            "description": "ProRataAdjustments (True/False)",
+            "type": "boolean"
+          },
+          "roleReference": {
+            "description": "This is the unique reference of the Role that the employee is assigned to.\r\nOnly import if 'Multi-Role Settings' are enabled",
+            "nullable": true,
+            "type": "string"
+          },
+          "spinalPoint": {
+            "description": "SpinePoint for imported pay lines\r\nOnly import if Pay Spines exist",
+            "nullable": true,
+            "type": "string"
+          },
+          "treatAsWhenPaid": {
+            "description": "Only import if 'Education settings' are enabled",
+            "type": "boolean"
+          },
+          "uniqueId": {
+            "description": "Optional. If value is provided then update else create payline.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "Contract.PayrollSquadEmployerRequest": {
         "additionalProperties": false,
         "properties": {
@@ -13022,6 +13142,11 @@
             "nullable": true,
             "type": "string"
           },
+          "employeeName": {
+            "description": "Employee Name for exported pay line",
+            "nullable": true,
+            "type": "string"
+          },
           "hours": {
             "description": "Number of Hours for exported pay line",
             "format": "double",
@@ -13085,6 +13210,12 @@
             "description": "Payroll Code for exported pay line",
             "nullable": true,
             "type": "string"
+          },
+          "percentage": {
+            "description": "Amount for exported pay line",
+            "format": "double",
+            "nullable": true,
+            "type": "number"
           },
           "roleReference": {
             "description": "Employee Role Reference for exported pay line",
@@ -22448,6 +22579,10 @@
           "paySpineId": {
             "description": "[readonly] The Id of the associated pay spine.",
             "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "payrollCode": {
             "nullable": true,
             "type": "string"
           },
@@ -46831,6 +46966,86 @@
           }
         },
         "summary": "Import Pay To Employee",
+        "tags": [
+          "Import"
+        ]
+      }
+    },
+    "/employers/{employerId}/import/payments": {
+      "post": {
+        "description": "Allows the import of permanent addition and deductions payments asynchronously.",
+        "operationId": "ImportPaymentsImport",
+        "parameters": [
+          {
+            "description": "The employer id.",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/Contract.PaymentImportRequest"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/Contract.PaymentImportRequest"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/Contract.PaymentImportRequest"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/Contract.PaymentImportRequest"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "The import payment items."
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.JobResponse"
+                }
+              }
+            },
+            "description": "Accepted"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "409": {
+            "description": "Conflict"
+          }
+        },
+        "summary": "Import Permanent Addition and Deductions Payments",
         "tags": [
           "Import"
         ]
