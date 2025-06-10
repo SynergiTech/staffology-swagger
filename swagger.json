@@ -30328,6 +30328,12 @@
             "description": "[readonly] If true then the user will not have login permissions",
             "type": "boolean"
           },
+          "migratedFrom": {
+            "maxLength": 150,
+            "minLength": 0,
+            "nullable": true,
+            "type": "string"
+          },
           "monthlyMinimum": {
             "$ref": "#/components/schemas/MonthlyMinimum"
           },
