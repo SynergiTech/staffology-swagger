@@ -29599,6 +29599,10 @@
             "description": "Indicates whether FPS should be submitted to EVC for employees/employers under this tenant.",
             "type": "boolean"
           },
+          "enableAdminsToManageReportWriter": {
+            "description": "Indicates whether all Admin users of a tenant can manage report templates.",
+            "type": "boolean"
+          },
           "enableBureauFeatures": {
             "type": "boolean"
           },
