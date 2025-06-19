@@ -1648,7 +1648,9 @@
           "DanskeBankUkLocalPayments",
           "DanskeBankUkFasterPayments",
           "Standard18BacsMulti",
-          "BanklineBulkListDebit"
+          "BanklineBulkListDebit",
+          "VirginMoney",
+          "JpMorganAch"
         ],
         "type": "string"
       },
