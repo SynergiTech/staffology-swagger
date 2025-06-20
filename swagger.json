@@ -3403,6 +3403,10 @@
           "deferEnrolmentByPeriodType": {
             "$ref": "#/components/schemas/DeferalPeriodType"
           },
+          "exemptFromAeRegulations": {
+            "description": "Indicates if an employer is exempt from normal AE regulations",
+            "type": "boolean"
+          },
           "id": {
             "description": "[readonly] The unique id of the object",
             "format": "uuid",
@@ -3454,6 +3458,10 @@
           },
           "deferEnrolmentByPeriodType": {
             "$ref": "#/components/schemas/DeferalPeriodType"
+          },
+          "exemptFromAeRegulations": {
+            "description": "Indicates if an employer is exempt from normal AE regulations",
+            "type": "boolean"
           },
           "id": {
             "format": "uuid",
@@ -26264,6 +26272,14 @@
         ],
         "type": "string"
       },
+      "PensionInitialEnrolmentType": {
+        "enum": [
+          "Auto",
+          "Contractual",
+          "Manual"
+        ],
+        "type": "string"
+      },
       "PensionJoinReason": {
         "enum": [
           "Automatic",
@@ -26828,6 +26844,9 @@
             "description": "Set to true if this a Deficit Payment needs to be assigned to a PaySchedule",
             "type": "boolean"
           },
+          "initialEnrolmentType": {
+            "$ref": "#/components/schemas/PensionInitialEnrolmentType"
+          },
           "name": {
             "maxLength": 150,
             "minLength": 1,
@@ -26878,6 +26897,9 @@
           },
           "reportOptionsLgpsIConnect": {
             "$ref": "#/components/schemas/PensionSchemeReportOptionsLgpsIConnect"
+          },
+          "singleEmploymentRelationship": {
+            "$ref": "#/components/schemas/PensionSingleEmploymentRelationship"
           },
           "subtractBasicRateTax": {
             "type": "boolean"
@@ -27056,6 +27078,13 @@
           }
         },
         "type": "object"
+      },
+      "PensionSingleEmploymentRelationship": {
+        "enum": [
+          "AssessJointly",
+          "AssessRolesSeparately"
+        ],
+        "type": "string"
       },
       "PensionSummary": {
         "additionalProperties": false,
