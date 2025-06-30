@@ -3524,6 +3524,100 @@
         },
         "type": "object"
       },
+      "Contract.BenefitImportRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "assetType": {
+            "$ref": "#/components/schemas/BenefitDetailsAssetType"
+          },
+          "cashEquivalentFuel": {
+            "description": "Only relevant to Benefits with Type Vans",
+            "format": "double",
+            "type": "number"
+          },
+          "class1AType": {
+            "$ref": "#/components/schemas/BenefitDetailsClass1AType"
+          },
+          "declarationType": {
+            "$ref": "#/components/schemas/BenefitDeclarationType"
+          },
+          "description": {
+            "description": "A description of this benefit",
+            "nullable": true,
+            "type": "string"
+          },
+          "employeeContribution": {
+            "description": "Amount contributed by the employee.",
+            "format": "double",
+            "type": "number"
+          },
+          "endDate": {
+            "description": "End date for imported benefit",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "isPeriodValue": {
+            "description": "To be used for the benefit period",
+            "type": "boolean"
+          },
+          "nonClass1AType": {
+            "$ref": "#/components/schemas/BenefitDetailsNonClass1AType"
+          },
+          "openingBalance": {
+            "description": "The amount of benefit paid YTD when setting up a benefit",
+            "format": "double",
+            "type": "number"
+          },
+          "overrideOpeningBalance": {
+            "description": "To be used to change the opening balance if the benefit has been payrolled",
+            "type": "boolean"
+          },
+          "paymentType": {
+            "$ref": "#/components/schemas/BenefitDetailsPaymentType"
+          },
+          "payrollCode": {
+            "description": "The payroll code of the employee to update",
+            "nullable": true,
+            "type": "string"
+          },
+          "startDate": {
+            "description": "Start date for imported benefit",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "taxYear": {
+            "$ref": "#/components/schemas/TaxYear"
+          },
+          "tradingOrganisation": {
+            "description": "Only relevant to Benefits with Type Entertainment",
+            "type": "boolean"
+          },
+          "type": {
+            "$ref": "#/components/schemas/BenefitType"
+          },
+          "uniqueId": {
+            "description": "Optional. If value is provided then update else create benefit.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "useOfAssetType": {
+            "$ref": "#/components/schemas/BenefitDetailsUseOfAssetType"
+          },
+          "useProRata": {
+            "description": "Benefit calculation should be done on pro rata rules",
+            "type": "boolean"
+          },
+          "value": {
+            "description": "The total value of the benefit.",
+            "format": "double",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
       "Contract.CisDetailsRequest": {
         "additionalProperties": false,
         "properties": {
@@ -21365,6 +21459,21 @@
           "statePensionAge": {
             "format": "int32",
             "type": "integer"
+          },
+          "totalPreviousTaxYearRefundEmployeeAmount": {
+            "description": "The total amount of pension refunds paid to the employee,\r\ncalculated as the sum of all EmployeeRefund values from applicable PensionRefunds (when IsPreviousTaxYearRefund is enabled).",
+            "format": "double",
+            "type": "number"
+          },
+          "totalPreviousTaxYearRefundEmployeeAvcAmount": {
+            "description": "The total amount of AVC (Additional Voluntary Contributions) refunds paid to the employee,\r\ncalculated as the sum of all AdditionalVoluntaryContribution values from applicable PensionRefunds (when IsPreviousTaxYearRefund is enabled).",
+            "format": "double",
+            "type": "number"
+          },
+          "totalPreviousTaxYearRefundEmployerAmount": {
+            "description": "The total amount of employer pension refunds,\r\ncalculated as the sum of all EmployerRefund values from applicable PensionRefunds (when IsPreviousTaxYearRefund is enabled).",
+            "format": "double",
+            "type": "number"
           }
         },
         "type": "object"
@@ -26260,7 +26369,8 @@
           "AptisEnrolment",
           "NestEnrolment",
           "TruePotential",
-          "TruePotentialEnrolment"
+          "TruePotentialEnrolment",
+          "AegonSmartEnrol"
         ],
         "type": "string"
       },
@@ -46680,6 +46790,86 @@
         "summary": "Update holiday scheme",
         "tags": [
           "HolidayScheme"
+        ]
+      }
+    },
+    "/employers/{employerId}/import/benefits": {
+      "post": {
+        "description": "Allows the import of benefits asynchronously.",
+        "operationId": "ImportBenefitsImport",
+        "parameters": [
+          {
+            "description": "The employer id.",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/Contract.BenefitImportRequest"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/Contract.BenefitImportRequest"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/Contract.BenefitImportRequest"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/Contract.BenefitImportRequest"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "The import benefit items."
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.JobResponse"
+                }
+              }
+            },
+            "description": "Accepted"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "409": {
+            "description": "Conflict"
+          }
+        },
+        "summary": "Import Benefits",
+        "tags": [
+          "Import"
         ]
       }
     },
