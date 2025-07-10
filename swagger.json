@@ -30375,9 +30375,6 @@
           "canUseBureauFeatures": {
             "type": "boolean"
           },
-          "canUseRefactoredAeRoutines": {
-            "type": "boolean"
-          },
           "canUseReportWriter": {
             "description": "Indicates whether the user has permission to use the report writer feature.",
             "type": "boolean"
@@ -74849,57 +74846,6 @@
           }
         },
         "summary": "Set User PricingTableId",
-        "tags": [
-          "Tenant"
-        ]
-      }
-    },
-    "/tenants/{id}/users/{userId}/refactoredaeroutine": {
-      "put": {
-        "description": "Updates the CanUseRefactoredAeRoutines flag for a User",
-        "operationId": "SetUserCanUseRefactoredAeRoutinesTenant",
-        "parameters": [
-          {
-            "description": "The Id of the Tenant.",
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "schema": {
-              "format": "uuid",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The Id of the User.",
-            "in": "path",
-            "name": "userId",
-            "required": true,
-            "schema": {
-              "format": "uuid",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The CanUseRefactoredAeRoutines flag for the User.",
-            "in": "query",
-            "name": "canUseRefactoredAeRoutines",
-            "schema": {
-              "type": "boolean"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        },
-        "summary": "Set CanUseRefactoredAeRoutines flag",
         "tags": [
           "Tenant"
         ]
