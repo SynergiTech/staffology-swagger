@@ -38957,6 +38957,110 @@
         ]
       }
     },
+    "/employers/{employerId}/employees/{employeeId}/leave/{id}/role/{roleId}/assumedpensionablepay": {
+      "get": {
+        "description": "Calculates the assumed pensionable pay for a specific employee role during a leave period.\r\nFor existing leaves (when id is provided), uses the leave's existing configuration.\r\nFor new leaves (when id is empty), calculates based on the provided leave type, pay type, and period parameters.\r\nOnly supports roles associated with LGPS schemes that allow automatic APP calculation.",
+        "operationId": "GetRoleAssumedPensionablePayLeave",
+        "parameters": [
+          {
+            "description": "The unique identifier of the employer",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique identifier of the employee",
+            "in": "path",
+            "name": "employeeId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique identifier of the leave record (empty GUID for new leaves)",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique identifier of the employee role for which to calculate assumed pensionable pay",
+            "in": "path",
+            "name": "roleId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The pay period (required for new leaves, ignored for existing leaves)",
+            "in": "query",
+            "name": "payPeriod",
+            "schema": {
+              "$ref": "#/components/schemas/PayPeriods"
+            }
+          },
+          {
+            "description": "The type of leave (required for new leaves, ignored for existing leaves)",
+            "in": "query",
+            "name": "leaveType",
+            "schema": {
+              "$ref": "#/components/schemas/LeaveType"
+            }
+          },
+          {
+            "description": "The leave payment type (required for new leaves, ignored for existing leaves)",
+            "in": "query",
+            "name": "leavePayType",
+            "schema": {
+              "$ref": "#/components/schemas/LeavePayType"
+            }
+          },
+          {
+            "description": "The leave start date (required for new leaves, ignored for existing leaves)",
+            "in": "query",
+            "name": "from",
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "format": "double",
+                  "type": "number"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Get Role Assumed Pensionable Pay",
+        "tags": [
+          "Leave"
+        ]
+      }
+    },
     "/employers/{employerId}/employees/{employeeId}/loans": {
       "get": {
         "description": "Lists all AttachmentOrders for the Employee",
