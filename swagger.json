@@ -27304,6 +27304,11 @@
             "nullable": true,
             "type": "array"
           },
+          "nonPensionableStatutoryPay": {
+            "description": "Non pensionable statutory pay",
+            "format": "double",
+            "type": "number"
+          },
           "nonTierablePay": {
             "description": "[readonly] The value of any pay that shouldn't count towards determining a pension tier.",
             "format": "double",
@@ -27400,6 +27405,10 @@
             },
             "nullable": true,
             "type": "array"
+          },
+          "treatAsWhenPaidForBackPay": {
+            "description": "[readonly] Determines whether the pension summary should be treated as when paid when the earnings are based only on back pay",
+            "type": "boolean"
           },
           "whenEarnedEmployeePensionContributionAvcCorrection": {
             "description": "[readonly] The when earned amount correction to Pension Contribution being made by this Employee as an Additional Voluntary Contribution",
