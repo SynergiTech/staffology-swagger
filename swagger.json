@@ -3561,6 +3561,9 @@
             "description": "To be used for the benefit period",
             "type": "boolean"
           },
+          "loan": {
+            "$ref": "#/components/schemas/Contract.BenefitLoanImportRequest"
+          },
           "nonClass1AType": {
             "$ref": "#/components/schemas/BenefitDetailsNonClass1AType"
           },
@@ -3612,6 +3615,49 @@
           },
           "value": {
             "description": "The total value of the benefit.",
+            "format": "double",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.BenefitLoanImportRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "closingBalance": {
+            "description": "Loan amount at the end of the year",
+            "format": "double",
+            "type": "number"
+          },
+          "interestPaid": {
+            "description": "Interest amount paid by the employee",
+            "format": "double",
+            "type": "number"
+          },
+          "loanDischarged": {
+            "description": "Date when the loan ended",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "loanMade": {
+            "description": "Date when the loan started",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "maxBalanceInYear": {
+            "description": "Highest loan balance during the year",
+            "format": "double",
+            "type": "number"
+          },
+          "numberOfJointBorrowers": {
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
+          "startingBalance": {
+            "description": "Loan amount at the start of the year",
             "format": "double",
             "type": "number"
           }
@@ -66382,6 +66428,62 @@
           }
         },
         "summary": "Create FPS",
+        "tags": [
+          "Fps"
+        ]
+      }
+    },
+    "/employers/{employerId}/rti/fps/{taxYear}/employee/{employeeId}": {
+      "get": {
+        "description": "Returns all the Full Payment Submission that includes the specified employee",
+        "operationId": "GetFpsesForEmployeeFps",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "taxYear",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/TaxYear"
+            }
+          },
+          {
+            "in": "path",
+            "name": "employeeId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Fps"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Get all FPS for Employee",
         "tags": [
           "Fps"
         ]
