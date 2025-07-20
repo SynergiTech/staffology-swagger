@@ -4690,6 +4690,57 @@
         },
         "type": "object"
       },
+      "Contract.EmployeeNavigationResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "currentId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "currentIndex": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "deptCode": {
+            "nullable": true,
+            "type": "string"
+          },
+          "employeeCount": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "firstId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "lastId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "nextId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "previousId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "sortBy": {
+            "$ref": "#/components/schemas/EmployeeSortBy"
+          },
+          "sortDescending": {
+            "type": "boolean"
+          },
+          "status": {
+            "$ref": "#/components/schemas/EmployeeStatus"
+          }
+        },
+        "type": "object"
+      },
       "Contract.EmployeePaymentsReportRequest": {
         "additionalProperties": false,
         "properties": {
@@ -44342,6 +44393,82 @@
           }
         },
         "summary": "Update EvcSettings",
+        "tags": [
+          "Employee"
+        ]
+      }
+    },
+    "/employers/{employerId}/employees/{id}/navigation": {
+      "get": {
+        "operationId": "GetEmployeeNavigationEmployee",
+        "parameters": [
+          {
+            "description": "The Id of the Employer to which the Employee belongs.",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Id of the Employee you want to retrieve.",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Restrict the results to employees with the given status",
+            "in": "query",
+            "name": "employeeStatus",
+            "schema": {
+              "$ref": "#/components/schemas/EmployeeStatus"
+            }
+          },
+          {
+            "description": "If specified then only employees assigned to this department code will be listed",
+            "in": "query",
+            "name": "deptCode",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Specifies the field by which to sort the employees. Default is EmployeeSortBy.None.",
+            "in": "query",
+            "name": "sortBy",
+            "schema": {
+              "$ref": "#/components/schemas/EmployeeSortBy"
+            }
+          },
+          {
+            "description": "Specifies whether the sorting should be in descending order. Default is false.",
+            "in": "query",
+            "name": "sortDescending",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.EmployeeNavigationResponse"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Get employee navigation details for a specific employee",
         "tags": [
           "Employee"
         ]
