@@ -53052,6 +53052,24 @@
               "default": false,
               "type": "boolean"
             }
+          },
+          {
+            "description": "Set to true to include Apprenticeship Levy amounts in the journal if the employer is liable",
+            "in": "query",
+            "name": "includeApprenticeLevy",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Set to true to display Apprenticeship Levy amount for all schedules; otherwise, only for the selected schedule in the journal",
+            "in": "query",
+            "name": "allSchedules",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
           }
         ],
         "responses": {
@@ -63461,6 +63479,24 @@
             "description": "Set to true and the journal will be split between any relevant Departments",
             "in": "query",
             "name": "deptBreakdown",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Set to true to include Apprenticeship Levy amounts in the journal if the employer is liable",
+            "in": "query",
+            "name": "includeApprenticeLevy",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Set to true to display Apprenticeship Levy amount for all schedules; otherwise, only for the selected schedule in the journal",
+            "in": "query",
+            "name": "allSchedules",
             "schema": {
               "default": false,
               "type": "boolean"
