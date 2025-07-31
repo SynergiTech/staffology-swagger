@@ -3524,11 +3524,115 @@
         },
         "type": "object"
       },
+      "Contract.BenefitCarImportRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "availableFrom": {
+            "description": "Date the car benefit became available",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "availableTo": {
+            "description": "Date the car benefit ended",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "co2Emissions": {
+            "description": "CO2 emissions value",
+            "format": "int32",
+            "type": "integer"
+          },
+          "daysUnavailable": {
+            "description": "Total number of days the vehicle was unavailable",
+            "format": "int32",
+            "type": "integer"
+          },
+          "employeeCapitalContributions": {
+            "description": "Employee's capital contribution",
+            "format": "double",
+            "type": "number"
+          },
+          "employeePrivateContributions": {
+            "description": "Employee's private contributions",
+            "format": "double",
+            "type": "number"
+          },
+          "engineSize": {
+            "description": "Engine size value",
+            "format": "int32",
+            "type": "integer"
+          },
+          "firstRegistered": {
+            "description": "Date the vehicle was first registered",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "freeFuel": {
+            "description": "Indicates if free fuel is provided",
+            "type": "boolean"
+          },
+          "freeFuelReinstated": {
+            "description": "Whether the free fuel benefit was reinstated",
+            "type": "boolean"
+          },
+          "fuelAvailableFrom": {
+            "description": "Date free fuel benefit started",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "fuelAvailableTo": {
+            "description": "Date free fuel benefit ended",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "fuelType": {
+            "$ref": "#/components/schemas/BenefitDetailsCarPowerType"
+          },
+          "hasApprovedEmissionsValue": {
+            "description": "Indicates if CO2 emissions data is approved",
+            "type": "boolean"
+          },
+          "listPrice": {
+            "description": "Original list price of the vehicle",
+            "format": "double",
+            "type": "number"
+          },
+          "makeAndModel": {
+            "description": "Car make and model name",
+            "nullable": true,
+            "type": "string"
+          },
+          "nonStandardAccessories": {
+            "description": "Cost of any non-standard accessories",
+            "format": "double",
+            "type": "number"
+          },
+          "registration": {
+            "description": "Vehicle registration number",
+            "nullable": true,
+            "type": "string"
+          },
+          "zeroEmissionsMileage": {
+            "description": "Mileage driven in zero-emission mode.\r\nApplicable only for Electric, Hybrid, and Petrol/Other fuel types.",
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
       "Contract.BenefitImportRequest": {
         "additionalProperties": false,
         "properties": {
           "assetType": {
             "$ref": "#/components/schemas/BenefitDetailsAssetType"
+          },
+          "car": {
+            "$ref": "#/components/schemas/Contract.BenefitCarImportRequest"
           },
           "cashEquivalentFuel": {
             "description": "Only relevant to Benefits with Type Vans",
@@ -8301,6 +8405,47 @@
           "withholdTaxRefundIfPayIsZero": {
             "description": "If you don't want negative PAYE values when the Gross pay is zero, set this to true",
             "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.PayRunOverridesImportRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "employeeNi": {
+            "description": "Employee Ni",
+            "format": "double",
+            "nullable": true,
+            "type": "number"
+          },
+          "employerNi": {
+            "description": "Employer Ni",
+            "format": "double",
+            "nullable": true,
+            "type": "number"
+          },
+          "paye": {
+            "description": "PAYE",
+            "format": "double",
+            "nullable": true,
+            "type": "number"
+          },
+          "payrollCode": {
+            "description": "The payroll code of the employee",
+            "nullable": true,
+            "type": "string"
+          },
+          "postGradLoan": {
+            "description": "Post Graduate Loan",
+            "format": "double",
+            "nullable": true,
+            "type": "number"
+          },
+          "studentLoan": {
+            "description": "Student Loan",
+            "format": "double",
+            "nullable": true,
+            "type": "number"
           }
         },
         "type": "object"
@@ -47909,6 +48054,124 @@
           }
         },
         "summary": "Import PensionMemberships from csv file",
+        "tags": [
+          "Import"
+        ]
+      }
+    },
+    "/employers/{employerId}/import/{taxYear}/{payPeriod}/{periodNumber}/{ordinal}/payrun-overrides": {
+      "post": {
+        "description": "Allows the import of payrun overrides asynchronously.",
+        "operationId": "ImportPayRunOverridesImport",
+        "parameters": [
+          {
+            "description": "The employer id",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The tax year for the pay run overrides import.",
+            "in": "path",
+            "name": "taxYear",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/TaxYear"
+            }
+          },
+          {
+            "description": "The period number for the pay run overrides import.",
+            "in": "path",
+            "name": "payPeriod",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/PayPeriods"
+            }
+          },
+          {
+            "description": "The period number for the pay run overrides import.",
+            "in": "path",
+            "name": "periodNumber",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "The ordinal for the pay run overrides import.",
+            "in": "path",
+            "name": "ordinal",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/Contract.PayRunOverridesImportRequest"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/Contract.PayRunOverridesImportRequest"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/Contract.PayRunOverridesImportRequest"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/Contract.PayRunOverridesImportRequest"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "The import payrun ovverides items."
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.JobResponse"
+                }
+              }
+            },
+            "description": "Accepted"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "409": {
+            "description": "Conflict"
+          }
+        },
+        "summary": "Import Pay Run Overrides",
         "tags": [
           "Import"
         ]
