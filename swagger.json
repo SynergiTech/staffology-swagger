@@ -4180,6 +4180,28 @@
           "bankDetails": {
             "$ref": "#/components/schemas/Contract.BankDetails"
           },
+          "defaultPensionSchemeName": {
+            "description": "The name of the Pension Scheme that will be used for this employee.",
+            "nullable": true,
+            "type": "string"
+          },
+          "defaultPensionSchemeUniqueId": {
+            "description": "The UniqueId of the Pension Scheme that will be used for this employee.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "defaultWorkerGroupName": {
+            "description": "The name of the Worker Group that will be used for this employee.",
+            "nullable": true,
+            "type": "string"
+          },
+          "defaultWorkerGroupUniqueId": {
+            "description": "The UniqueId of the Worker Group that will be used for this employee.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
           "employmentDetails": {
             "$ref": "#/components/schemas/Contract.EmploymentDetailsRequest"
           },
@@ -4878,6 +4900,28 @@
           "bankDetails": {
             "$ref": "#/components/schemas/Contract.BankDetails"
           },
+          "defaultPensionSchemeName": {
+            "description": "The name of the Pension Scheme that will be used for this employee.",
+            "nullable": true,
+            "type": "string"
+          },
+          "defaultPensionSchemeUniqueId": {
+            "description": "The UniqueId of the Pension Scheme that will be used for this employee.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "defaultWorkerGroupName": {
+            "description": "The name of the Worker Group that will be used for this employee.",
+            "nullable": true,
+            "type": "string"
+          },
+          "defaultWorkerGroupUniqueId": {
+            "description": "The UniqueId of the Worker Group that will be used for this employee.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
           "employmentDetails": {
             "$ref": "#/components/schemas/Contract.EmploymentDetailsResponse"
           },
@@ -5037,6 +5081,16 @@
         "properties": {
           "basis": {
             "$ref": "#/components/schemas/RoleBasis"
+          },
+          "defaultPensionSchemeUniqueId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "defaultWorkerGroupUniqueId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
           },
           "displayName": {
             "nullable": true,
@@ -10847,6 +10901,10 @@
             "description": "If set to true this will allow you to submit a combined Employer Payment Summary",
             "type": "boolean"
           },
+          "autoSubmitEps": {
+            "description": "If set to true, we'll automatically send your EPS to HMRC whenever you finalise a PayRun",
+            "type": "boolean"
+          },
           "autoSubmitFps": {
             "description": "If set to true, we'll automatically send your FPS to HMRC whenever you finalise a PayRun",
             "type": "boolean"
@@ -10908,6 +10966,10 @@
           },
           "allowLinkedEps": {
             "description": "If set to true this will allow you to submit a combined Employer Payment Summary",
+            "type": "boolean"
+          },
+          "autoSubmitEps": {
+            "description": "If set to true, we'll automatically send your EPS to HMRC whenever you finalise a PayRun",
             "type": "boolean"
           },
           "autoSubmitFps": {
@@ -11656,6 +11718,28 @@
           },
           "bankDetails": {
             "$ref": "#/components/schemas/Contract.BankDetails"
+          },
+          "defaultPensionSchemeName": {
+            "description": "The name of the Pension Scheme that will be used for this employee.",
+            "nullable": true,
+            "type": "string"
+          },
+          "defaultPensionSchemeUniqueId": {
+            "description": "The UniqueId of the Pension Scheme that will be used for this employee.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "defaultWorkerGroupName": {
+            "description": "The name of the Worker Group that will be used for this employee.",
+            "nullable": true,
+            "type": "string"
+          },
+          "defaultWorkerGroupUniqueId": {
+            "description": "The UniqueId of the Worker Group that will be used for this employee.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
           },
           "employmentDetails": {
             "$ref": "#/components/schemas/Contract.EmploymentDetailsRequest"
@@ -13011,6 +13095,24 @@
           "bankDetails": {
             "$ref": "#/components/schemas/BankDetails"
           },
+          "defaultPensionSchemeName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "defaultPensionSchemeUniqueId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "defaultWorkerGroupName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "defaultWorkerGroupUniqueId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
           "employmentDetails": {
             "$ref": "#/components/schemas/EmploymentDetails"
           },
@@ -13622,6 +13724,18 @@
         "properties": {
           "basis": {
             "$ref": "#/components/schemas/RoleBasis"
+          },
+          "defaultPensionSchemeUniqueId": {
+            "description": "Used when employee role has attached default pension scheme Id",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "defaultWorkerGroupUniqueId": {
+            "description": "Used when employee role has attached default worker group Id",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
           },
           "employee": {
             "$ref": "#/components/schemas/Item"
