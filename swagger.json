@@ -5755,6 +5755,10 @@
           "canUseBureauFeatures": {
             "type": "boolean"
           },
+          "canUsePremiumConnectors": {
+            "description": "Indicates whether the employer has permission to use the premium connectors feature.",
+            "type": "boolean"
+          },
           "costCentreJournalOverridesEnabled": {
             "description": "Enables the journal overrides for cost centre, if set to true.",
             "type": "boolean"
@@ -5958,6 +5962,10 @@
             "$ref": "#/components/schemas/EmployerBetaFeatures"
           },
           "canUseBureauFeatures": {
+            "type": "boolean"
+          },
+          "canUsePremiumConnectors": {
+            "description": "Indicates whether the employer has permission to use the premium connectors feature.",
             "type": "boolean"
           },
           "costCentreJournalOverridesEnabled": {
@@ -30732,6 +30740,10 @@
           },
           "canCreateEmployers": {
             "description": "[readonly] If false then the user cannot create new employers.\r\nThis can be turned on or off by the tenant admin.",
+            "type": "boolean"
+          },
+          "canEnablePremiumConnectors": {
+            "description": "Indicates whether the user has permission to enable the premium connectors feature.",
             "type": "boolean"
           },
           "canUseBetaFeatures": {
