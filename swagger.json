@@ -1650,7 +1650,8 @@
           "Standard18BacsMulti",
           "BanklineBulkListDebit",
           "VirginMoney",
-          "JpMorganAch"
+          "JpMorganAch",
+          "MetrobankCsv"
         ],
         "type": "string"
       },
