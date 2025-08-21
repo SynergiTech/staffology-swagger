@@ -72286,6 +72286,40 @@
         ]
       }
     },
+    "/open": {
+      "get": {
+        "operationId": "GetOpenPayrunsPayRun",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "employerId",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PayRun"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Get list of open payruns",
+        "tags": [
+          "PayRun"
+        ]
+      }
+    },
     "/payslip/example/pdf": {
       "post": {
         "description": "Use this operation to test your PayslipCustomisation.\r\nWe'll use dummy date and create a Payslip PDF or HTML document based on the customisation that you submit",
