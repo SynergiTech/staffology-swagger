@@ -15448,6 +15448,11 @@
             "nullable": true,
             "type": "string"
           },
+          "payRunVersion": {
+            "description": "The supplementary pay run version of this FPS.",
+            "format": "int32",
+            "type": "integer"
+          },
           "paymentDate": {
             "format": "date",
             "type": "string"
