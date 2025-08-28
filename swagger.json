@@ -5756,10 +5756,6 @@
           "canUseBureauFeatures": {
             "type": "boolean"
           },
-          "canUsePremiumConnectors": {
-            "description": "Indicates whether the employer has permission to use the premium connectors feature.",
-            "type": "boolean"
-          },
           "costCentreJournalOverridesEnabled": {
             "description": "Enables the journal overrides for cost centre, if set to true.",
             "type": "boolean"
@@ -15265,7 +15261,8 @@
           "IFinance",
           "AccountsIQ",
           "EPaySlips",
-          "NetSuite"
+          "NetSuite",
+          "StackOne"
         ],
         "type": "string"
       },
@@ -15276,7 +15273,8 @@
           "Payments",
           "Hr",
           "TimeAndAttendance",
-          "EmployeePortal"
+          "EmployeePortal",
+          "PremiumConnectedServices"
         ],
         "type": "string"
       },
@@ -45146,6 +45144,51 @@
         ]
       }
     },
+    "/employers/{employerId}/external-data/create-stackone-session-token": {
+      "post": {
+        "description": "Return a session token from the StackOne client to connect to StackOne.",
+        "operationId": "CreateStackOneSessionTokenExternalData",
+        "parameters": [
+          {
+            "description": "The Id of the employer in the external data provider",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "A list of category for the premium connection",
+            "in": "query",
+            "name": "categories",
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Get StackOne session token",
+        "tags": [
+          "ExternalData"
+        ]
+      }
+    },
     "/employers/{employerId}/external-data/{id}/authorize": {
       "get": {
         "description": "For ExternalDataProviders with an AuthScheme of OAuth1 or OAuth2.\r\nReturns a Url to redirect a user to in order to start the authorization process with the given ExternalDataProvider.\r\nOur API handles the response from the OAuth provider and processes it to obtain a token.\r\nThe user is then sent to the URL specified.",
@@ -71007,6 +71050,63 @@
           }
         },
         "summary": "Get Employer Calendar",
+        "tags": [
+          "Employer"
+        ]
+      }
+    },
+    "/employers/{id}/can-use-premium-connectors": {
+      "put": {
+        "description": "Sets Can Use Premium Connectors Setting\r\nA boolean value needs to be sent in the body to indicate if the employer can use premium connectors.\r\nSo sending false would result in the employer not being able to use the premium connectors.",
+        "operationId": "UpdateEmployerCanUsePremiumConnectorsEmployer",
+        "parameters": [
+          {
+            "description": "The Id of the Employer you want to update.",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "type": "boolean"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "boolean"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "type": "boolean"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Update Can Use Premium Connectors Setting",
         "tags": [
           "Employer"
         ]
