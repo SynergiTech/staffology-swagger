@@ -7490,6 +7490,29 @@
         },
         "type": "object"
       },
+      "Contract.P45AvailabilityResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "isLeaverPresent": {
+            "description": "Indicates if a leaver is present in the pay run",
+            "type": "boolean"
+          },
+          "ordinal": {
+            "description": "The Ordinal of the PayRun",
+            "format": "int32",
+            "type": "integer"
+          },
+          "payPeriod": {
+            "$ref": "#/components/schemas/PayPeriods"
+          },
+          "period": {
+            "description": "The Period (i.e, Tax Week or Tax Month) of the PayRun",
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
       "Contract.PartnerDetails": {
         "additionalProperties": false,
         "properties": {
@@ -31018,6 +31041,35 @@
           },
           "startPage": {
             "$ref": "#/components/schemas/UserstartPage"
+          }
+        },
+        "type": "object"
+      },
+      "UserEmployer": {
+        "additionalProperties": false,
+        "properties": {
+          "employerId": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "id": {
+            "description": "[readonly] The unique id of the object",
+            "format": "uuid",
+            "readOnly": true,
+            "type": "string"
+          },
+          "isOwner": {
+            "type": "boolean"
+          },
+          "role": {
+            "$ref": "#/components/schemas/UserRole"
+          },
+          "showOutstandingLoanBalancesOnly": {
+            "type": "boolean"
+          },
+          "userId": {
+            "format": "int32",
+            "type": "integer"
           }
         },
         "type": "object"
@@ -59460,6 +59512,49 @@
         ]
       }
     },
+    "/employers/{employerId}/reports/p45-availability": {
+      "get": {
+        "description": "Checks if there are leavers in each pay run of the employer's current tax year for downloading P45.",
+        "operationId": "GetP45AvailabilityReports",
+        "parameters": [
+          {
+            "description": "The Id of the Employer.",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Contract.P45AvailabilityResponse"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Get P45 Download Availability",
+        "tags": [
+          "Reports"
+        ]
+      }
+    },
     "/employers/{employerId}/reports/p45/email": {
       "post": {
         "description": "Email a P45 to an Employee you've marked as a leaver",
@@ -60243,6 +60338,14 @@
               "format": "int32",
               "type": "integer"
             }
+          },
+          {
+            "in": "query",
+            "name": "outstandingOnly",
+            "schema": {
+              "default": true,
+              "type": "boolean"
+            }
           }
         ],
         "responses": {
@@ -60273,6 +60376,159 @@
           }
         },
         "summary": "Loan Balances",
+        "tags": [
+          "Reports"
+        ]
+      }
+    },
+    "/employers/{employerId}/reports/{payPeriod}/{period}/{ordinal}/p45-email-multiple": {
+      "post": {
+        "description": "Email P45 to multiple Employees you've marked as a leaver for a period in the employer's current tax year",
+        "operationId": "EmailP45MutlipleReports",
+        "parameters": [
+          {
+            "description": "The Id of the Employer.",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The PayPeriod of the PayRun.",
+            "in": "path",
+            "name": "payPeriod",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/PayPeriods"
+            }
+          },
+          {
+            "description": "The Period of the PayRun.",
+            "in": "path",
+            "name": "period",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "The Ordinal of the PayRun.",
+            "in": "path",
+            "name": "ordinal",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Email P45 to multiple employees",
+        "tags": [
+          "Reports"
+        ]
+      }
+    },
+    "/employers/{employerId}/reports/{payPeriod}/{period}/{ordinal}/p45-multiple": {
+      "get": {
+        "description": "Get P45s for multiple employees for a specific period in the employer's current tax year",
+        "operationId": "P45MultipleReports",
+        "parameters": [
+          {
+            "description": "The employer id.",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The PayPeriod of the PayRun.",
+            "in": "path",
+            "name": "payPeriod",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/PayPeriods"
+            }
+          },
+          {
+            "description": "The Period of the PayRun.",
+            "in": "path",
+            "name": "period",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "The Ordinal of the PayRun.",
+            "in": "path",
+            "name": "ordinal",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "header",
+            "name": "accept",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportResponse"
+                }
+              },
+              "application/octet-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportResponse"
+                }
+              },
+              "application/pdf": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportResponse"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportResponse"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "P45 for Multiple Employees",
         "tags": [
           "Reports"
         ]
@@ -71702,6 +71958,43 @@
         ]
       }
     },
+    "/employers/{id}/users/userEmployer": {
+      "get": {
+        "description": "Returns a UserEmployer for the given Employer Id",
+        "operationId": "GetUserEmployerEmployer",
+        "parameters": [
+          {
+            "description": "The Id of the Employer you want to get the User from.",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserEmployer"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Get User Employer",
+        "tags": [
+          "Employer"
+        ]
+      }
+    },
     "/employers/{id}/users/{userId}": {
       "delete": {
         "description": "Removes a User from an Employer.\r\nYou cannot remove Users that are marked as the owner of the Employer.\r\nYou must be the owner of the Employer in order to remove other Users.",
@@ -74121,6 +74414,46 @@
           }
         },
         "summary": "Delete Payroll Squad Member",
+        "tags": [
+          "Tenant"
+        ]
+      }
+    },
+    "/tenants/{id}/payrollsquads": {
+      "get": {
+        "description": "Returns all Payroll Squad Members for the Employer",
+        "operationId": "GetPayrollSquadMembersTenant",
+        "parameters": [
+          {
+            "description": "Current Employer id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Item"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Get Payroll Squad Members for Employer",
         "tags": [
           "Tenant"
         ]
