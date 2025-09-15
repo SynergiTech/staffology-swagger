@@ -1651,7 +1651,9 @@
           "BanklineBulkListDebit",
           "VirginMoney",
           "JpMorganAch",
-          "MetrobankCsv"
+          "MetrobankCsv",
+          "CitibankUkAch",
+          "CitibankFasterPayments"
         ],
         "type": "string"
       },
@@ -73431,6 +73433,67 @@
           }
         },
         "summary": "Update Bill",
+        "tags": [
+          "Tenant"
+        ]
+      }
+    },
+    "/tenants/{id}/bureau-usage-stats": {
+      "get": {
+        "description": "Returns usage statistics data for all employers the logged in user has access to for the given date range.\r\nIf either of the dates are not provided then the values are defaulted to the first and last date of the previous calendar month.",
+        "operationId": "GetBureauUsageStatsTenant",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "fromDate",
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "toDate",
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "accept",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportResponse"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportResponse"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Get UsageStats Report",
         "tags": [
           "Tenant"
         ]
