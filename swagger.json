@@ -5740,7 +5740,7 @@
             "type": "string"
           },
           "bankDetails": {
-            "$ref": "#/components/schemas/Contract.BankDetails"
+            "$ref": "#/components/schemas/Contract.SharedBankDetails"
           },
           "bankPaymentsCsvFormat": {
             "$ref": "#/components/schemas/BankPaymentInstructionsCsvFormat"
@@ -5945,7 +5945,7 @@
             "type": "string"
           },
           "bankDetails": {
-            "$ref": "#/components/schemas/Contract.BankDetails"
+            "$ref": "#/components/schemas/Contract.SharedBankDetails"
           },
           "bankPaymentsCsvFormat": {
             "$ref": "#/components/schemas/BankPaymentInstructionsCsvFormat"
@@ -11054,6 +11054,57 @@
         },
         "type": "object"
       },
+      "Contract.SharedBankDetails": {
+        "additionalProperties": false,
+        "properties": {
+          "accountName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "accountNumber": {
+            "nullable": true,
+            "type": "string"
+          },
+          "bankBranch": {
+            "nullable": true,
+            "type": "string"
+          },
+          "bankName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "bankReference": {
+            "nullable": true,
+            "type": "string"
+          },
+          "buildingSocietyRollNumber": {
+            "nullable": true,
+            "type": "string"
+          },
+          "countryOfBank": {
+            "$ref": "#/components/schemas/CountryCode"
+          },
+          "iban": {
+            "maxLength": 34,
+            "nullable": true,
+            "type": "string"
+          },
+          "note": {
+            "nullable": true,
+            "type": "string"
+          },
+          "sortCode": {
+            "nullable": true,
+            "type": "string"
+          },
+          "swift_Bic": {
+            "maxLength": 11,
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "Contract.ShiftWorkingPatternDayRequest": {
         "additionalProperties": false,
         "properties": {
@@ -12702,6 +12753,100 @@
         ],
         "type": "string"
       },
+      "CountryCode": {
+        "enum": [
+          "Andorra",
+          "Albania",
+          "Austria",
+          "Azerbaijan",
+          "Bahrain",
+          "Belarus",
+          "Belgium",
+          "BosniaAndHerzegovina",
+          "Brazil",
+          "Bulgaria",
+          "Burundi",
+          "CostaRica",
+          "Croatia",
+          "Cyprus",
+          "CzechRepublic",
+          "Denmark",
+          "Djibouti",
+          "DominicanRepublic",
+          "ElSalvador",
+          "Estonia",
+          "Egypt",
+          "FalklandIslands",
+          "FaroeIslands",
+          "Finland",
+          "France",
+          "Georgia",
+          "Germany",
+          "Gibraltar",
+          "Greece",
+          "Greenland",
+          "Guatemala",
+          "Honduras",
+          "Hungary",
+          "Iceland",
+          "Ireland",
+          "Israel",
+          "Iraq",
+          "Italy",
+          "Jordan",
+          "Kazakhstan",
+          "Kosovo",
+          "Kuwait",
+          "Lebanon",
+          "Latvia",
+          "Liechtenstein",
+          "Lithuania",
+          "Luxembourg",
+          "Macedonia",
+          "Malta",
+          "Mauritania",
+          "Mauritius",
+          "Monaco",
+          "Moldova",
+          "Montenegro",
+          "Mongolia",
+          "Nicaragua",
+          "Netherlands",
+          "Norway",
+          "Oman",
+          "Pakistan",
+          "Palestine",
+          "Poland",
+          "Portugal",
+          "Qatar",
+          "RepublicOfBelarus",
+          "Romania",
+          "Russia",
+          "SaintLucia",
+          "SanMarino",
+          "SaudiArabia",
+          "Serbia",
+          "Seychelles",
+          "Slovakia",
+          "Slovenia",
+          "Somalia",
+          "SaoTomeAndPrincipe",
+          "Spain",
+          "Sudan",
+          "Sweden",
+          "Switzerland",
+          "TimorLeste",
+          "Tunisia",
+          "Turkey",
+          "Ukraine",
+          "UnitedArabEmirates",
+          "UnitedKingdom",
+          "VaticanCity",
+          "VirginIslands",
+          "Yemen"
+        ],
+        "type": "string"
+      },
       "CsvFileFormat": {
         "enum": [
           "MoneysoftEmployees",
@@ -13444,6 +13589,107 @@
           },
           "model": {
             "$ref": "#/components/schemas/EmployeeLeaveReport"
+          },
+          "stream": {
+            "description": "byte array",
+            "format": "byte",
+            "nullable": true,
+            "type": "string"
+          },
+          "type": {
+            "description": "[readonly] The content-type, this would usually be the same as the accept header you provided when you requested the report",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "EmployeeLoanExportReport": {
+        "additionalProperties": false,
+        "properties": {
+          "isDraft": {
+            "type": "boolean"
+          },
+          "lines": {
+            "items": {
+              "$ref": "#/components/schemas/EmployeeLoanExportReportLine"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "report": {
+            "$ref": "#/components/schemas/Report"
+          },
+          "taxYear": {
+            "$ref": "#/components/schemas/TaxYear"
+          },
+          "title": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "EmployeeLoanExportReportLine": {
+        "additionalProperties": false,
+        "properties": {
+          "firstName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "issueDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "loanAmount": {
+            "format": "double",
+            "type": "number"
+          },
+          "pausePayments": {
+            "type": "boolean"
+          },
+          "payCode": {
+            "nullable": true,
+            "type": "string"
+          },
+          "payrollCode": {
+            "nullable": true,
+            "type": "string"
+          },
+          "periodAmount": {
+            "format": "double",
+            "type": "number"
+          },
+          "previouslyPaid": {
+            "format": "double",
+            "type": "number"
+          },
+          "reference": {
+            "nullable": true,
+            "type": "string"
+          },
+          "surname": {
+            "nullable": true,
+            "type": "string"
+          },
+          "uniqueIdentifier": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "EmployeeLoanExportReportReportResponse": {
+        "additionalProperties": false,
+        "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
+        "properties": {
+          "content": {
+            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "nullable": true,
+            "type": "string"
+          },
+          "model": {
+            "$ref": "#/components/schemas/EmployeeLoanExportReport"
           },
           "stream": {
             "description": "byte array",
@@ -28398,7 +28644,8 @@
           "LoanBalances",
           "EmployeeLeave",
           "AdvancedVarianceReport",
-          "EmployeePayments"
+          "EmployeePayments",
+          "EmployeeLoanExport"
         ],
         "type": "string"
       },
@@ -47874,6 +48121,15 @@
               "format": "uuid",
               "type": "string"
             }
+          },
+          {
+            "description": "If set to true, and there are any open pay runs, the imported values will be applied to those pay runs.",
+            "in": "query",
+            "name": "updateOpenPayrun",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
           }
         ],
         "requestBody": {
@@ -60220,6 +60476,69 @@
           }
         },
         "summary": "Spine Point",
+        "tags": [
+          "Reports"
+        ]
+      }
+    },
+    "/employers/{employerId}/reports/{payPeriod}/employeeloanexport": {
+      "get": {
+        "description": "Returns the Employees Loan Export report for the given pay schedule",
+        "operationId": "EmployeeLoanExportReports",
+        "parameters": [
+          {
+            "description": "The Id of the Employer.",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "payPeriod",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/PayPeriods"
+            }
+          },
+          {
+            "in": "header",
+            "name": "accept",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "ordinal",
+            "schema": {
+              "default": 1,
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeLoanExportReportReportResponse"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeLoanExportReportReportResponse"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Employee Loan Export",
         "tags": [
           "Reports"
         ]
