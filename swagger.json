@@ -29189,8 +29189,24 @@
       "SmtpSettings": {
         "additionalProperties": false,
         "properties": {
+          "accessToken": {
+            "nullable": true,
+            "type": "string"
+          },
           "encryption": {
             "$ref": "#/components/schemas/SmtpEncryption"
+          },
+          "expiresAt": {
+            "format": "date",
+            "type": "string"
+          },
+          "expiresIn": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "refreshToken": {
+            "nullable": true,
+            "type": "string"
           },
           "smtpPassword": {
             "nullable": true,
@@ -36327,6 +36343,39 @@
         ]
       }
     },
+    "/employers/{employerId}/email/authorize": {
+      "get": {
+        "description": "Redirects the user to Microsoft login for authorization.",
+        "operationId": "AuthorizeEmail",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Microsoft login for authorization",
+        "tags": [
+          "Email"
+        ]
+      }
+    },
     "/employers/{employerId}/email/settings": {
       "get": {
         "description": "Returns the MailSettings for an Employer.",
@@ -36531,6 +36580,40 @@
           }
         },
         "summary": "Email Verification (Respond)",
+        "tags": [
+          "Email"
+        ]
+      }
+    },
+    "/employers/{employerId}/email/token": {
+      "post": {
+        "description": "Stores token details (access and refresh tokens) in the database by receiving the authorization code \r\nand exchanging it for tokens using the Microsoft identity platform.",
+        "operationId": "SaveOAuthTokenEmail",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The authorization code returned by Microsoft after user consent.",
+            "in": "query",
+            "name": "code",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        },
+        "summary": "Update token details by Authorization code",
         "tags": [
           "Email"
         ]
