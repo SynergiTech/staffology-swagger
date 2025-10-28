@@ -23792,6 +23792,9 @@
             "description": "[readonly] Set to True if the PayRun is currently rolled back",
             "type": "boolean"
           },
+          "navigation": {
+            "$ref": "#/components/schemas/PayRunEntryNavigation"
+          },
           "nonRtiEmployeeCount": {
             "description": "[readonly] The number of employees excluded from the RTI submission in this PayRun",
             "format": "int32",
@@ -24133,6 +24136,67 @@
             "description": "[readonly] If PercentageOfWorkingDaysPaidAsNormal has a value other than 1\r\nthen this property will tell you how many working days have been deducted from the basic pay\r\ndue to either being Not Paid or Statutory Pay",
             "format": "double",
             "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "PayRunEntryNavigation": {
+        "additionalProperties": false,
+        "properties": {
+          "currentId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "currentIndex": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "departmentFilterSelected": {
+            "nullable": true,
+            "type": "string"
+          },
+          "entryCount": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "firstId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "lastId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "nextId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "payRunEntrySortBy": {
+            "$ref": "#/components/schemas/PayRunEntrySortBy"
+          },
+          "previousId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "rolledBackOnly": {
+            "type": "boolean"
+          },
+          "searchTerm": {
+            "nullable": true,
+            "type": "string"
+          },
+          "sortDescending": {
+            "type": "boolean"
+          },
+          "startersLeaversFilterSelected": {
+            "$ref": "#/components/schemas/StartersLeaversFilter"
+          },
+          "zeroPaidFilterSelected": {
+            "$ref": "#/components/schemas/ZeroPaidFilter"
           }
         },
         "type": "object"
@@ -52334,6 +52398,108 @@
           }
         },
         "summary": "Calculate Average Holiday Pay Rate",
+        "tags": [
+          "PayRun"
+        ]
+      }
+    },
+    "/employers/{employerId}/payrun/navigation/{payRunEntryId}": {
+      "get": {
+        "description": "Gets PayRunEntryNavigation details for a specific payrunentry within a pay run context, \r\nproviding previous/next payrunentry navigation based on the pay run's employee list filtered by the specified criteria.",
+        "operationId": "GetPayRunEntryNavigationPayRun",
+        "parameters": [
+          {
+            "description": "The ID of the employer.",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique identifier of the payrunentry for which to build navigation context.",
+            "in": "path",
+            "name": "payRunEntryId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "An optional search term to filter employees.",
+            "in": "query",
+            "name": "searchTerm",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The option to filter pay run entries by negative paid, zero paid, and non-zero paid.",
+            "in": "query",
+            "name": "zeroPaid",
+            "schema": {
+              "$ref": "#/components/schemas/ZeroPaidFilter"
+            }
+          },
+          {
+            "description": "The option to filter on department code.",
+            "in": "query",
+            "name": "departmentCode",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The option to filter on whether the employee is a starter or leaver.",
+            "in": "query",
+            "name": "startersLeavers",
+            "schema": {
+              "$ref": "#/components/schemas/StartersLeaversFilter"
+            }
+          },
+          {
+            "description": "The option to sort by a certain field. Default is Payroll Code.",
+            "in": "query",
+            "name": "sortBy",
+            "schema": {
+              "$ref": "#/components/schemas/PayRunEntrySortBy"
+            }
+          },
+          {
+            "description": "Whether to sort in ascending or descending order.",
+            "in": "query",
+            "name": "sortDescending",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "If set to true, returns rolled back pay run entries. If false, returns all entries.",
+            "in": "query",
+            "name": "rolledBackOnly",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PayRunEntryNavigation"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Get PayRunEntryNavigation for a specific PayRunEntry",
         "tags": [
           "PayRun"
         ]
