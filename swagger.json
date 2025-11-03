@@ -61407,6 +61407,11 @@
                   "$ref": "#/components/schemas/GenderPayGapReportReportResponse"
                 }
               },
+              "application/pdf": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenderPayGapReportReportResponse"
+                }
+              },
               "text/csv": {
                 "schema": {
                   "$ref": "#/components/schemas/GenderPayGapReportReportResponse"
