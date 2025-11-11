@@ -18603,6 +18603,44 @@
         },
         "type": "object"
       },
+      "LeaveNotionalPayDetails": {
+        "additionalProperties": false,
+        "properties": {
+          "leaveId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "notionalPay": {
+            "format": "double",
+            "type": "number"
+          },
+          "notionalPayPeriodBreakdowns": {
+            "description": "Breakdown of notional pay details by percent of pay bands\r\nEvery leave has entries representing a continuous period of leave with the same percent of pay",
+            "items": {
+              "$ref": "#/components/schemas/NotionalPayPeriodBreakdown"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "occupationalPay": {
+            "format": "double",
+            "type": "number"
+          },
+          "occupationalPayWithLessThanHalfPay": {
+            "format": "double",
+            "type": "number"
+          },
+          "ospDaysToBeExcludedForNotionalPay": {
+            "format": "double",
+            "type": "number"
+          },
+          "payableOccupationalLeavesCount": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
       "LeavePayType": {
         "enum": [
           "DoNotPay",
@@ -20276,6 +20314,43 @@
           "P45"
         ],
         "type": "string"
+      },
+      "NotionalPayPeriodBreakdown": {
+        "additionalProperties": false,
+        "properties": {
+          "daysExcluded": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "from": {
+            "format": "date",
+            "type": "string"
+          },
+          "leaveId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "notionalPay": {
+            "format": "double",
+            "type": "number"
+          },
+          "occupationalPayWithLessThanHalfPay": {
+            "format": "double",
+            "type": "number"
+          },
+          "percentOfPay": {
+            "format": "double",
+            "type": "number"
+          },
+          "percentOfPayBand": {
+            "$ref": "#/components/schemas/PercentOfPayBand"
+          },
+          "to": {
+            "format": "date",
+            "type": "string"
+          }
+        },
+        "type": "object"
       },
       "Nvr": {
         "additionalProperties": false,
@@ -27981,6 +28056,12 @@
             "description": "[readonly] Determines whether the Value of the Additional Voluntary Contribution is a fixed amount or a percentage,",
             "type": "boolean"
           },
+          "contributionCalculationDate": {
+            "description": "Nullable DateTime property \"ContributionCalculationDate\" to store the date of the latest earned date on the back pay lines when processing when earned pension summaries on a payment after leaving.\r\nApplicable only for when the pension summary is created on the base of when earned additions' and deductions' pension calculations for back paid periods and the pay run entry is marked as payment after leaving",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
           "employeePensionContribution": {
             "description": "[readonly] The value of the Pension Contribution being made by this Employee, excluding any Additional Voluntary Contributions",
             "format": "double",
@@ -28035,6 +28116,9 @@
             "description": "if an employee as a member of the 50/50 LGPS scheme, they can enable contribution to 50% of the normal contributions.",
             "type": "boolean"
           },
+          "isTeachersPension": {
+            "type": "boolean"
+          },
           "leaveDaysUnderHalfPay": {
             "description": "The numer of leave days where less than half the normal pay is received",
             "format": "int32",
@@ -28058,6 +28142,16 @@
             "format": "double",
             "type": "number"
           },
+          "nonPensionableStatutoryPays": {
+            "additionalProperties": {
+              "format": "double",
+              "nullable": true,
+              "type": "number"
+            },
+            "description": "Non pensionable statutory pay per leave",
+            "nullable": true,
+            "type": "object"
+          },
           "nonTierablePay": {
             "description": "[readonly] The value of any pay that shouldn't count towards determining a pension tier.",
             "format": "double",
@@ -28067,6 +28161,14 @@
             "description": "Pay value based on regular pay lines and the pension's associated roles\r\nSet before any adjustments for things like stat payments",
             "format": "double",
             "type": "number"
+          },
+          "notionalPayDetails": {
+            "description": "Notional pay details based on every occupational or custom leave affecting a teachers pension summary",
+            "items": {
+              "$ref": "#/components/schemas/LeaveNotionalPayDetails"
+            },
+            "nullable": true,
+            "type": "array"
           },
           "papdisEmployerId": {
             "description": "[readonly] Papdis information from the PensionScheme",
@@ -28299,6 +28401,14 @@
           }
         },
         "type": "object"
+      },
+      "PercentOfPayBand": {
+        "enum": [
+          "HundredPercent",
+          "BetweenFiftyAndHundredPercent",
+          "BelowFiftyPercent"
+        ],
+        "type": "string"
       },
       "PeriodValue": {
         "additionalProperties": false,
@@ -52148,6 +52258,14 @@
               "format": "int32",
               "type": "integer"
             }
+          },
+          {
+            "in": "query",
+            "name": "version",
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
           }
         ],
         "responses": {
@@ -52234,6 +52352,14 @@
             "schema": {
               "format": "date-time",
               "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "version",
+            "schema": {
+              "format": "int32",
+              "type": "integer"
             }
           }
         ],
@@ -53237,7 +53363,7 @@
             "description": "Bad Request"
           }
         },
-        "summary": "Creates a supplementary PayRun - Beta",
+        "summary": "Creates a supplementary PayRun",
         "tags": [
           "PayRun"
         ]
