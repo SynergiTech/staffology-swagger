@@ -26190,7 +26190,9 @@
           "FlexiDd_StandAloneLumpSum",
           "FlexiDd_StandAloneLumpSum_NonTax",
           "FlexiDd_PensionCommencementExcess",
-          "FlexiDd_PensionCommencementExcess_NonTax"
+          "FlexiDd_PensionCommencementExcess_NonTax",
+          "Average_Holiday_Pay_Days",
+          "Holiday_Days_Day_Rate"
         ],
         "type": "string"
       },
