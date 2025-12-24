@@ -23363,6 +23363,12 @@
             "description": "Skip the automatic backpay calculation on the first pay run, if the addition/deduction had been paid outside or Staffology.\r\nIf set to false, the automatic backpay calculation will be performed on the first pay run.",
             "type": "boolean"
           },
+          "importIdempotencyKey": {
+            "description": "Deterministic GUID used for import idempotency tracking.\r\nGenerated from: blobScope|employerUniqueId|payrollCode|lineIndex",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
           "initialBackPayPublicPayRunId": {
             "description": "Used to mark the first payrun where this payline has been payrolled for backpay",
             "format": "uuid",
