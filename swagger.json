@@ -6874,6 +6874,12 @@
             "minLength": 1,
             "type": "string"
           },
+          "payCodeSetForDaysId": {
+            "description": "the Paycode set that they want to use for the Days to enable the calculation.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
           "payCodeSetForHoursId": {
             "description": "the Paycode set that they want to use for the Hours to enable the calculation.",
             "format": "uuid",
@@ -6931,6 +6937,12 @@
           "name": {
             "description": "Holiday scheme name",
             "minLength": 1,
+            "type": "string"
+          },
+          "payCodeSetForDaysId": {
+            "description": "the Paycode set that they want to use for the Days to enable the calculation.",
+            "format": "uuid",
+            "nullable": true,
             "type": "string"
           },
           "payCodeSetForHoursId": {
@@ -7572,6 +7584,11 @@
       "Contract.PayHistoryRequest": {
         "additionalProperties": false,
         "properties": {
+          "days": {
+            "description": "decimal amount of days worked, if not provided then 0",
+            "format": "double",
+            "type": "number"
+          },
           "employeeId": {
             "description": "Employee unique Id",
             "format": "uuid",
@@ -7618,6 +7635,11 @@
       "Contract.PayHistoryResponse": {
         "additionalProperties": false,
         "properties": {
+          "days": {
+            "description": "decimal amount of days worked, if not provided then 0",
+            "format": "double",
+            "type": "number"
+          },
           "employeeId": {
             "description": "Employee unique Id",
             "format": "uuid",
@@ -7669,6 +7691,11 @@
       "Contract.PayHistoryUpdateRequest": {
         "additionalProperties": false,
         "properties": {
+          "days": {
+            "description": "decimal amount of days worked, if not provided then 0",
+            "format": "double",
+            "type": "number"
+          },
           "employeeId": {
             "description": "Employee unique Id",
             "format": "uuid",
@@ -52515,6 +52542,15 @@
             "schema": {
               "format": "date-time",
               "type": "string"
+            }
+          },
+          {
+            "description": "If set to true, will calculate based on days otherwise will calculate based on hours",
+            "in": "query",
+            "name": "isDaily",
+            "schema": {
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
