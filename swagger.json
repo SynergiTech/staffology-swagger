@@ -218,7 +218,10 @@
           "Exit",
           "Inconclusive",
           "Postpone",
-          "ReEnrol"
+          "ReEnrol",
+          "AddToPension",
+          "OptOut",
+          "CeaseMembership"
         ],
         "type": "string"
       },
@@ -373,6 +376,46 @@
           "Leaving",
           "TaxProtection",
           "CisSubContractor"
+        ],
+        "type": "string"
+      },
+      "AeLetter": {
+        "enum": [
+          "Entitled",
+          "NonEligible",
+          "Postponed",
+          "Enrolled",
+          "Reenrolled"
+        ],
+        "type": "string"
+      },
+      "AeLetterSentType": {
+        "enum": [
+          "Email",
+          "Manual",
+          "ExternalDataProvider"
+        ],
+        "type": "string"
+      },
+      "AeReason": {
+        "enum": [
+          "NoEmployee",
+          "NoPeriod",
+          "NoDefaultPension",
+          "NoSer",
+          "IsExempt",
+          "IsPostponed",
+          "NonEligibleAge",
+          "PayBelowLowerEarningsThreshold",
+          "PayBelowQualifyingThreshold",
+          "HasQualifyingPension",
+          "HasOptedOut",
+          "IsLeaver",
+          "HasCeasedMembership",
+          "Contractual",
+          "IsEntitled",
+          "IsEligible",
+          "HasExistingSerPension"
         ],
         "type": "string"
       },
@@ -3136,6 +3179,304 @@
           },
           "ukWorker": {
             "$ref": "#/components/schemas/AeUKWorker"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.AeEmployeeAssessmentHistoryRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "$ref": "#/components/schemas/AeAction"
+          },
+          "actionDate": {
+            "description": "The date when the action was applied, if applicable.",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "age": {
+            "description": "The employee's age at the time of assessment.",
+            "format": "int32",
+            "type": "integer"
+          },
+          "assessmentDate": {
+            "description": "The actual date the assessment was performed.",
+            "format": "date",
+            "type": "string"
+          },
+          "isJointAssessment": {
+            "description": "Is this a joint assessment with another role",
+            "type": "boolean"
+          },
+          "isLatestVersion": {
+            "description": "Is the latest version of this assessment",
+            "type": "boolean"
+          },
+          "isNewPension": {
+            "description": "Is this assessment resulting in a new pension",
+            "type": "boolean"
+          },
+          "letter": {
+            "$ref": "#/components/schemas/AeLetter"
+          },
+          "letterExternalDataProviderId": {
+            "$ref": "#/components/schemas/ExternalDataProviderId"
+          },
+          "letterSentDate": {
+            "description": "The date the letter was sent to employee, if applicable.",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "letterSentType": {
+            "$ref": "#/components/schemas/AeLetterSentType"
+          },
+          "lowerEarningsThreshold": {
+            "description": "The Lower Earnings Threshold applicable for the assessment period.",
+            "format": "double",
+            "type": "number"
+          },
+          "payRunId": {
+            "description": "The unique identifier of the Pay Run associated with this assessment.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "pensionId": {
+            "description": "The unique identifier of the pension associated with this assessment, if applicable.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "pensionSchemeId": {
+            "description": "The unique identifier of the pension scheme associated with this assessment, if applicable.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "periodEndDate": {
+            "description": "The end date of the pay reference period for which this assessment applies.",
+            "format": "date",
+            "type": "string"
+          },
+          "periodStartDate": {
+            "description": "The start date of the pay reference period for which this assessment applies.",
+            "format": "date",
+            "type": "string"
+          },
+          "qualifyingThreshold": {
+            "description": "The Qualifying Earnings Threshold (or Auto-Enrolment Trigger) applicable for the assessment period.",
+            "format": "double",
+            "type": "number"
+          },
+          "reason": {
+            "$ref": "#/components/schemas/AeReason"
+          },
+          "reenrolmentDate": {
+            "description": "Re-enrolment date if assessment occurs during re-enrolment period",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "roleId": {
+            "description": "The unique identifier of the Role associated with this assessment.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/AeStatus"
+          },
+          "version": {
+            "description": "The version of this assessment in the current pay run",
+            "format": "int32",
+            "type": "integer"
+          },
+          "workerGroupId": {
+            "description": "The unique identifier of the worker group with this assessment, if applicable.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.AeEmployeeAssessmentHistoryResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "$ref": "#/components/schemas/AeAction"
+          },
+          "actionDate": {
+            "description": "The date when the action was created",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "age": {
+            "description": "Employee's age at the time of assessment",
+            "format": "int32",
+            "type": "integer"
+          },
+          "assessmentDate": {
+            "description": "Assessment date",
+            "format": "date",
+            "type": "string"
+          },
+          "employeeId": {
+            "description": "The employee ID associated with this assessment",
+            "format": "uuid",
+            "type": "string"
+          },
+          "employeeRoleId": {
+            "description": "Employee role ID associated with this assessment, if applicable",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "endDate": {
+            "description": "End date of assessment period",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "isNewPension": {
+            "description": "Is this assessment resulting in a new pension",
+            "type": "boolean"
+          },
+          "letter": {
+            "$ref": "#/components/schemas/AeLetter"
+          },
+          "letterExternalDataProviderId": {
+            "$ref": "#/components/schemas/ExternalDataProviderId"
+          },
+          "letterSentDate": {
+            "description": "The Date the letter was sent, if applicable",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "letterSentType": {
+            "$ref": "#/components/schemas/AeLetterSentType"
+          },
+          "lowerEarningsThreshold": {
+            "description": "Lower earnings threshold for the assessment period",
+            "format": "double",
+            "type": "number"
+          },
+          "payRunId": {
+            "description": "The pay run ID that triggered this assessment (optional)",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "pensionId": {
+            "description": "The unique identifier of the pension associated with this assessment, if applicable.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "pensionSchemeId": {
+            "description": "The unique identifier of the pension scheme associated with this assessment, if applicable.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "qualifyingThreshold": {
+            "description": "Qualifying threshold for the assessment period",
+            "format": "double",
+            "type": "number"
+          },
+          "reEnrolmentDate": {
+            "description": "Re-enrolment date if assessment occurs during re-enrolment period",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "reason": {
+            "$ref": "#/components/schemas/AeReason"
+          },
+          "startDate": {
+            "description": "Start date of assessment period",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/AeStatus"
+          },
+          "workerGroupId": {
+            "description": "The worker group ID associated with this assessment, if applicable.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.AeEmployeeLetterResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "assessmentId": {
+            "description": "The assessment Id the letter is related to",
+            "format": "uuid",
+            "type": "string"
+          },
+          "emailAddress": {
+            "description": "The employee email address",
+            "nullable": true,
+            "type": "string"
+          },
+          "employeeId": {
+            "description": "The employee ID",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "employeeName": {
+            "description": "The employee name",
+            "nullable": true,
+            "type": "string"
+          },
+          "employeeUniqueId": {
+            "description": "The employee uniqueId",
+            "format": "int32",
+            "type": "integer"
+          },
+          "externalDataProviderId": {
+            "$ref": "#/components/schemas/ExternalDataProviderId"
+          },
+          "isJointAssessment": {
+            "description": "If the assessment was a joint assessment",
+            "type": "boolean"
+          },
+          "letterSentType": {
+            "$ref": "#/components/schemas/AeLetterSentType"
+          },
+          "letterType": {
+            "$ref": "#/components/schemas/AeLetter"
+          },
+          "payrollCode": {
+            "description": "The employee payroll code",
+            "nullable": true,
+            "type": "string"
+          },
+          "period": {
+            "description": "The tax period in which the letter was generated",
+            "format": "int32",
+            "type": "integer"
+          },
+          "roles": {
+            "description": "The roles associated with the letter",
+            "nullable": true,
+            "type": "string"
+          },
+          "sentDate": {
+            "description": "The roles which generated the letter",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
           }
         },
         "type": "object"
@@ -12925,6 +13266,152 @@
           "EmployeeCsv"
         ],
         "type": "string"
+      },
+      "CyclicReenrolmentReport": {
+        "additionalProperties": false,
+        "properties": {
+          "alreadyInPension": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "employerName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "groups": {
+            "items": {
+              "$ref": "#/components/schemas/CyclicReenrolmentReportGroup"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "isDraft": {
+            "type": "boolean"
+          },
+          "reenrolmentDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "report": {
+            "$ref": "#/components/schemas/Report"
+          },
+          "taxYear": {
+            "$ref": "#/components/schemas/TaxYear"
+          },
+          "title": {
+            "nullable": true,
+            "type": "string"
+          },
+          "totalReenrolled": {
+            "format": "int32",
+            "readOnly": true,
+            "type": "integer"
+          },
+          "totalStaff": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "CyclicReenrolmentReportGroup": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "lines": {
+            "items": {
+              "$ref": "#/components/schemas/CyclicReenrolmentReportLine"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          },
+          "totalStaff": {
+            "format": "int32",
+            "readOnly": true,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "CyclicReenrolmentReportLine": {
+        "additionalProperties": false,
+        "properties": {
+          "firstName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "lastName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "middleName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "payScheduleName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "payrollCode": {
+            "nullable": true,
+            "type": "string"
+          },
+          "pensionSchemeId": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "pensionSchemeName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "reenrolmentDate": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "title": {
+            "nullable": true,
+            "type": "string"
+          },
+          "workerGroupName": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "CyclicReenrolmentReportReportResponse": {
+        "additionalProperties": false,
+        "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
+        "properties": {
+          "content": {
+            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "nullable": true,
+            "type": "string"
+          },
+          "model": {
+            "$ref": "#/components/schemas/CyclicReenrolmentReport"
+          },
+          "stream": {
+            "description": "byte array",
+            "format": "byte",
+            "nullable": true,
+            "type": "string"
+          },
+          "type": {
+            "description": "[readonly] The content-type, this would usually be the same as the accept header you provided when you requested the report",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
       },
       "DayOfWeek": {
         "enum": [
@@ -28844,6 +29331,14 @@
         },
         "type": "object"
       },
+      "ReenrolmentStatus": {
+        "enum": [
+          "NotStarted",
+          "InProgress",
+          "Completed"
+        ],
+        "type": "string"
+      },
       "Report": {
         "enum": [
           "GrossToNet",
@@ -28901,7 +29396,8 @@
           "AdvancedVarianceReport",
           "EmployeePayments",
           "EmployeeLoanExport",
-          "CombinedPensionContributions"
+          "CombinedPensionContributions",
+          "CyclicReenrolment"
         ],
         "type": "string"
       },
@@ -34054,6 +34550,37 @@
         ]
       }
     },
+    "/employers/reenrolmentstatus": {
+      "get": {
+        "operationId": "GetReenrolmentStatusEmployer",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReenrolmentStatus"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Gets the re-enrolment status for the employer",
+        "tags": [
+          "Employer"
+        ]
+      }
+    },
     "/employers/search": {
       "get": {
         "operationId": "SearchEmployer",
@@ -34084,6 +34611,571 @@
         "summary": "Search Employers",
         "tags": [
           "Employer"
+        ]
+      }
+    },
+    "/employers/{employerId}/aeassessments/employees/{employeeId}/aeEmployeeAssessments": {
+      "get": {
+        "operationId": "GetAeEmployeeAssessmentsAeEmployeeAssessment",
+        "parameters": [
+          {
+            "description": "The Id of the Employer",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Id of the Employee",
+            "in": "path",
+            "name": "employeeId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Contract.AeEmployeeAssessmentHistoryResponse"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "List employee auto enrolment assessment",
+        "tags": [
+          "AeEmployeeAssessment"
+        ]
+      }
+    },
+    "/employers/{employerId}/aeassessments/employees/{employeeId}/assess": {
+      "post": {
+        "operationId": "AssessAeEmployeeAssessment",
+        "parameters": [
+          {
+            "description": "The Id of the Employer",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Id of the Employee",
+            "in": "path",
+            "name": "employeeId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Id of the PayRun being assessed",
+            "in": "query",
+            "name": "payRunId",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Contract.AeEmployeeAssessmentHistoryResponse"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Process AE Assessment for Employee during PayRun",
+        "tags": [
+          "AeEmployeeAssessment"
+        ]
+      }
+    },
+    "/employers/{employerId}/aeassessments/employees/{employeeId}/create": {
+      "post": {
+        "operationId": "CreateAeEmployeeAssessmentAeEmployeeAssessment",
+        "parameters": [
+          {
+            "description": "The Id of the Employer",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Id of the Employee",
+            "in": "path",
+            "name": "employeeId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.AeEmployeeAssessmentHistoryRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.AeEmployeeAssessmentHistoryRequest"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.AeEmployeeAssessmentHistoryRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.AeEmployeeAssessmentHistoryRequest"
+              }
+            }
+          },
+          "description": "The request containing all data required for the employee assessment"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Create employee auto enrolment assessment",
+        "tags": [
+          "AeEmployeeAssessment"
+        ]
+      }
+    },
+    "/employers/{employerId}/aeassessments/employees/{employeeId}/letters/{taxYear}": {
+      "get": {
+        "operationId": "GetEmployeeLettersAeEmployeeAssessment",
+        "parameters": [
+          {
+            "description": "The Id of the Employer",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Id of the Employee",
+            "in": "path",
+            "name": "employeeId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The TaxYear for which you want to list the pension letters",
+            "in": "path",
+            "name": "taxYear",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/TaxYear"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Contract.AeEmployeeLetterResponse"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Get letters for an employee based on tax year",
+        "tags": [
+          "AeEmployeeAssessment"
+        ]
+      }
+    },
+    "/employers/{employerId}/aeassessments/employees/{employeeId}/{id}/letter": {
+      "get": {
+        "description": "Returns PDF letter that needs to be sent to an employee as a result of the assessment.\r\nThe same ReportResponse model that is used for reports is used here.",
+        "operationId": "GetAeLetterAeEmployeeAssessment",
+        "parameters": [
+          {
+            "description": "The Id of the Employer to which the Employee belongs",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Id of the Employee the assessment is for",
+            "in": "path",
+            "name": "employeeId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Id of the Assessment",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "accept",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportResponse"
+                }
+              },
+              "application/octet-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportResponse"
+                }
+              },
+              "application/pdf": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportResponse"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportResponse"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Get AeLetter",
+        "tags": [
+          "AeEmployeeAssessment"
+        ]
+      }
+    },
+    "/employers/{employerId}/aeassessments/employees/{employeeId}/{id}/letter/email": {
+      "post": {
+        "description": "Send via email letter that needs to be sent to an employee as a result of the assessment.",
+        "operationId": "EmailAeLetterAeEmployeeAssessment",
+        "parameters": [
+          {
+            "description": "The Id of the Employer to which the Employee belongs",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Id of the Employee the assessment is for",
+            "in": "path",
+            "name": "employeeId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Id of the AeEmployeeAssessmentHistory",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployerEmail"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Email AeLetter",
+        "tags": [
+          "AeEmployeeAssessment"
+        ]
+      }
+    },
+    "/employers/{employerId}/aeassessments/employees/{employeeId}/{id}/letter/sent": {
+      "put": {
+        "description": "Update an Assessment to mark the letter as sent.\r\nThis is done automatically if you send the letter via email so you'd\r\nonly need to use this is you are printing/posting the letter.",
+        "operationId": "MarkAeLetterAsSentAeEmployeeAssessment",
+        "parameters": [
+          {
+            "description": "The Id of the Employer to which the Employee belongs",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Id of the Employee the assessment is for",
+            "in": "path",
+            "name": "employeeId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Id of the Assessment",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        },
+        "summary": "Mark Letter as Sent",
+        "tags": [
+          "AeEmployeeAssessment"
+        ]
+      }
+    },
+    "/employers/{employerId}/aeassessments/letters/pending": {
+      "get": {
+        "operationId": "GetPendingLettersAeEmployeeAssessment",
+        "parameters": [
+          {
+            "description": "The Id of the Employer",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Contract.AeEmployeeLetterResponse"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Get pending letters for an employer",
+        "tags": [
+          "AeEmployeeAssessment"
+        ]
+      }
+    },
+    "/employers/{employerId}/aeassessments/letters/pending/count": {
+      "get": {
+        "operationId": "GetPendingLettersCountAeEmployeeAssessment",
+        "parameters": [
+          {
+            "description": "The Id of the Employer",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Contract.AeEmployeeLetterResponse"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Get count of pending pension letters for an employer",
+        "tags": [
+          "AeEmployeeAssessment"
+        ]
+      }
+    },
+    "/employers/{employerId}/aeassessments/letters/sent": {
+      "put": {
+        "description": "Update an Assessments to mark all the letter as sent.\r\nThis is done automatically if you send the letter via email so you'd\r\nonly need to use this is you are printing/posting the letter.",
+        "operationId": "MarkAeLettersAsSentAeEmployeeAssessment",
+        "parameters": [
+          {
+            "description": "The Id of the Employer to which the Employee belongs",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        },
+        "summary": "Mark All Letters as Sent",
+        "tags": [
+          "AeEmployeeAssessment"
+        ]
+      }
+    },
+    "/employers/{employerId}/aeassessments/reenrolmentdates": {
+      "get": {
+        "operationId": "GetReenrolmentDatesAeEmployeeAssessment",
+        "parameters": [
+          {
+            "description": "The Id of the Employer",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Gets a list of re-enrolment dates for the employer",
+        "tags": [
+          "AeEmployeeAssessment"
         ]
       }
     },
@@ -48944,6 +50036,75 @@
         ]
       }
     },
+    "/employers/{employerId}/import/pensionmemberships/async": {
+      "post": {
+        "description": "Import Pension Memberships from a CSV file.",
+        "operationId": "PensionImportCsvImport",
+        "parameters": [
+          {
+            "description": "The employer id.",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "If set to true, and if the pension membership matches an existing one, then that membership will be updated.",
+            "in": "query",
+            "name": "allowUpdates",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "encoding": {
+                "file": {
+                  "style": "form"
+                }
+              },
+              "schema": {
+                "properties": {
+                  "file": {
+                    "format": "binary",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.JobResponse"
+                }
+              }
+            },
+            "description": "Accepted"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "409": {
+            "description": "Conflict"
+          }
+        },
+        "summary": "Import PensionMemberships from csv file (async)",
+        "tags": [
+          "Import"
+        ]
+      }
+    },
     "/employers/{employerId}/import/{taxYear}/{payPeriod}/{periodNumber}/{ordinal}/payrun-overrides": {
       "post": {
         "description": "Allows the import of payrun overrides asynchronously.",
@@ -59886,6 +61047,66 @@
           }
         },
         "summary": "CIS Subcontractor Summary",
+        "tags": [
+          "Reports"
+        ]
+      }
+    },
+    "/employers/{employerId}/reports/cyclicreenrolment": {
+      "get": {
+        "description": "Returns a report for Cyclic Re-enrolments for a given re-enrolment date.",
+        "operationId": "CyclicReenrolmentReports",
+        "parameters": [
+          {
+            "description": "The Id of the Employer.",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The re-enrolment date in the format YYYY-MM-DD.",
+            "in": "query",
+            "name": "reenrolmentDate",
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "accept",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CyclicReenrolmentReportReportResponse"
+                }
+              },
+              "application/pdf": {
+                "schema": {
+                  "$ref": "#/components/schemas/CyclicReenrolmentReportReportResponse"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/CyclicReenrolmentReportReportResponse"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Export Cyclic Re-enrolments",
         "tags": [
           "Reports"
         ]
