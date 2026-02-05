@@ -53557,6 +53557,13 @@
               "format": "int32",
               "type": "integer"
             }
+          },
+          {
+            "in": "query",
+            "name": "fpsLateReason",
+            "schema": {
+              "$ref": "#/components/schemas/FpsLateReason"
+            }
           }
         ],
         "requestBody": {
@@ -53617,6 +53624,75 @@
         "summary": "Registers a request to update the PayRun (beta)",
         "tags": [
           "PayRunAsync"
+        ]
+      }
+    },
+    "/employers/{employerId}/payrun/check-if-fps-late-reason-applicable": {
+      "get": {
+        "description": "Determines if the FPS late reason is applicable for the given pay period based on employer settings and the provided tax year.\r\nThe check is only performed if AutoSubmitFPS is enabled for the employer.",
+        "operationId": "CheckIfFPSLateReasonApplicablePayRun",
+        "parameters": [
+          {
+            "description": "The ID of the employer.",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The pay period (e.g., Monthly, Weekly) for which you want to check if the FPS late reason is applicable.",
+            "in": "query",
+            "name": "payPeriod",
+            "schema": {
+              "$ref": "#/components/schemas/PayPeriods"
+            }
+          },
+          {
+            "description": "The period number (e.g., Tax Month, Tax Week) for which you want to check if the FPS late reason is applicable.",
+            "in": "query",
+            "name": "periodNumber",
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "The tax year for which you want to check if the FPS late reason is applicable.",
+            "in": "query",
+            "name": "taxYear",
+            "schema": {
+              "$ref": "#/components/schemas/TaxYear"
+            }
+          },
+          {
+            "description": "Indicates whether it is the first, second, third, etc., pay schedule for the given pay period.",
+            "in": "query",
+            "name": "ordinal",
+            "schema": {
+              "default": 1,
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Check if the FPS late reason is applicable",
+        "tags": [
+          "PayRun"
         ]
       }
     },
@@ -54882,6 +54958,13 @@
             "schema": {
               "format": "int32",
               "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "fpsLateReason",
+            "schema": {
+              "$ref": "#/components/schemas/FpsLateReason"
             }
           }
         ],
