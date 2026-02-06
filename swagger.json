@@ -347,6 +347,116 @@
         },
         "type": "object"
       },
+      "AeEmployee": {
+        "additionalProperties": false,
+        "properties": {
+          "age": {
+            "description": "The employees age at assessment",
+            "format": "int32",
+            "type": "integer"
+          },
+          "birthDate": {
+            "description": "The employees date of birth",
+            "format": "date",
+            "type": "string"
+          },
+          "defaultPensionSchemeId": {
+            "description": "The default pension scheme for the employee, if applicable",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "defaultWorkerGroupId": {
+            "description": "The default worker group for the employee, if applicable",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "description": "The employee unique id",
+            "format": "uuid",
+            "type": "string"
+          },
+          "isExempt": {
+            "description": "The employee is exempt",
+            "type": "boolean"
+          },
+          "leaveDate": {
+            "description": "The employees leave date, if applicable",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "pensions": {
+            "description": "The pensions for the employee",
+            "items": {
+              "$ref": "#/components/schemas/AePension"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "postponementDate": {
+            "description": "The postponement date for the employee, if applicable",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "roles": {
+            "description": "The roles for the employee",
+            "items": {
+              "$ref": "#/components/schemas/AeRole"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "startDate": {
+            "description": "The employees start date",
+            "format": "date",
+            "type": "string"
+          },
+          "statePensionAge": {
+            "description": "The state pension age date for the employee",
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "AeEmployeeAssessment": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "$ref": "#/components/schemas/AeAction"
+          },
+          "age": {
+            "description": "The age of the employee at assessment",
+            "format": "int32",
+            "type": "integer"
+          },
+          "assessmentDate": {
+            "description": "The date of the assessment",
+            "format": "date",
+            "type": "string"
+          },
+          "earnings": {
+            "description": "The earnings used for the assessment",
+            "format": "double",
+            "type": "number"
+          },
+          "payPeriod": {
+            "$ref": "#/components/schemas/PayPeriods"
+          },
+          "roles": {
+            "description": "The roles associated with the assessment",
+            "nullable": true,
+            "type": "string"
+          },
+          "ukWorker": {
+            "$ref": "#/components/schemas/AeUKWorker"
+          }
+        },
+        "type": "object"
+      },
       "AeEmployeeState": {
         "enum": [
           "Automatic",
@@ -397,6 +507,182 @@
         ],
         "type": "string"
       },
+      "AePension": {
+        "additionalProperties": false,
+        "properties": {
+          "endDate": {
+            "description": "The end date of the pension, if applicable",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "endReason": {
+            "$ref": "#/components/schemas/PensionEndReason"
+          },
+          "id": {
+            "description": "The pension unique id",
+            "format": "uuid",
+            "type": "string"
+          },
+          "isNew": {
+            "description": "If the pension is created this period by Ae",
+            "type": "boolean"
+          },
+          "pensionSchemeId": {
+            "description": "The pension scheme unique id",
+            "format": "uuid",
+            "type": "string"
+          },
+          "revertedRoleIds": {
+            "description": "The role unique ids associated with the pension which need to be removed",
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "roleIds": {
+            "description": "The role unique ids associated with the pension",
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "startDate": {
+            "description": "The start date of the pension",
+            "format": "date",
+            "type": "string"
+          },
+          "workerGroupId": {
+            "description": "The worker group unique id",
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "AePensionScheme": {
+        "additionalProperties": false,
+        "properties": {
+          "disableLetters": {
+            "description": "If the pension schemes letters are managed by an external provider",
+            "type": "boolean"
+          },
+          "id": {
+            "description": "The pension scheme unique id",
+            "format": "uuid",
+            "type": "string"
+          },
+          "initialEnrolmentType": {
+            "$ref": "#/components/schemas/PensionInitialEnrolmentType"
+          },
+          "isDefaultScheme": {
+            "description": "If the pension scheme is the default scheme for the Employer",
+            "type": "boolean"
+          },
+          "isQualifying": {
+            "description": "If the pension scheme is qualifying for AE",
+            "type": "boolean"
+          },
+          "useSerRule": {
+            "description": "If the roles within the pension scheme are assessed jointly",
+            "type": "boolean"
+          },
+          "workerGroupIds": {
+            "description": "The worker group unique ids associated with the pension",
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "nullable": true,
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "AePeriod": {
+        "additionalProperties": false,
+        "properties": {
+          "cyclicalReenrolmentDate": {
+            "description": "The cyclical reenrolment date",
+            "format": "date",
+            "type": "string"
+          },
+          "cyclicalReenrolmentIsDue": {
+            "description": "If cyclical reenrolment is due in this period",
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "deferalPeriodType": {
+            "$ref": "#/components/schemas/DeferalPeriodType"
+          },
+          "deferalPeriods": {
+            "description": "The number of deferal periods",
+            "format": "int32",
+            "type": "integer"
+          },
+          "endDate": {
+            "description": "The end date of the period",
+            "format": "date",
+            "type": "string"
+          },
+          "enrolmentDeferalPeriodType": {
+            "$ref": "#/components/schemas/DeferalPeriodType"
+          },
+          "enrolmentDeferalPeriods": {
+            "description": "The number of deferal periods for enrolment",
+            "format": "int32",
+            "type": "integer"
+          },
+          "lowerEarningsThreshold": {
+            "description": "The lower earnings threshold for the period",
+            "format": "double",
+            "type": "number"
+          },
+          "minimumAge": {
+            "description": "The minimum age to assess in the period",
+            "format": "int32",
+            "type": "integer"
+          },
+          "payDate": {
+            "description": "The pay date of the period",
+            "format": "date",
+            "type": "string"
+          },
+          "payPeriod": {
+            "$ref": "#/components/schemas/PayPeriods"
+          },
+          "payRunEndDate": {
+            "description": "The end date of the pay run",
+            "format": "date",
+            "type": "string"
+          },
+          "payRunStartDate": {
+            "description": "The start date of the pay run",
+            "format": "date",
+            "type": "string"
+          },
+          "qualifyingThreshold": {
+            "description": "The qualifying threshold for the period",
+            "format": "double",
+            "type": "number"
+          },
+          "startDate": {
+            "description": "The start date of the period",
+            "format": "date",
+            "type": "string"
+          },
+          "upperEarningsThreshold": {
+            "description": "The upper earnings threshold for the period",
+            "format": "double",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
       "AeReason": {
         "enum": [
           "NoEmployee",
@@ -418,6 +704,45 @@
           "HasExistingSerPension"
         ],
         "type": "string"
+      },
+      "AeRole": {
+        "additionalProperties": false,
+        "properties": {
+          "defaultPensionSchemeId": {
+            "description": "The default pension scheme for the role, if applicable",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "defaultWorkerGroupId": {
+            "description": "The default worker group for the role, if applicable",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "earnings": {
+            "description": "The role earnings",
+            "format": "double",
+            "type": "number"
+          },
+          "endDate": {
+            "description": "The end date of the role, if applicable",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "description": "The role unique id",
+            "format": "uuid",
+            "type": "string"
+          },
+          "startDate": {
+            "description": "The start date of the role",
+            "format": "date",
+            "type": "string"
+          }
+        },
+        "type": "object"
       },
       "AeStatus": {
         "enum": [
@@ -3341,6 +3666,10 @@
             "nullable": true,
             "type": "string"
           },
+          "isJointAssessment": {
+            "description": "Is this a joint assessment with another role",
+            "type": "boolean"
+          },
           "isNewPension": {
             "description": "Is this assessment resulting in a new pension",
             "type": "boolean"
@@ -3408,6 +3737,145 @@
           },
           "workerGroupId": {
             "description": "The worker group ID associated with this assessment, if applicable.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.AeEmployeeAssessmentRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "assessments": {
+            "description": "The previous assessments for the employee",
+            "items": {
+              "$ref": "#/components/schemas/Contract.AeEmployeeAssessmentResponse"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "employee": {
+            "$ref": "#/components/schemas/AeEmployee"
+          },
+          "explanation": {
+            "description": "If an explanation is required",
+            "type": "boolean"
+          },
+          "pensionSchemes": {
+            "description": "The pension schemes for the employer",
+            "items": {
+              "$ref": "#/components/schemas/AePensionScheme"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "period": {
+            "$ref": "#/components/schemas/AePeriod"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.AeEmployeeAssessmentResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "$ref": "#/components/schemas/AeAction"
+          },
+          "actionDate": {
+            "description": "The date the action will happen",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "assessmentDate": {
+            "description": "The date of the assessment",
+            "format": "date",
+            "type": "string"
+          },
+          "earnings": {
+            "description": "The earnings used in the assessment",
+            "format": "double",
+            "type": "number"
+          },
+          "explanation": {
+            "description": "The optional explanation for the assessment",
+            "nullable": true,
+            "type": "string"
+          },
+          "isCurrentPayRun": {
+            "description": "If it is an assessment for the current pay run",
+            "type": "boolean"
+          },
+          "isJointAssessment": {
+            "description": "If it is an assessment joint with another role",
+            "type": "boolean"
+          },
+          "isNewPension": {
+            "description": "The pension the role will be enrolled into is a new pension",
+            "type": "boolean"
+          },
+          "isPreviousPayRun": {
+            "description": "If it is an assessment for the previous pay run",
+            "type": "boolean"
+          },
+          "letter": {
+            "$ref": "#/components/schemas/AeLetter"
+          },
+          "letterExternalDataProviderId": {
+            "$ref": "#/components/schemas/ExternalDataProviderId"
+          },
+          "letterSentDate": {
+            "description": "The Date the letter was sent, if applicable",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "letterSentType": {
+            "$ref": "#/components/schemas/AeLetterSentType"
+          },
+          "pensionId": {
+            "description": "The pension the role will be enrolled into, if applicable",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "pensionSchemeId": {
+            "description": "The pension scheme the role will be enrolled into, if applicable",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "qualifyingEarnings": {
+            "description": "The qualifying earnings used in the assessment",
+            "format": "double",
+            "type": "number"
+          },
+          "reason": {
+            "$ref": "#/components/schemas/AeReason"
+          },
+          "reenrolmentDate": {
+            "description": "Re-enrolment date if a re-enrolment period",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "roleId": {
+            "description": "The employee role the assessment relates to, if applicable",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/AeStatus"
+          },
+          "version": {
+            "description": "The version of this assessment in the current pay run",
+            "format": "int32",
+            "type": "integer"
+          },
+          "workerGroupId": {
+            "description": "The worker group the role will be enrolled into, if applicable",
             "format": "uuid",
             "nullable": true,
             "type": "string"
@@ -33559,6 +34027,55 @@
         ]
       }
     },
+    "/aeemployeeassessment": {
+      "post": {
+        "operationId": "AssessAeAssessment",
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.AeEmployeeAssessmentRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.AeEmployeeAssessmentRequest"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.AeEmployeeAssessmentRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.AeEmployeeAssessmentRequest"
+              }
+            }
+          },
+          "description": "The request containing all of the data required to perform an assessment"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Contract.AeEmployeeAssessmentResponse"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Assess an employee",
+        "tags": [
+          "AeAssessment"
+        ]
+      }
+    },
     "/aeo/{employeeId}/{id}": {
       "get": {
         "description": "Returns a statement for an Attachment Order, listing payments that have been made.",
@@ -34666,6 +35183,65 @@
         ]
       }
     },
+    "/employers/{employerId}/aeassessments/employees/{employeeId}/aeEmployeeAssessments/roles/{employeeRoleId}": {
+      "get": {
+        "operationId": "GetLatestAeEmployeeAssessmentByRoleAeEmployeeAssessment",
+        "parameters": [
+          {
+            "description": "The Id of the Employer",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Id of the Employee",
+            "in": "path",
+            "name": "employeeId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Id of the Employee Role",
+            "in": "path",
+            "name": "employeeRoleId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.AeEmployeeAssessmentHistoryResponse"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Gets employee AE assessment for a specific role.",
+        "tags": [
+          "AeEmployeeAssessment"
+        ]
+      }
+    },
     "/employers/{employerId}/aeassessments/employees/{employeeId}/assess": {
       "post": {
         "operationId": "AssessAeEmployeeAssessment",
@@ -34722,6 +35298,58 @@
           }
         },
         "summary": "Process AE Assessment for Employee during PayRun",
+        "tags": [
+          "AeEmployeeAssessment"
+        ]
+      }
+    },
+    "/employers/{employerId}/aeassessments/employees/{employeeId}/assessments": {
+      "get": {
+        "operationId": "GetEmployeeAeAssessmentsHistoryAeEmployeeAssessment",
+        "parameters": [
+          {
+            "description": "The Id of the Employer",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Id of the Employee",
+            "in": "path",
+            "name": "employeeId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/AeEmployeeAssessment"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Get Ae Assessments for an employee.",
         "tags": [
           "AeEmployeeAssessment"
         ]
@@ -35093,10 +35721,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "items": {
-                    "$ref": "#/components/schemas/Contract.AeEmployeeLetterResponse"
-                  },
-                  "type": "array"
+                  "format": "int32",
+                  "type": "integer"
                 }
               }
             },
@@ -40043,7 +40669,7 @@
           {
             "description": "Optional. Used to override the default AE Pension. Only valid with states of Enrol, VoluntaryJoiner or OptIn",
             "in": "query",
-            "name": "pensionId",
+            "name": "pensionSchemeId",
             "schema": {
               "format": "uuid",
               "type": "string"
@@ -40059,6 +40685,7 @@
             }
           },
           {
+            "description": "Optional. Set to true if the employee has already been reported to the pension provider as a joiner.",
             "in": "query",
             "name": "startActionAlreadyReported",
             "schema": {
@@ -40067,11 +40694,21 @@
             }
           },
           {
+            "description": "Optional. Set to true if the employee has already been reported to the pension provider as a leaver.",
             "in": "query",
             "name": "endActionAlreadyReported",
             "schema": {
               "default": false,
               "type": "boolean"
+            }
+          },
+          {
+            "description": "Optional. The specific Pension UniqueId.",
+            "in": "query",
+            "name": "pensionId",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -40094,13 +40731,13 @@
                 }
               }
             },
-            "description": "Created"
+            "description": "Assessment created successfully"
           },
           "400": {
-            "description": "Bad Request"
+            "description": "Bad Request - Invalid parameters or state transition"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Employee or Employer not found"
           }
         },
         "summary": "Update State",
