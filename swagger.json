@@ -55967,6 +55967,15 @@
               "format": "uuid",
               "type": "string"
             }
+          },
+          {
+            "description": "If supplementary pay runs have been created this can be used to specify the supplementary pay run version.",
+            "in": "query",
+            "name": "version",
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
           }
         ],
         "responses": {
