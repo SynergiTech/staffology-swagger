@@ -1,0 +1,24 @@
+name: Update The Swagger Maybe
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 * * * *"
+
+jobs:
+  update-the-swagger-maybe:
+    name: Update The Swagger Maybe
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v6
+        with:
+          submodules: 'true'
+
+      - name: Configure git
+        run: |
+          git config --local user.email "$(git log --format='%ae' HEAD^!)"
+          git config --local user.name "$(git log --format='%an' HEAD^!)"
+
+      - name: Do the do
+        run: bash track-swagger.sh

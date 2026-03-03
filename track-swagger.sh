@@ -1,12 +1,10 @@
 #!/bin/bash
 
 # === CONFIG ===
-REPO_DIR="/home/richard/StaffologySwagger"
 SWAGGER_URL="https://api.staffology.co.uk/swagger/v1/swagger.json"
 SWAGGER_FILE="swagger.json"
 
 # === SETUP ===
-cd "$REPO_DIR" || exit 1
 TMP_RAW=$(mktemp)             # raw download
 TMP_NORMALIZED=$(mktemp)      # normalized new file
 CURRENT_NORMALIZED=$(mktemp)  # normalized existing file
@@ -57,6 +55,3 @@ $DIFF_SUMMARY"
 else
     echo "[INFO] No changes detected."
 fi
-
-# === CLEANUP ===
-rm -f "$TMP_RAW" "$TMP_NORMALIZED" "$CURRENT_NORMALIZED"
