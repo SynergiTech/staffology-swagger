@@ -15307,7 +15307,8 @@
       },
       "EmployerBetaFeatures": {
         "enum": [
-          "MultiRoleAe"
+          "MultiRoleAe",
+          "AdditionalPayPeriods"
         ],
         "type": "string"
       },
@@ -15601,6 +15602,11 @@
             "format": "double",
             "type": "number"
           },
+          "nicCompensationOnSPBPNorthernIreland": {
+            "description": "Value of NIC compensation on Statutory Parental Bereavement(Northern Ireland) Pay year to date",
+            "format": "double",
+            "type": "number"
+          },
           "nicCompensationOnSPP": {
             "description": "Value of NIC compensation on Statutory Paternity Pay year to date",
             "format": "double",
@@ -15628,6 +15634,11 @@
           },
           "sncpRecovered": {
             "description": "Value of Statutory Neonatal Care Pay recovered year to date",
+            "format": "double",
+            "type": "number"
+          },
+          "spbpNorthernIrelandRecovered": {
+            "description": "Value of Statutory Parental Bereavment(Northern Ireland) Pay recovered year to date",
             "format": "double",
             "type": "number"
           },
@@ -17189,6 +17200,10 @@
             "nullable": true,
             "type": "string"
           },
+          "employeeWorkplacePostcodeNIRE": {
+            "nullable": true,
+            "type": "string"
+          },
           "flexibleDrawdown": {
             "$ref": "#/components/schemas/FpsEmployeeFlexibleDrawdown"
           },
@@ -17201,6 +17216,10 @@
             "type": "string"
           },
           "lateReason": {
+            "nullable": true,
+            "type": "string"
+          },
+          "miscarriageNIRE": {
             "nullable": true,
             "type": "string"
           },
@@ -17253,6 +17272,10 @@
             "type": "string"
           },
           "sncpytd": {
+            "nullable": true,
+            "type": "string"
+          },
+          "spbpnireytd": {
             "nullable": true,
             "type": "string"
           },
@@ -18757,6 +18780,16 @@
             "format": "double",
             "type": "number"
           },
+          "spbpNorthernIreland": {
+            "description": "[readonly] SPBP(Northern Ireland) recovered from payments in period",
+            "format": "double",
+            "type": "number"
+          },
+          "spbpNorthernIrelandNic": {
+            "description": "[readonly] SPBP(Northern Ireland) Nic Compensation for period",
+            "format": "double",
+            "type": "number"
+          },
           "spp": {
             "description": "[readonly] SPP recovered from payments in period",
             "format": "double",
@@ -19365,6 +19398,10 @@
             "readOnly": true,
             "type": "string"
           },
+          "isMiscarriage": {
+            "description": "Indicates whether the breavement leave is due to a miscarriage",
+            "type": "boolean"
+          },
           "isReversed": {
             "description": "If the reversal of this Leave has already been processed,\r\nthis will be set to true",
             "type": "boolean"
@@ -19872,7 +19909,8 @@
           "SharedParentalAdoption",
           "PaternityAdoption",
           "StrikeAction",
-          "NeonatalCare"
+          "NeonatalCare",
+          "BereavementNorthernIreland"
         ],
         "type": "string"
       },
@@ -21690,6 +21728,10 @@
             "format": "double",
             "type": "number"
           },
+          "spbpNorthernIreland": {
+            "format": "double",
+            "type": "number"
+          },
           "spp": {
             "format": "double",
             "type": "number"
@@ -21794,6 +21836,10 @@
             "type": "number"
           },
           "spbp": {
+            "format": "double",
+            "type": "number"
+          },
+          "spbpNorthernIreland": {
             "format": "double",
             "type": "number"
           },
@@ -22613,6 +22659,11 @@
             "format": "double",
             "type": "number"
           },
+          "spbpNorthernIreland": {
+            "description": "[readonly]",
+            "format": "double",
+            "type": "number"
+          },
           "spp": {
             "description": "[readonly]",
             "format": "double",
@@ -22686,6 +22737,11 @@
             "type": "number"
           },
           "spbp": {
+            "description": "[readonly]",
+            "format": "double",
+            "type": "number"
+          },
+          "spbpNorthernIreland": {
             "description": "[readonly]",
             "format": "double",
             "type": "number"
@@ -24792,11 +24848,13 @@
       "PayPeriods": {
         "enum": [
           "Custom",
+          "Quarterly",
           "Monthly",
           "FourWeekly",
           "Fortnightly",
           "Weekly",
-          "Daily"
+          "Daily",
+          "Annual"
         ],
         "type": "string"
       },
@@ -25933,6 +25991,16 @@
           },
           "spbpNonRti": {
             "description": "[readonly] Statutory Parental Bereavement Pay excluded from RTI",
+            "format": "double",
+            "type": "number"
+          },
+          "spbpNorthernIreland": {
+            "description": "[readonly] Statutory Parental Bereavement Pay Northern Ireland",
+            "format": "double",
+            "type": "number"
+          },
+          "spbpNorthernIrelandNonRti": {
+            "description": "[readonly] Statutory Parental Bereavement Pay Northern Ireland excluded from RTI",
             "format": "double",
             "type": "number"
           },
@@ -27180,7 +27248,8 @@
           "FlexiDd_PensionCommencementExcess",
           "FlexiDd_PensionCommencementExcess_NonTax",
           "Average_Holiday_Pay_Days",
-          "Holiday_Days_Day_Rate"
+          "Holiday_Days_Day_Rate",
+          "SpbpNorthernIreland"
         ],
         "type": "string"
       },
@@ -29427,6 +29496,10 @@
             "description": "Period values for different pay periods",
             "nullable": true,
             "properties": {
+              "Annual": {
+                "format": "double",
+                "type": "number"
+              },
               "Custom": {
                 "format": "double",
                 "type": "number"
@@ -29444,6 +29517,10 @@
                 "type": "number"
               },
               "Monthly": {
+                "format": "double",
+                "type": "number"
+              },
+              "Quarterly": {
                 "format": "double",
                 "type": "number"
               },
@@ -29746,6 +29823,11 @@
             "format": "double",
             "type": "number"
           },
+          "nicCompensationOnSPBPNorthernIreland": {
+            "description": "Value of NIC compensation on Statutory Parental Bereavement Pay Northern Ireland year to date",
+            "format": "double",
+            "type": "number"
+          },
           "nicCompensationOnSPP": {
             "description": "Value of NIC compensation on Statutory Paternity Pay year to date",
             "format": "double",
@@ -29773,6 +29855,11 @@
           },
           "sncpRecovered": {
             "description": "Value of Statutory Neonatal Care Pay recovered year to date",
+            "format": "double",
+            "type": "number"
+          },
+          "spbpNorthernIrelandRecovered": {
+            "description": "Value of Statutory Parental Bereavement Pay Northern Ireland recovered year to date",
             "format": "double",
             "type": "number"
           },
@@ -30587,6 +30674,12 @@
         "description": "Part of the TaxYearConfig that our engine uses to calculate Statutory Pay.\r\nIt is used internally when our engine performs calculations.\r\nYou do not need to do anything with this model, it's provided purely for informational purposes.",
         "properties": {
           "aweEligibilityThreshold": {
+            "description": "[readonly]",
+            "format": "double",
+            "type": "number"
+          },
+          "aweSickPayEligibilityThreshold": {
+            "description": "[readonly]",
             "format": "double",
             "type": "number"
           },
@@ -30795,7 +30888,8 @@
           "None",
           "PlanOne",
           "PlanTwo",
-          "PlanFour"
+          "PlanFour",
+          "PlanFive"
         ],
         "type": "string"
       },
@@ -31078,7 +31172,8 @@
           "Year2022",
           "Year2023",
           "Year2024",
-          "Year2025"
+          "Year2025",
+          "Year2026"
         ],
         "type": "string"
       },
@@ -31266,6 +31361,16 @@
             "format": "double",
             "type": "number"
           },
+          "plan5StudentLoanRate": {
+            "description": "[readonly]",
+            "format": "double",
+            "type": "number"
+          },
+          "plan5StudentLoanThreshold": {
+            "description": "[readonly]",
+            "format": "double",
+            "type": "number"
+          },
           "postGradLoanRate": {
             "description": "[readonly]",
             "format": "double",
@@ -31363,7 +31468,8 @@
           "Year2022",
           "Year2023",
           "Year2024",
-          "Year2025"
+          "Year2025",
+          "Year2026"
         ],
         "type": "string"
       },
