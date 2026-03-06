@@ -6234,6 +6234,11 @@
           "bereavementLeaveProRataRule": {
             "$ref": "#/components/schemas/LeaveProRataRule"
           },
+          "enhancedDaysAllowance": {
+            "description": "The number of enhanced holiday days.",
+            "format": "double",
+            "type": "number"
+          },
           "holidayAccrualBasis": {
             "$ref": "#/components/schemas/HolidayAccrual"
           },
@@ -6246,10 +6251,23 @@
           "holidayType": {
             "$ref": "#/components/schemas/HolidayType"
           },
+          "isEnhancedHolidayScheme": {
+            "description": "If true then the employee is using an enhanced holiday scheme where allowance is split between enhanced and non-enhanced days.",
+            "type": "boolean"
+          },
+          "isOffsetBasicPay": {
+            "description": "If true then basic pay should be offset when calculating enhanced holiday pay.",
+            "type": "boolean"
+          },
           "maximumAccruePeriod": {
             "description": "The maximum number of hours capable of being accrued in a single period",
             "format": "double",
             "nullable": true,
+            "type": "number"
+          },
+          "nonEnhancedDaysAllowance": {
+            "description": "The number of non-enhanced holiday days.",
+            "format": "double",
             "type": "number"
           },
           "occupationalSicknessUniqueId": {
@@ -6440,6 +6458,11 @@
           "bereavementLeaveProRataRule": {
             "$ref": "#/components/schemas/LeaveProRataRule"
           },
+          "enhancedDaysAllowance": {
+            "description": "The number of enhanced holiday days.",
+            "format": "double",
+            "type": "number"
+          },
           "holidayAccrualBasis": {
             "$ref": "#/components/schemas/HolidayAccrual"
           },
@@ -6452,10 +6475,23 @@
           "holidayType": {
             "$ref": "#/components/schemas/HolidayType"
           },
+          "isEnhancedHolidayScheme": {
+            "description": "If true then the employee is using an enhanced holiday scheme where allowance is split between enhanced and non-enhanced days.",
+            "type": "boolean"
+          },
+          "isOffsetBasicPay": {
+            "description": "If true then basic pay should be offset when calculating enhanced holiday pay.",
+            "type": "boolean"
+          },
           "maximumAccruePeriod": {
             "description": "The maximum number of hours capable of being accrued in a single period",
             "format": "double",
             "nullable": true,
+            "type": "number"
+          },
+          "nonEnhancedDaysAllowance": {
+            "description": "The number of non-enhanced holiday days.",
+            "format": "double",
             "type": "number"
           },
           "occupationalSicknessUniqueId": {
@@ -18961,7 +18997,8 @@
           "Days",
           "Accrual_Money",
           "Accrual_Days",
-          "Accrual_Hours"
+          "Accrual_Hours",
+          "Avg_Enhanced_Days"
         ],
         "type": "string"
       },
@@ -19799,6 +19836,11 @@
           "bereavementLeaveProRataRule": {
             "$ref": "#/components/schemas/LeaveProRataRule"
           },
+          "enhancedDaysAllowance": {
+            "description": "The number of enhanced holiday days.",
+            "format": "double",
+            "type": "number"
+          },
           "holidayAccrualBasis": {
             "$ref": "#/components/schemas/HolidayAccrual"
           },
@@ -19817,10 +19859,23 @@
           "holidayType": {
             "$ref": "#/components/schemas/HolidayType"
           },
+          "isEnhancedHolidayScheme": {
+            "description": "If true then the employee is using an enhanced holiday scheme where allowance is split between enhanced and non-enhanced days.",
+            "type": "boolean"
+          },
+          "isOffsetBasicPay": {
+            "description": "If true then basic pay should be offset when calculating enhanced holiday pay.",
+            "type": "boolean"
+          },
           "maximumAccruePeriod": {
             "description": "The maximum number of hours capable of being accrued in a single period",
             "format": "double",
             "nullable": true,
+            "type": "number"
+          },
+          "nonEnhancedDaysAllowance": {
+            "description": "The number of non-enhanced holiday days.",
+            "format": "double",
             "type": "number"
           },
           "occupationalSicknessUniqueId": {
