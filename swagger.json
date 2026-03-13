@@ -61542,6 +61542,70 @@
         ]
       }
     },
+    "/employers/{employerId}/reports-async/{taxYear}/p60": {
+      "post": {
+        "description": "Returns a job created to process P60 End of Year Certificates.\r\nUpon completion the job will contain all P60s in a single PDF file for the TaxYear and Employer specified\r\nThis endpoint is being beta tested and subject to un-announced breaking changes.\r\nUse the GET of Jobs to get the status and response of the job.",
+        "operationId": "P60MultipleAsyncReportsAsync",
+        "parameters": [
+          {
+            "description": "The Id of the Employer.",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The TaxYear you want P60s for.",
+            "in": "path",
+            "name": "taxYear",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/TaxYear"
+            }
+          },
+          {
+            "description": "Exclude Employees with Already Sent P60 Emails.",
+            "in": "query",
+            "name": "excludeEmployeesWithP60EmailSent",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.JobResponse"
+                }
+              }
+            },
+            "description": "Accepted"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "description": "Conflict"
+          }
+        },
+        "summary": "All P60s For TaxYear (Beta)",
+        "tags": [
+          "ReportsAsync"
+        ]
+      }
+    },
     "/employers/{employerId}/reports-async/{templateId}": {
       "post": {
         "description": "Returns a job created to process a report using custom report templates. \r\nThis endpoint is being beta tested and subject to un-announced breaking changes.\r\nUse the GET of Jobs to get the status and response of the job.",
