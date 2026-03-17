@@ -41443,7 +41443,7 @@
             "description": "Bad Request"
           }
         },
-        "summary": "List occupational Maternity Leave History",
+        "summary": "List Occupational Maternity Leave History",
         "tags": [
           "Leave"
         ]
@@ -41532,6 +41532,15 @@
             "schema": {
               "default": false,
               "type": "boolean"
+            }
+          },
+          {
+            "description": "Supply the leave ID to include any SMP overrides in the maternity pay schedule. Omit to retrieve the base schedule.",
+            "in": "query",
+            "name": "leaveId",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
