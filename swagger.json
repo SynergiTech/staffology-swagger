@@ -77954,6 +77954,48 @@
         ]
       }
     },
+    "/tenants/{id}/reports/automation-usage-data": {
+      "get": {
+        "description": "Returns automation usage data for the tenant.",
+        "operationId": "GetAutomationUsageDataTenant",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportResponse"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Automation Usage Data Report",
+        "tags": [
+          "Tenant"
+        ]
+      }
+    },
     "/tenants/{id}/reports/netsuitebills": {
       "get": {
         "description": "Returns a report detailing billing, for NetSuite, for the given year and month\r\nOnly available to SuperAdmins",
@@ -79856,6 +79898,77 @@
           }
         },
         "summary": "Delete all AverageHolidayPayHistory for an Employee",
+        "tags": [
+          "AverageHolidayPayHistory"
+        ]
+      }
+    },
+    "/{employerId}/employees/{employeeId}/AverageHolidayPay/PayHistory/PreviousPaymentDate/{maxPaymentDate}": {
+      "get": {
+        "operationId": "GetPreviousPaymentDateAverageHolidayPayHistory",
+        "parameters": [
+          {
+            "description": "EmployerId",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "EmployeeId",
+            "in": "path",
+            "name": "employeeId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "MaxPaymentDate",
+            "in": "path",
+            "name": "maxPaymentDate",
+            "required": true,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "format": "date-time",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "204": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "format": "date-time",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Get previous payment date for an employee before a given date",
         "tags": [
           "AverageHolidayPayHistory"
         ]
