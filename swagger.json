@@ -5566,6 +5566,48 @@
             "format": "double",
             "type": "number"
           },
+          "averageDaysAdjustment": {
+            "description": "Manual adjustment to average days entitlement.",
+            "format": "double",
+            "type": "number"
+          },
+          "averageDaysAllowance": {
+            "description": "The entitlement of average holiday days for the employee.",
+            "format": "double",
+            "type": "number"
+          },
+          "averageDaysBalance": {
+            "description": "[readonly] The balance of average days available to the employee.",
+            "format": "double",
+            "readOnly": true,
+            "type": "number"
+          },
+          "averageDaysTaken": {
+            "description": "[readonly] The number of average days taken by the employee.",
+            "format": "double",
+            "type": "number"
+          },
+          "enhancedDaysAdjustment": {
+            "description": "Manual adjustment to enhanced days entitlement.",
+            "format": "double",
+            "type": "number"
+          },
+          "enhancedDaysAllowance": {
+            "description": "The entitlement of enhanced holiday days for the employee.",
+            "format": "double",
+            "type": "number"
+          },
+          "enhancedDaysBalance": {
+            "description": "[readonly] The balance of enhanced days available to the employee.",
+            "format": "double",
+            "readOnly": true,
+            "type": "number"
+          },
+          "enhancedDaysTaken": {
+            "description": "[readonly] The number of enhanced days taken by the employee.",
+            "format": "double",
+            "type": "number"
+          },
           "holidayAccrualBasis": {
             "$ref": "#/components/schemas/HolidayAccrual"
           },
@@ -6231,6 +6273,11 @@
             "format": "double",
             "type": "number"
           },
+          "averageDaysAllowance": {
+            "description": "The number of non-enhanced holiday days.",
+            "format": "double",
+            "type": "number"
+          },
           "bereavementLeaveProRataRule": {
             "$ref": "#/components/schemas/LeaveProRataRule"
           },
@@ -6263,11 +6310,6 @@
             "description": "The maximum number of hours capable of being accrued in a single period",
             "format": "double",
             "nullable": true,
-            "type": "number"
-          },
-          "nonEnhancedDaysAllowance": {
-            "description": "The number of non-enhanced holiday days.",
-            "format": "double",
             "type": "number"
           },
           "occupationalSicknessUniqueId": {
@@ -6455,6 +6497,11 @@
             "format": "double",
             "type": "number"
           },
+          "averageDaysAllowance": {
+            "description": "The number of non-enhanced holiday days.",
+            "format": "double",
+            "type": "number"
+          },
           "bereavementLeaveProRataRule": {
             "$ref": "#/components/schemas/LeaveProRataRule"
           },
@@ -6487,11 +6534,6 @@
             "description": "The maximum number of hours capable of being accrued in a single period",
             "format": "double",
             "nullable": true,
-            "type": "number"
-          },
-          "nonEnhancedDaysAllowance": {
-            "description": "The number of non-enhanced holiday days.",
-            "format": "double",
             "type": "number"
           },
           "occupationalSicknessUniqueId": {
@@ -19502,6 +19544,10 @@
           "pay": {
             "$ref": "#/components/schemas/LeavePayType"
           },
+          "payAsOther": {
+            "description": "For Enhanced Average Days Holiday Pay Schemes - indicates whether days should be paid at Standard Daily Rate instead of Enhanced Average Rate.\r\nOnly applicable when employee is on an Enhanced Holiday Scheme and Leave Type is Holiday with AverageDays pay type.\r\nWhen true, all days are paid at the standard daily rate (HOLDAYRATE) instead of the enhanced average rate (AVGHOLDAYS).",
+            "type": "boolean"
+          },
           "payFrequency": {
             "$ref": "#/components/schemas/StatPayFrequency"
           },
@@ -19703,7 +19749,8 @@
           "PayAsUsual",
           "StatutoryPay",
           "OccupationalPolicy",
-          "Custom"
+          "Custom",
+          "AverageDays"
         ],
         "type": "string"
       },
@@ -19833,11 +19880,48 @@
             "format": "double",
             "type": "number"
           },
+          "averageDaysAdjustment": {
+            "description": "Manual adjustment to average days entitlement.",
+            "format": "double",
+            "type": "number"
+          },
+          "averageDaysAllowance": {
+            "description": "The number of non-enhanced holiday days.",
+            "format": "double",
+            "type": "number"
+          },
+          "averageDaysBalance": {
+            "description": "[readonly] The balance of average days available to the employee.",
+            "format": "double",
+            "readOnly": true,
+            "type": "number"
+          },
+          "averageDaysTaken": {
+            "description": "[readonly] The number of average days taken by the employee.",
+            "format": "double",
+            "type": "number"
+          },
           "bereavementLeaveProRataRule": {
             "$ref": "#/components/schemas/LeaveProRataRule"
           },
+          "enhancedDaysAdjustment": {
+            "description": "Manual adjustment to enhanced days entitlement.",
+            "format": "double",
+            "type": "number"
+          },
           "enhancedDaysAllowance": {
             "description": "The number of enhanced holiday days.",
+            "format": "double",
+            "type": "number"
+          },
+          "enhancedDaysBalance": {
+            "description": "[readonly] The balance of enhanced days available to the employee.",
+            "format": "double",
+            "readOnly": true,
+            "type": "number"
+          },
+          "enhancedDaysTaken": {
+            "description": "[readonly] The number of enhanced days taken by the employee.",
             "format": "double",
             "type": "number"
           },
@@ -19871,11 +19955,6 @@
             "description": "The maximum number of hours capable of being accrued in a single period",
             "format": "double",
             "nullable": true,
-            "type": "number"
-          },
-          "nonEnhancedDaysAllowance": {
-            "description": "The number of non-enhanced holiday days.",
-            "format": "double",
             "type": "number"
           },
           "occupationalSicknessUniqueId": {
