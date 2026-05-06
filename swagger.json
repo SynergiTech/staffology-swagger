@@ -50158,7 +50158,7 @@
     },
     "/employers/{employerId}/import/employees/async": {
       "post": {
-        "description": "This endpoint is currently being beta tested and subject to unannounced breaking changes.\r\nAllows the import of employees asynchronously from a CSV file.",
+        "description": "Allows the import of employees asynchronously from a CSV file.",
         "operationId": "EmployeeImportCsvImport",
         "parameters": [
           {
@@ -50227,7 +50227,7 @@
             "description": "Conflict"
           }
         },
-        "summary": "Import Employees Asynchronously (Beta)",
+        "summary": "Import Employees Asynchronously",
         "tags": [
           "Import"
         ]
