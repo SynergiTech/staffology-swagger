@@ -2021,7 +2021,8 @@
           "JpMorganAch",
           "MetrobankCsv",
           "CitibankUkAch",
-          "CitibankFasterPayments"
+          "CitibankFasterPayments",
+          "IngBacs"
         ],
         "type": "string"
       },
