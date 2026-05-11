@@ -61695,6 +61695,90 @@
         ]
       }
     },
+    "/employers/{employerId}/reports-async/{taxYear}/{payPeriod}/{period}/{ordinal}/p45": {
+      "post": {
+        "description": "Returns a job created to process P45 Leaver Statements.\r\nUpon completion the job will contain all P45s in a single PDF file for the specified pay schedule period.\r\nThis endpoint is being beta tested and subject to un-announced breaking changes.\r\nUse the GET of Jobs to get the status and response of the job.",
+        "operationId": "P45MultipleAsyncReportsAsync",
+        "parameters": [
+          {
+            "description": "The Id of the Employer.",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The TaxYear you want P45s for.",
+            "in": "path",
+            "name": "taxYear",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/TaxYear"
+            }
+          },
+          {
+            "description": "The PayPeriod.",
+            "in": "path",
+            "name": "payPeriod",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/PayPeriods"
+            }
+          },
+          {
+            "description": "The period number.",
+            "in": "path",
+            "name": "period",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "The ordinal (pay schedule index). Defaults to 1.",
+            "in": "path",
+            "name": "ordinal",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.JobResponse"
+                }
+              }
+            },
+            "description": "Accepted"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "description": "Conflict"
+          }
+        },
+        "summary": "All P45s For Pay Schedule Period (Beta)",
+        "tags": [
+          "ReportsAsync"
+        ]
+      }
+    },
     "/employers/{employerId}/reports-async/{templateId}": {
       "post": {
         "description": "Returns a job created to process a report using custom report templates. \r\nThis endpoint is being beta tested and subject to un-announced breaking changes.\r\nUse the GET of Jobs to get the status and response of the job.",
@@ -63906,6 +63990,11 @@
                   "$ref": "#/components/schemas/ReportResponse"
                 }
               },
+              "application/octet-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportResponse"
+                }
+              },
               "application/pdf": {
                 "schema": {
                   "$ref": "#/components/schemas/ReportResponse"
@@ -64810,6 +64899,11 @@
           "200": {
             "content": {
               "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaxCodeChangeReportReportResponse"
+                }
+              },
+              "application/octet-stream": {
                 "schema": {
                   "$ref": "#/components/schemas/TaxCodeChangeReportReportResponse"
                 }
