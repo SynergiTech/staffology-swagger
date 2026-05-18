@@ -31675,7 +31675,32 @@
             "readOnly": true,
             "type": "number"
           },
+          "contributorySalaryNet": {
+            "description": "Net contributory salary for this tier: gross minus refunds.",
+            "format": "double",
+            "readOnly": true,
+            "type": "number"
+          },
+          "contributorySalaryRefunds": {
+            "description": "Pensionable earnings refund for this tier as a negative value.",
+            "format": "double",
+            "readOnly": true,
+            "type": "number"
+          },
           "employersContributions": {
+            "description": "Gross employer contributions for this tier (engine's active-period refund deduction reversed).",
+            "format": "double",
+            "readOnly": true,
+            "type": "number"
+          },
+          "employersContributionsNet": {
+            "description": "Net employer contributions for this tier: gross minus refunds.",
+            "format": "double",
+            "readOnly": true,
+            "type": "number"
+          },
+          "employersRefunds": {
+            "description": "Employer refund for this tier as a negative value — displayed with a minus sign.\r\nIncludes both active and ended pension refunds allocated by PensionRefund.TierRate.",
             "format": "double",
             "readOnly": true,
             "type": "number"
@@ -31686,6 +31711,19 @@
             "type": "number"
           },
           "teachersContributions": {
+            "description": "Gross employee contributions for this tier (engine's active-period refund deduction reversed).",
+            "format": "double",
+            "readOnly": true,
+            "type": "number"
+          },
+          "teachersContributionsNet": {
+            "description": "Net employee contributions for this tier: gross minus refunds.",
+            "format": "double",
+            "readOnly": true,
+            "type": "number"
+          },
+          "teachersRefunds": {
+            "description": "Employee refund for this tier as a negative value — displayed with a minus sign.\r\nIncludes both active and ended pension refunds allocated by PensionRefund.TierRate.",
             "format": "double",
             "readOnly": true,
             "type": "number"
@@ -31726,6 +31764,19 @@
             "type": "number"
           },
           "employersContributions": {
+            "description": "Gross employer contributions — refund deductions made by the payroll engine are reversed.",
+            "format": "double",
+            "readOnly": true,
+            "type": "number"
+          },
+          "employersContributionsNet": {
+            "description": "Net employer contributions at report level: gross minus all refunds.",
+            "format": "double",
+            "readOnly": true,
+            "type": "number"
+          },
+          "employersRefunds": {
+            "description": "Employer refund total stored as a negative value so it renders with a minus sign.",
             "format": "double",
             "readOnly": true,
             "type": "number"
@@ -31745,6 +31796,7 @@
             "type": "array"
           },
           "overallBalance": {
+            "description": "Net balance: net contributions plus extra contributions.",
             "format": "double",
             "readOnly": true,
             "type": "number"
@@ -31766,6 +31818,19 @@
             "$ref": "#/components/schemas/TaxYear"
           },
           "teachersContributions": {
+            "description": "Gross employee (teacher) contributions — refund deductions made by the payroll engine are reversed.",
+            "format": "double",
+            "readOnly": true,
+            "type": "number"
+          },
+          "teachersContributionsNet": {
+            "description": "Net employee contributions at report level: gross minus all refunds.",
+            "format": "double",
+            "readOnly": true,
+            "type": "number"
+          },
+          "teachersRefunds": {
+            "description": "Employee refund total stored as a negative value so it renders with a minus sign.",
             "format": "double",
             "readOnly": true,
             "type": "number"
@@ -31775,6 +31840,13 @@
             "type": "string"
           },
           "totalContributions": {
+            "description": "Gross contributions total (teacher + employer + extra types).",
+            "format": "double",
+            "readOnly": true,
+            "type": "number"
+          },
+          "totalContributionsNet": {
+            "description": "Net contributions total: gross contributions minus all refunds.",
             "format": "double",
             "readOnly": true,
             "type": "number"
@@ -31784,7 +31856,31 @@
             "readOnly": true,
             "type": "number"
           },
+          "totalContributorySalaryNet": {
+            "description": "Net contributory salary: gross minus refunds.",
+            "format": "double",
+            "readOnly": true,
+            "type": "number"
+          },
+          "totalContributorySalaryRefunds": {
+            "description": "Negative sum of per-tier pensionable earnings refunds.",
+            "format": "double",
+            "readOnly": true,
+            "type": "number"
+          },
           "totalEmployersContributions": {
+            "format": "double",
+            "readOnly": true,
+            "type": "number"
+          },
+          "totalEmployersContributionsNet": {
+            "description": "Net employer contributions per tier: gross minus refunds.",
+            "format": "double",
+            "readOnly": true,
+            "type": "number"
+          },
+          "totalEmployersRefunds": {
+            "description": "Negative sum of per-tier employer refunds.",
             "format": "double",
             "readOnly": true,
             "type": "number"
@@ -31794,7 +31890,25 @@
             "readOnly": true,
             "type": "number"
           },
+          "totalRefunds": {
+            "description": "Combined refund total (negative).",
+            "format": "double",
+            "readOnly": true,
+            "type": "number"
+          },
           "totalTeachersContributions": {
+            "format": "double",
+            "readOnly": true,
+            "type": "number"
+          },
+          "totalTeachersContributionsNet": {
+            "description": "Net employee contributions per tier: gross minus refunds.",
+            "format": "double",
+            "readOnly": true,
+            "type": "number"
+          },
+          "totalTeachersRefunds": {
+            "description": "Negative sum of per-tier employee refunds.",
             "format": "double",
             "readOnly": true,
             "type": "number"
