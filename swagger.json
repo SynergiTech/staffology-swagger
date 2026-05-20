@@ -24972,11 +24972,13 @@
       "PayPeriodTypes": {
         "enum": [
           "Custom",
+          "Quarterly",
           "Monthly",
           "FourWeekly",
           "Fortnightly",
           "Weekly",
-          "Daily"
+          "Daily",
+          "Annual"
         ],
         "type": "string"
       },
