@@ -12853,6 +12853,36 @@
         },
         "type": "object"
       },
+      "Contract.UserEmployerOptionsRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "description": "[readonly] The unique id of the object",
+            "format": "uuid",
+            "type": "string"
+          },
+          "showOutstandingLoanBalancesOnly": {
+            "description": "Whether or not to only show loans with outstanding balances\r\nSet to true to only show loans with outstanding balances\r\nOtherwisde set to false to show all loans",
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.UserEmployerOptionsResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "description": "[readonly] The unique id of the object",
+            "format": "uuid",
+            "type": "string"
+          },
+          "showOutstandingLoanBalancesOnly": {
+            "description": "Whether or not to only show loans with outstanding balances\r\nSet to true to only show loans with outstanding balances\r\nOtherwisde set to false to show all loans",
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
       "Contract.VeteranDetails": {
         "additionalProperties": false,
         "properties": {
@@ -75983,6 +76013,111 @@
           }
         },
         "summary": "Get User Employer",
+        "tags": [
+          "Employer"
+        ]
+      }
+    },
+    "/employers/{id}/users/userEmployerOptions": {
+      "get": {
+        "description": "Returns a UserEmployerOptions for the given Employer Id\r\nIf no options have been set for the Employer then NoContent will be returned",
+        "operationId": "GetUserEmployerOptionsEmployer",
+        "parameters": [
+          {
+            "description": "The Id of the Employer you want to get the User from.",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.UserEmployerOptionsResponse"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Get User Employer Options",
+        "tags": [
+          "Employer"
+        ]
+      },
+      "post": {
+        "description": "Sets the UserEmployerOptions for the given Employer Id",
+        "operationId": "SetUserEmployerOptionsEmployer",
+        "parameters": [
+          {
+            "description": "The Id of the Employer you want to get the User from.",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.UserEmployerOptionsRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.UserEmployerOptionsRequest"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.UserEmployerOptionsRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.UserEmployerOptionsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.UserEmployerOptionsResponse"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Set User Employer Options",
         "tags": [
           "Employer"
         ]
