@@ -5373,6 +5373,26 @@
             "format": "date",
             "type": "string"
           },
+          "averageDaysAdjustment": {
+            "description": "Gets or sets the adjustment value applied to the average days calculation. This represents any manual adjustments made to the employee's average days taken.",
+            "format": "double",
+            "type": "number"
+          },
+          "averageDaysAllowance": {
+            "description": "Gets or sets the average number of days allowed for a specific operation or calculation.",
+            "format": "double",
+            "type": "number"
+          },
+          "enhancedDaysAdjustment": {
+            "description": "Gets or sets the adjustment value applied to the enhanced days calculation.",
+            "format": "double",
+            "type": "number"
+          },
+          "enhancedDaysAllowance": {
+            "description": "Gets or sets the enhanced number of days allowed for leave or entitlement.",
+            "format": "double",
+            "type": "number"
+          },
           "holidayAccrualBasis": {
             "$ref": "#/components/schemas/HolidayAccrual"
           },
@@ -5568,44 +5588,32 @@
             "type": "number"
           },
           "averageDaysAdjustment": {
-            "description": "Manual adjustment to average days entitlement.",
+            "description": "Gets or sets the adjustment value applied to the average days calculation. This represents any manual adjustments made to the employee's average days taken.",
             "format": "double",
             "type": "number"
           },
           "averageDaysAllowance": {
-            "description": "The entitlement of average holiday days for the employee.",
+            "description": "Gets or sets the average number of days allowed for a specific operation or calculation.",
             "format": "double",
-            "type": "number"
-          },
-          "averageDaysBalance": {
-            "description": "[readonly] The balance of average days available to the employee.",
-            "format": "double",
-            "readOnly": true,
             "type": "number"
           },
           "averageDaysTaken": {
-            "description": "[readonly] The number of average days taken by the employee.",
+            "description": "Gets or sets the number of average days taken for a specific operation or calculation. This represents the total number of average days that have been used by the employee.",
             "format": "double",
             "type": "number"
           },
           "enhancedDaysAdjustment": {
-            "description": "Manual adjustment to enhanced days entitlement.",
+            "description": "Gets or sets the adjustment value applied to the enhanced days calculation.",
             "format": "double",
             "type": "number"
           },
           "enhancedDaysAllowance": {
-            "description": "The entitlement of enhanced holiday days for the employee.",
+            "description": "Gets or sets the enhanced number of days allowed for leave or entitlement.",
             "format": "double",
-            "type": "number"
-          },
-          "enhancedDaysBalance": {
-            "description": "[readonly] The balance of enhanced days available to the employee.",
-            "format": "double",
-            "readOnly": true,
             "type": "number"
           },
           "enhancedDaysTaken": {
-            "description": "[readonly] The number of enhanced days taken by the employee.",
+            "description": "Gets or sets the number of enhanced days taken for leave or entitlement. This represents the total number of enhanced days that have been used by the employee.",
             "format": "double",
             "type": "number"
           },
