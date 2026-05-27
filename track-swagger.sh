@@ -33,21 +33,11 @@ jq -S . "$SWAGGER_FILE" > "$CURRENT_NORMALIZED" 2>/dev/null || touch "$CURRENT_N
 if ! diff -q "$CURRENT_NORMALIZED" "$TMP_NORMALIZED" >/dev/null; then
     echo "[INFO] Swagger file has changed. Preparing commit..."
 
-    # Generate a summary diff
-    DIFF_SUMMARY=$(diff --unified=0 "$CURRENT_NORMALIZED" "$TMP_NORMALIZED" | grep '^[-+]' | grep -vE '^[-+]{3}' | head -n 20)
-
     # Save the pretty, sorted new file as the committed version
     cp "$TMP_NORMALIZED" "$SWAGGER_FILE"
 
     # Commit message with summary
     COMMIT_MSG="Update Swagger file - $(date '+%Y-%m-%d %H:%M:%S')"
-
-    if [ -n "$DIFF_SUMMARY" ]; then
-        COMMIT_MSG+="
-
-Changes:
-$DIFF_SUMMARY"
-    fi
 
     git add "$SWAGGER_FILE"
     git commit -m "$COMMIT_MSG"
