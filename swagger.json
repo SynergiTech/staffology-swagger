@@ -7781,6 +7781,10 @@
           "calculationDurationUnit": {
             "$ref": "#/components/schemas/HolidaySchemeDurationType"
           },
+          "ignoreAnySxp": {
+            "description": "Option to ignore weeks where any statutory pay is present (including periods with a mix of normal and statutory payments).\r\nMutually exclusive with IgnoreSxp. (Default - false).",
+            "type": "boolean"
+          },
           "ignoreSxp": {
             "description": "Option to ignore weeks where SXP payments have been paid. The calculation will then go back like above until the stated number of weeks are included in the calculation. (Default -True).",
             "type": "boolean"
@@ -7845,6 +7849,10 @@
             "description": "Holiday scheme identifier",
             "format": "uuid",
             "type": "string"
+          },
+          "ignoreAnySxp": {
+            "description": "Option to ignore weeks where any statutory pay is present (including periods with a mix of normal and statutory payments).\r\nMutually exclusive with IgnoreSxp. (Default - false).",
+            "type": "boolean"
           },
           "ignoreSxp": {
             "description": "Option to ignore weeks where SXP payments have been paid. The calculation will then go back like above until the stated number of weeks are included in the calculation. (Default -True).",
@@ -8515,6 +8523,10 @@
             "format": "uuid",
             "type": "string"
           },
+          "hasAnyStatutoryPay": {
+            "description": "optional boolean flag, if the period has any SXP present",
+            "type": "boolean"
+          },
           "hours": {
             "description": "decimal amount of hours worked, if not provided then 0",
             "format": "double",
@@ -8565,6 +8577,10 @@
             "description": "Employee role unique Id",
             "format": "uuid",
             "type": "string"
+          },
+          "hasAnyStatutoryPay": {
+            "description": "optional boolean flag, if the period has any SXP present",
+            "type": "boolean"
           },
           "hours": {
             "description": "decimal amount of hours worked, if not provided then 0",
@@ -8621,6 +8637,10 @@
             "description": "Employee role unique Id",
             "format": "uuid",
             "type": "string"
+          },
+          "hasAnyStatutoryPay": {
+            "description": "optional boolean flag, if the period has any SXP present",
+            "type": "boolean"
           },
           "hours": {
             "description": "decimal amount of hours worked, if not provided then 0",
@@ -16154,7 +16174,8 @@
           "EmployerGroupMembership",
           "DepartmentMembership",
           "TermCalendar",
-          "TermCalendarYear"
+          "TermCalendarYear",
+          "PaySchedule"
         ],
         "type": "string"
       },
@@ -50699,6 +50720,63 @@
         "summary": "Update holiday scheme",
         "tags": [
           "HolidayScheme"
+        ]
+      }
+    },
+    "/employers/{employerId}/import/average-holidays": {
+      "post": {
+        "description": "Each valid row creates a Holiday leave record with Average Days pay type.\r\nLeaveManager then updates balances and the open pay run; PayRunManager adds AVGHOLDAYS lines on processing.",
+        "operationId": "ImportAverageHolidayDaysForPaymentImport",
+        "parameters": [
+          {
+            "description": "The employer id.",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "encoding": {
+                "file": {
+                  "style": "form"
+                }
+              },
+              "schema": {
+                "properties": {
+                  "file": {
+                    "format": "binary",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Item"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Import Average Holiday Days for Payment from a CSV file (synchronous).",
+        "tags": [
+          "Import"
         ]
       }
     },
