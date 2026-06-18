@@ -24176,6 +24176,10 @@
             "format": "double",
             "type": "number"
           },
+          "isAdjustment": {
+            "description": "Determines whether the pay code represents an adjustment for MEPW (myePayWindow) payslip integration.\r\nWhen true, this value will be passed to MEPW in the payslip payload.",
+            "type": "boolean"
+          },
           "isAttachable": {
             "description": "Determines whether or not the value of PayLines using this code should be taken into consideration when calculating the attachable pay for AttachmentOrders.",
             "type": "boolean"
