@@ -2091,6 +2091,12 @@
             "readOnly": true,
             "type": "string"
           },
+          "importIdempotencyKey": {
+            "description": "Deterministic key for async benefit import rows; used to avoid duplicate inserts when activities retry.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
           "isPeriodValue": {
             "description": "To be used for the benefit period",
             "type": "boolean"
