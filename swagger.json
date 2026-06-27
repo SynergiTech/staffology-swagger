@@ -31073,7 +31073,15 @@
             "format": "double",
             "type": "number"
           },
+          "sncp": {
+            "format": "double",
+            "type": "number"
+          },
           "spbp": {
+            "format": "double",
+            "type": "number"
+          },
+          "spbpnire": {
             "format": "double",
             "type": "number"
           },
@@ -67162,7 +67170,7 @@
             }
           },
           {
-            "description": "Comma separated values from (SAP, SHPP, SMP, SPBP, SPP)",
+            "description": "Comma separated values from (SAP, SHPP, SMP, SNCP, SPBP, SPBPNIRE, SPP, SSP)",
             "in": "query",
             "name": "statutoryPayTypes",
             "schema": {
