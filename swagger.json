@@ -25115,6 +25115,7 @@
       "PayPeriodTypes": {
         "enum": [
           "Custom",
+          "HalfYearly",
           "Quarterly",
           "Monthly",
           "FourWeekly",
@@ -25128,6 +25129,7 @@
       "PayPeriods": {
         "enum": [
           "Custom",
+          "HalfYearly",
           "Quarterly",
           "Monthly",
           "FourWeekly",
@@ -29794,6 +29796,10 @@
                 "type": "number"
               },
               "FourWeekly": {
+                "format": "double",
+                "type": "number"
+              },
+              "HalfYearly": {
                 "format": "double",
                 "type": "number"
               },
