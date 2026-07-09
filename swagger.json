@@ -11604,6 +11604,48 @@
         },
         "type": "object"
       },
+      "Contract.RecalculatePayRunEntriesResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "failureCount": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "results": {
+            "items": {
+              "$ref": "#/components/schemas/Contract.RecalculatePayRunEntryResult"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "successCount": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.RecalculatePayRunEntryResult": {
+        "additionalProperties": false,
+        "properties": {
+          "employeeDisplayName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "errorMessage": {
+            "nullable": true,
+            "type": "string"
+          },
+          "payRunEntryId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "succeeded": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
       "Contract.ReportTemplateColumnRequest": {
         "additionalProperties": false,
         "properties": {
@@ -57349,6 +57391,14 @@
               "format": "int32",
               "type": "integer"
             }
+          },
+          {
+            "in": "query",
+            "name": "version",
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
           }
         ],
         "responses": {
@@ -57885,6 +57935,113 @@
         "summary": "Set a ProcessingNote status",
         "tags": [
           "ProcessingNote"
+        ]
+      }
+    },
+    "/employers/{employerId}/payrun/{taxYear}/{payPeriod}/{periodNumber}/recalculatepayrunentries": {
+      "post": {
+        "description": "Recalculates the payrun entries specified in the ids property",
+        "operationId": "RecalculatePayRunEntriesPayRun",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "payPeriod",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/PayPeriods"
+            }
+          },
+          {
+            "in": "path",
+            "name": "periodNumber",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "taxYear",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/TaxYear"
+            }
+          },
+          {
+            "in": "query",
+            "name": "ordinal",
+            "schema": {
+              "default": 1,
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "items": {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "items": {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "items": {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "items": {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.RecalculatePayRunEntriesResponse"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Recalculate PayRunEntries",
+        "tags": [
+          "PayRun"
         ]
       }
     },
