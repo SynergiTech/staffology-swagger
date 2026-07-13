@@ -8845,6 +8845,12 @@
             "nullable": true,
             "type": "number"
           },
+          "periodMultiplier": {
+            "description": "Used primarily for Advanced Pay (e.g., advanced holidays) to scale the per-period value",
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
           "rate": {
             "description": "If the related  PayCode has a MultiplierType other than None then this field will be used as the rate per day or hour. Otherwise it isn't used",
             "format": "double",
@@ -9093,6 +9099,12 @@
             "format": "double",
             "nullable": true,
             "type": "number"
+          },
+          "periodMultiplier": {
+            "description": "Used primarily for Advanced Pay (e.g., advanced holidays) to scale the per-period value",
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
           },
           "rate": {
             "description": "If the related  PayCode has a MultiplierType other than None then this field will be used as the rate per day or hour. Otherwise it isn't used",
@@ -15515,7 +15527,8 @@
           "MultiRoleAe",
           "AdditionalPayPeriods",
           "AdditionalBureauRoles",
-          "ImportEnhancements"
+          "ImportEnhancements",
+          "AdvancedHolidays"
         ],
         "type": "string"
       },
@@ -24847,6 +24860,12 @@
             "nullable": true,
             "type": "string"
           },
+          "periodMultiplier": {
+            "description": "Used primarily for Advanced Pay (e.g., advanced holidays) to scale the per-period value",
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          },
           "periodTo": {
             "description": "Nullable DateTime property \"PeriodTo\" in the PayLine model to store the end date of the PayRun period the current PayLine is part of.",
             "format": "date",
@@ -25337,6 +25356,11 @@
         "additionalProperties": false,
         "description": "A PayRun contains multiple PayRunEntries, one for each Employee that is being paid.\r\nThe value for ```PersonalDetails``` and ```EmploymentDetails``` is copied from the Employee record.\r\nSo to change them you should update the Employee, not the PayRunEntry.\r\nChanges made to the Employee are only reflected whilst the PayRun is still open.\r\nOnce you finalise and close the PayRun then a snapshot is taken of these values which is stored with the PayRunEntry for future reference.",
         "properties": {
+          "advancedPeriods": {
+            "description": "The number of periods to advance from Period",
+            "format": "int32",
+            "type": "integer"
+          },
           "aeNotEnroledWarning": {
             "description": "[readonly] If true then this Employee needs to be on an Auto Enrolment pension but isn't yet.",
             "type": "boolean"
@@ -28112,6 +28136,12 @@
             "format": "uuid",
             "nullable": true,
             "type": "string"
+          },
+          "periodMultiplier": {
+            "description": "Used primarily for Advanced Pay (e.g., advanced holidays) to scale the per-period value",
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
           },
           "roleId": {
             "description": "The employee role which is associated with this payslip line.\r\nIf set to null, the payslip line is not related with a role.",
