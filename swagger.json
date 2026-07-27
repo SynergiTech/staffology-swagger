@@ -16845,7 +16845,8 @@
           "AccountsIQ",
           "EPaySlips",
           "NetSuite",
-          "StackOne"
+          "StackOne",
+          "Penfold"
         ],
         "type": "string"
       },
