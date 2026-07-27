@@ -33277,6 +33277,12 @@
             "nullable": true,
             "type": "string"
           },
+          "roleId": {
+            "description": "The Id of the associated Employee Role. Only included if the Type supports it",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
           "type": {
             "$ref": "#/components/schemas/PayrollValueType"
           },
