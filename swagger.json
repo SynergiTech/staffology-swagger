@@ -62699,7 +62699,7 @@
     },
     "/employers/{employerId}/reports-async/{taxYear}/{payPeriod}/{period}/{ordinal}/p45": {
       "post": {
-        "description": "Returns a job created to process P45 Leaver Statements.\r\nUpon completion the job will contain all P45s in a single PDF file for the specified pay schedule period.\r\nThis endpoint is being beta tested and subject to un-announced breaking changes.\r\nUse the GET of Jobs to get the status and response of the job.",
+        "description": "Returns a job created to process P45 Leaver Statements.\r\nUpon completion the job will contain all P45s in a single PDF file for the specified pay schedule period.\r\nUse the GET of Jobs to get the status and response of the job.",
         "operationId": "P45MultipleAsyncReportsAsync",
         "parameters": [
           {
@@ -62775,7 +62775,7 @@
             "description": "Conflict"
           }
         },
-        "summary": "All P45s For Pay Schedule Period (Beta)",
+        "summary": "All P45s For Pay Schedule Period",
         "tags": [
           "ReportsAsync"
         ]
