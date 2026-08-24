@@ -57999,7 +57999,7 @@
     },
     "/employers/{employerId}/payrun/{taxYear}/{payPeriod}/{periodNumber}/recalculatepayrunentries": {
       "post": {
-        "description": "Recalculates the payrun entries specified in the ids property",
+        "description": "Recalculates the payrun entries specified in the ids property\r\nHistoric leavers will be excluded from the recalculation process",
         "operationId": "RecalculatePayRunEntriesPayRun",
         "parameters": [
           {
