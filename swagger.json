@@ -10589,6 +10589,239 @@
         },
         "type": "object"
       },
+      "Contract.PensionNoticeDetailResponse": {
+        "additionalProperties": false,
+        "description": "Full notice detail for the row-click popup.",
+        "properties": {
+          "alternativeUniqueId": {
+            "nullable": true,
+            "type": "string"
+          },
+          "appliedOn": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "canMarkAsActioned": {
+            "type": "boolean"
+          },
+          "canRetry": {
+            "type": "boolean"
+          },
+          "effectiveDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "employeeDisplayName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "employeeId": {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "employeePayrollCode": {
+            "nullable": true,
+            "type": "string"
+          },
+          "groupName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "instructionText": {
+            "nullable": true,
+            "type": "string"
+          },
+          "isDeferredPending": {
+            "type": "boolean"
+          },
+          "isMatched": {
+            "type": "boolean"
+          },
+          "issueDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "niNo": {
+            "nullable": true,
+            "type": "string"
+          },
+          "noticeType": {
+            "$ref": "#/components/schemas/PensionNoticeType"
+          },
+          "pensionReference": {
+            "nullable": true,
+            "type": "string"
+          },
+          "refundEmployeeAmount": {
+            "format": "double",
+            "nullable": true,
+            "type": "number"
+          },
+          "refundEmployerAmount": {
+            "format": "double",
+            "nullable": true,
+            "type": "number"
+          },
+          "refundTotalAmount": {
+            "format": "double",
+            "nullable": true,
+            "type": "number"
+          },
+          "status": {
+            "$ref": "#/components/schemas/PensionNoticeStatus"
+          },
+          "statusBannerCssClass": {
+            "nullable": true,
+            "type": "string"
+          },
+          "statusBannerText": {
+            "nullable": true,
+            "type": "string"
+          },
+          "statusDisplayName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "statusReason": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.PensionNoticePagedResponse": {
+        "additionalProperties": false,
+        "description": "Paged list of pension notices for a scheme.",
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/Contract.PensionNoticeResponse"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "pageNum": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "pageSize": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "totalCount": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.PensionNoticeResponse": {
+        "additionalProperties": false,
+        "description": "One row in the pension scheme notifications table.",
+        "properties": {
+          "appliedOn": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "employeeDisplayName": {
+            "description": "Employee name when matched; NEST forename/surname when unmatched.",
+            "nullable": true,
+            "type": "string"
+          },
+          "employeeId": {
+            "description": "Matched employee `UniqueId`; null when unmatched.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "employeePayrollCode": {
+            "description": "Matched employee payroll code for the employee-number badge; null when unmatched.",
+            "nullable": true,
+            "type": "string"
+          },
+          "groupName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "description": "External notice identifier (`UniqueId`).",
+            "format": "uuid",
+            "type": "string"
+          },
+          "isDeferredPending": {
+            "type": "boolean"
+          },
+          "isMatched": {
+            "type": "boolean"
+          },
+          "issueDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "noticeType": {
+            "$ref": "#/components/schemas/PensionNoticeType"
+          },
+          "pensionReference": {
+            "description": "Computed: `NiNo` if present, otherwise `AlternativeUniqueId`.",
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/PensionNoticeStatus"
+          },
+          "statusDisplayName": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.PensionNoticeRetrieveStateResponse": {
+        "additionalProperties": false,
+        "description": "Manual-check button state for the pension scheme notifications tab.",
+        "properties": {
+          "isRetrieveInProgress": {
+            "description": "True when any notice-type retrieve run is Queued or Processing for this scheme.",
+            "type": "boolean"
+          },
+          "lastCheckedAt": {
+            "description": "Latest successful retrieve timestamp across all notice types; null when never checked.",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.PensionNoticeSettingsRequest": {
+        "additionalProperties": false,
+        "description": "Settings controlling automatic retrieval of incoming pension notices for a scheme.",
+        "properties": {
+          "incomingRetrieveEnabled": {
+            "description": "Whether the scheme is opted in to automatically retrieving opt-outs\r\nand ceased contributions from NEST and applying them to employee records.\r\nMay only be set to true when the provider is NEST, NEST is connected, and the\r\nIncomingPensionApi employer feature flag is enabled; the server coerces this to\r\nfalse when those preconditions are not met.",
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.PensionNoticeSettingsResponse": {
+        "additionalProperties": false,
+        "description": "Read model for a scheme's incoming pension notice settings.",
+        "properties": {
+          "incomingRetrieveEnabled": {
+            "description": "Whether the scheme is opted in to automatically retrieving opt-outs\r\nand ceased contributions from NEST.",
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
       "Contract.PensionProviderRequest": {
         "additionalProperties": false,
         "properties": {
@@ -11087,6 +11320,9 @@
             "nullable": true,
             "type": "array"
           },
+          "noticeSettings": {
+            "$ref": "#/components/schemas/Contract.PensionNoticeSettingsRequest"
+          },
           "payCodeSetUniqueId": {
             "format": "uuid",
             "nullable": true,
@@ -11229,6 +11465,9 @@
             },
             "nullable": true,
             "type": "array"
+          },
+          "noticeSettings": {
+            "$ref": "#/components/schemas/Contract.PensionNoticeSettingsResponse"
           },
           "payCodeSetUniqueId": {
             "format": "uuid",
@@ -15528,7 +15767,8 @@
           "AdditionalPayPeriods",
           "AdditionalBureauRoles",
           "ImportEnhancements",
-          "AdvancedHolidays"
+          "AdvancedHolidays",
+          "IncomingPensionApi"
         ],
         "type": "string"
       },
@@ -28919,6 +29159,59 @@
         },
         "type": "object"
       },
+      "PensionNoticeSettings": {
+        "additionalProperties": false,
+        "properties": {
+          "businessError": {
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "description": "[readonly] The unique id of the object",
+            "format": "uuid",
+            "readOnly": true,
+            "type": "string"
+          },
+          "incomingRetrieveEnabled": {
+            "description": "Whether the scheme is opted in to automatically retrieving opt-outs\r\nand ceased contributions from NEST and applying them to employee records.\r\nMay only be true when the scheme is connected to NEST and the employer has\r\nthe IncomingPensionApi beta feature flag enabled; the server coerces this to\r\nfalse when those preconditions are not met.",
+            "type": "boolean"
+          },
+          "lastOptOutSuccessAt": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "lastRefundSuccessAt": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "lastStoppedContributionsSuccessAt": {
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "PensionNoticeStatus": {
+        "enum": [
+          "Stored",
+          "Unmatched",
+          "Applied",
+          "Failed",
+          "Applying"
+        ],
+        "type": "string"
+      },
+      "PensionNoticeType": {
+        "enum": [
+          "OptOut",
+          "StoppedContributions",
+          "Refund"
+        ],
+        "type": "string"
+      },
       "PensionOpeningBalances": {
         "additionalProperties": false,
         "properties": {
@@ -29230,6 +29523,9 @@
             },
             "nullable": true,
             "type": "array"
+          },
+          "noticeSettings": {
+            "$ref": "#/components/schemas/PensionNoticeSettings"
           },
           "payCodeSetUniqueId": {
             "format": "uuid",
@@ -33226,7 +33522,8 @@
           "PayrollClientApprover",
           "PayrollClientEditor",
           "PayrollClientReviewer",
-          "Operator"
+          "Operator",
+          "Supervisor"
         ],
         "type": "string"
       },
@@ -62500,6 +62797,313 @@
           }
         },
         "summary": "Get Employees",
+        "tags": [
+          "PensionScheme"
+        ]
+      }
+    },
+    "/employers/{employerId}/pensionschemes/{id}/notices": {
+      "get": {
+        "description": "Returns stored pension notices for the scheme (Unmatched, Applied, Failed only), sorted by most-recent IssueDate first.\r\nThis endpoint is being beta tested and subject to un-announced breaking changes.",
+        "operationId": "ListNoticesPensionScheme",
+        "parameters": [
+          {
+            "description": "The Id of the Employer to which the PensionScheme belongs.",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Id of the PensionScheme.",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Zero-based page number (default 0).",
+            "in": "query",
+            "name": "pageNum",
+            "schema": {
+              "default": 0,
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Page size; one of 10/20/50/100/250 (default 250).",
+            "in": "query",
+            "name": "pageSize",
+            "schema": {
+              "default": 250,
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.PensionNoticePagedResponse"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "List Pension Notices (Beta)",
+        "tags": [
+          "PensionScheme"
+        ]
+      }
+    },
+    "/employers/{employerId}/pensionschemes/{id}/notices/retrieve": {
+      "post": {
+        "description": "Enqueues retrieve jobs for all three notice types. Processing continues asynchronously.\r\nThis endpoint is being beta tested and subject to un-announced breaking changes.",
+        "operationId": "RetrieveNoticesPensionScheme",
+        "parameters": [
+          {
+            "description": "The Id of the Employer to which the PensionScheme belongs.",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Id of the PensionScheme.",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "summary": "Manually Retrieve Pension Notices (Beta)",
+        "tags": [
+          "PensionScheme"
+        ]
+      }
+    },
+    "/employers/{employerId}/pensionschemes/{id}/notices/retrievestate": {
+      "get": {
+        "description": "Returns whether a retrieve is in progress and the last-checked timestamp for the manual-check button.\r\nThis endpoint is being beta tested and subject to un-announced breaking changes.",
+        "operationId": "GetRetrieveStatePensionScheme",
+        "parameters": [
+          {
+            "description": "The Id of the Employer to which the PensionScheme belongs.",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Id of the PensionScheme.",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.PensionNoticeRetrieveStateResponse"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Get Pension Notice Retrieve State (Beta)",
+        "tags": [
+          "PensionScheme"
+        ]
+      }
+    },
+    "/employers/{employerId}/pensionschemes/{id}/notices/{noticeId}": {
+      "get": {
+        "description": "Returns full detail for one notice, including server-generated instruction text.\r\nThis endpoint is being beta tested and subject to un-announced breaking changes.",
+        "operationId": "GetNoticePensionScheme",
+        "parameters": [
+          {
+            "description": "The Id of the Employer to which the PensionScheme belongs.",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Id of the PensionScheme.",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The UniqueId of the notice.",
+            "in": "path",
+            "name": "noticeId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.PensionNoticeDetailResponse"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Get Pension Notice Detail (Beta)",
+        "tags": [
+          "PensionScheme"
+        ]
+      }
+    },
+    "/employers/{employerId}/pensionschemes/{id}/notices/{noticeId}/markasactioned": {
+      "post": {
+        "description": "Marks an unmatched or failed notice as applied without calling NEST or running the apply flow.\r\nThis endpoint is being beta tested and subject to un-announced breaking changes.",
+        "operationId": "MarkNoticeAsActionedPensionScheme",
+        "parameters": [
+          {
+            "description": "The Id of the Employer to which the PensionScheme belongs.",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Id of the PensionScheme.",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The UniqueId of the notice.",
+            "in": "path",
+            "name": "noticeId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.PensionNoticeDetailResponse"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Mark Pension Notice as Actioned (Beta)",
+        "tags": [
+          "PensionScheme"
+        ]
+      }
+    },
+    "/employers/{employerId}/pensionschemes/{id}/notices/{noticeId}/retry": {
+      "post": {
+        "description": "Re-attempts automatic matching and apply for an unmatched notice, or re-attempts apply only for a failed notice.\r\nThis endpoint is being beta tested and subject to un-announced breaking changes.",
+        "operationId": "RetryNoticePensionScheme",
+        "parameters": [
+          {
+            "description": "The Id of the Employer to which the PensionScheme belongs.",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Id of the PensionScheme.",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The UniqueId of the notice.",
+            "in": "path",
+            "name": "noticeId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.PensionNoticeDetailResponse"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Retry Pension Notice (Beta)",
         "tags": [
           "PensionScheme"
         ]
