@@ -6842,6 +6842,11 @@
           "unauthorisedLeaveProRataRule": {
             "$ref": "#/components/schemas/LeaveProRataRule"
           },
+          "useCustomEmployeeReportFormat": {
+            "description": "When enabled, employee report downloads use the configured report naming format.",
+            "nullable": true,
+            "type": "boolean"
+          },
           "useTenantRtiSubmissionSettings": {
             "description": "If the Tenant for this employer has Bureau Features enabled then they can set RtiSubmissionSettings to be used across multiple employers.\r\nIf this is set to true then those settings will be used instead of any set at the Employer level",
             "type": "boolean"
@@ -7050,6 +7055,11 @@
           },
           "unauthorisedLeaveProRataRule": {
             "$ref": "#/components/schemas/LeaveProRataRule"
+          },
+          "useCustomEmployeeReportFormat": {
+            "description": "When enabled, employee report downloads use the configured report naming format.",
+            "nullable": true,
+            "type": "boolean"
           },
           "useTenantRtiSubmissionSettings": {
             "description": "If the Tenant for this employer has Bureau Features enabled then they can set RtiSubmissionSettings to be used across multiple employers.\r\nIf this is set to true then those settings will be used instead of any set at the Employer level",
@@ -15768,7 +15778,8 @@
           "AdditionalBureauRoles",
           "ImportEnhancements",
           "AdvancedHolidays",
-          "IncomingPensionApi"
+          "IncomingPensionApi",
+          "ReportNamingFormat"
         ],
         "type": "string"
       },
