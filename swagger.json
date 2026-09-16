@@ -16487,7 +16487,10 @@
           "DepartmentMembership",
           "TermCalendar",
           "TermCalendarYear",
-          "PaySchedule"
+          "PaySchedule",
+          "Eps",
+          "EmployeeRole",
+          "Fps"
         ],
         "type": "string"
       },
@@ -17097,7 +17100,8 @@
           "EPaySlips",
           "NetSuite",
           "StackOne",
-          "Penfold"
+          "Penfold",
+          "SyncSavings"
         ],
         "type": "string"
       },
