@@ -16628,6 +16628,20 @@
         },
         "type": "object"
       },
+      "ErrorType": {
+        "enum": [
+          "UnexpectedError",
+          "ValidationError",
+          "InvalidRequestData",
+          "NotFound",
+          "NotAuthorized",
+          "Forbidden",
+          "Conflict",
+          "TooManyRequests",
+          "ServiceUnavailable"
+        ],
+        "type": "string"
+      },
       "Establishment": {
         "additionalProperties": false,
         "properties": {
@@ -19661,6 +19675,97 @@
           "EmployeeDetails"
         ],
         "type": "string"
+      },
+      "ImportResultDetails": {
+        "additionalProperties": false,
+        "description": "Details of the result of an import job",
+        "properties": {
+          "createdDate": {
+            "description": "Created date of the import result (ISO 8601, includes time).",
+            "nullable": true,
+            "type": "string"
+          },
+          "errors": {
+            "description": "List of row level Errors",
+            "items": {
+              "$ref": "#/components/schemas/ImportRowError"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "importType": {
+            "description": "Import Type",
+            "nullable": true,
+            "type": "string"
+          },
+          "payCodeTotals": {
+            "description": "PayCode Totals",
+            "items": {
+              "$ref": "#/components/schemas/PayImportPayCodeTotals"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "status": {
+            "$ref": "#/components/schemas/JobStatus"
+          },
+          "summary": {
+            "$ref": "#/components/schemas/PayImportPayCodeSummary"
+          },
+          "uniqueId": {
+            "description": "The unique id of the import result.\r\nNull when no import result exists yet (for example while an import job is still in progress).",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "ImportRowError": {
+        "additionalProperties": false,
+        "description": "A single row-level import error persisted inside Staffology.Model.Imports.ImportResult.ResultJson.\r\nThis is intentionally separate from Staffology.Model.DomainErrors.Error so the existing error/JobError\r\nstructure is left unchanged.",
+        "properties": {
+          "employerIdentifier": {
+            "description": "The per-row employer identifier (bureau scenario), where applicable. Distinct from the\r\nEmployerId column on Staffology.Model.Imports.ImportResult.",
+            "nullable": true,
+            "type": "string"
+          },
+          "errorCode": {
+            "description": "The distinct error code identifying the validation that failed (see ImportErrorCodes).",
+            "nullable": true,
+            "type": "string"
+          },
+          "errorType": {
+            "$ref": "#/components/schemas/ErrorType"
+          },
+          "message": {
+            "description": "The mapped, user-facing message. When an approved mapping exists for Staffology.Model.Imports.ImportRowError.ErrorCode\r\nthe approved wording is used; otherwise a generic fallback message is stored.",
+            "nullable": true,
+            "type": "string"
+          },
+          "payCode": {
+            "description": "The pay code that caused the validation failure, where applicable.",
+            "nullable": true,
+            "type": "string"
+          },
+          "payrollCode": {
+            "description": "The payroll code of the affected row, where available.",
+            "nullable": true,
+            "type": "string"
+          },
+          "roleReference": {
+            "description": "The role reference that caused the validation failure, where applicable.",
+            "nullable": true,
+            "type": "string"
+          },
+          "rowNumber": {
+            "description": "The 1-based source row number assigned upstream in DividePayJson. Null for errors that are not\r\ntied to a specific row (e.g. whole-import failures such as a closed pay run).",
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
+          }
+        },
+        "type": "object"
       },
       "IncrementRule": {
         "enum": [
@@ -24862,6 +24967,47 @@
         },
         "type": "object"
       },
+      "PayImportPayCodeSummary": {
+        "additionalProperties": false,
+        "properties": {
+          "errorCount": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "ordinal": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "payPeriod": {
+            "$ref": "#/components/schemas/PayPeriods"
+          },
+          "successCount": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "totalRows": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "PayImportPayCodeTotals": {
+        "additionalProperties": false,
+        "properties": {
+          "payCode": {
+            "description": "Pay code.",
+            "nullable": true,
+            "type": "string"
+          },
+          "totalValue": {
+            "description": "Total values that have been calculated for the pay code.",
+            "format": "double",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
       "PayLine": {
         "additionalProperties": false,
         "description": "As well as the basic pay amount for an employee there are often additions and deductions such as bonuses.\r\nThese additions and deductions are represented using this model.",
@@ -25381,6 +25527,9 @@
             "nullable": true,
             "type": "array"
           },
+          "londonAllowance": {
+            "$ref": "#/components/schemas/LondonAllowanceType"
+          },
           "note": {
             "description": "Any note that you'd like to appear on the payslip",
             "nullable": true,
@@ -25420,6 +25569,12 @@
             "description": "This is the unique reference of the Role that the employee is assigned to.",
             "nullable": true,
             "type": "string"
+          },
+          "rowNumber": {
+            "description": "The 1-based row index assigned sequentially in DividePayJson when ImportEnhancements is enabled,\r\nso row-level import errors can be cross-referenced back to the originating import entry.",
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
           },
           "spinePoint": {
             "description": "SpinePoint for imported pay lines",
@@ -51157,6 +51312,76 @@
         "summary": "Update holiday scheme",
         "tags": [
           "HolidayScheme"
+        ]
+      }
+    },
+    "/employers/{employerId}/import-result/{jobId}": {
+      "get": {
+        "description": "Returns import result details for a specific async import job, including summary, pay code totals, and row-level errors.\r\nUse the job id returned when queueing an import (for example from Import Pay or Import Payments).\r\nThis endpoint is currently being beta tested and subject to un-announced breaking changes.",
+        "operationId": "ImportResultsImportResult",
+        "parameters": [
+          {
+            "description": "The employer id",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The job id",
+            "in": "path",
+            "name": "jobId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The page number",
+            "in": "query",
+            "name": "pageNum",
+            "schema": {
+              "default": 0,
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "The page size",
+            "in": "query",
+            "name": "pageSize",
+            "schema": {
+              "default": 25,
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImportResultDetails"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        },
+        "summary": "Get Import Results (beta)",
+        "tags": [
+          "ImportResult"
         ]
       }
     },
