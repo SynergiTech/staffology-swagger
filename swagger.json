@@ -15779,7 +15779,8 @@
           "ImportEnhancements",
           "AdvancedHolidays",
           "IncomingPensionApi",
-          "ReportNamingFormat"
+          "ReportNamingFormat",
+          "Alabaster"
         ],
         "type": "string"
       },
