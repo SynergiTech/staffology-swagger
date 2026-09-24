@@ -35210,6 +35210,11 @@
                   "$ref": "#/components/schemas/AttachmentOrderReportResponse"
                 }
               },
+              "application/octet-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttachmentOrderReportResponse"
+                }
+              },
               "application/pdf": {
                 "schema": {
                   "$ref": "#/components/schemas/AttachmentOrderReportResponse"
@@ -63908,6 +63913,11 @@
                   "$ref": "#/components/schemas/NiLetterValidationReportReportResponse"
                 }
               },
+              "application/octet-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/NiLetterValidationReportReportResponse"
+                }
+              },
               "application/pdf": {
                 "schema": {
                   "$ref": "#/components/schemas/NiLetterValidationReportReportResponse"
@@ -64116,6 +64126,11 @@
                   "$ref": "#/components/schemas/CisSubContractorSummaryListReportResponse"
                 }
               },
+              "application/octet-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/CisSubContractorSummaryListReportResponse"
+                }
+              },
               "application/pdf": {
                 "schema": {
                   "$ref": "#/components/schemas/CisSubContractorSummaryListReportResponse"
@@ -64177,6 +64192,11 @@
           "200": {
             "content": {
               "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CyclicReenrolmentReportReportResponse"
+                }
+              },
+              "application/octet-stream": {
                 "schema": {
                   "$ref": "#/components/schemas/CyclicReenrolmentReportReportResponse"
                 }
@@ -64493,6 +64513,11 @@
           "200": {
             "content": {
               "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HolidayReportReportResponse"
+                }
+              },
+              "application/octet-stream": {
                 "schema": {
                   "$ref": "#/components/schemas/HolidayReportReportResponse"
                 }
@@ -65291,6 +65316,11 @@
                   "$ref": "#/components/schemas/RightToWorkReportReportResponse"
                 }
               },
+              "application/octet-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/RightToWorkReportReportResponse"
+                }
+              },
               "application/pdf": {
                 "schema": {
                   "$ref": "#/components/schemas/RightToWorkReportReportResponse"
@@ -65579,6 +65609,11 @@
           "200": {
             "content": {
               "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoanBalancesReportReportResponse"
+                }
+              },
+              "application/octet-stream": {
                 "schema": {
                   "$ref": "#/components/schemas/LoanBalancesReportReportResponse"
                 }
@@ -65887,6 +65922,11 @@
                   "$ref": "#/components/schemas/GenderPayGapReportReportResponse"
                 }
               },
+              "application/octet-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenderPayGapReportReportResponse"
+                }
+              },
               "application/pdf": {
                 "schema": {
                   "$ref": "#/components/schemas/GenderPayGapReportReportResponse"
@@ -66024,6 +66064,11 @@
                   "$ref": "#/components/schemas/Cis300ReportResponse"
                 }
               },
+              "application/octet-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cis300ReportResponse"
+                }
+              },
               "application/pdf": {
                 "schema": {
                   "$ref": "#/components/schemas/Cis300ReportResponse"
@@ -66101,6 +66146,11 @@
           "200": {
             "content": {
               "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CisStatementListReportResponse"
+                }
+              },
+              "application/octet-stream": {
                 "schema": {
                   "$ref": "#/components/schemas/CisStatementListReportResponse"
                 }
@@ -66443,6 +66493,11 @@
                   "$ref": "#/components/schemas/ReportResponse"
                 }
               },
+              "application/octet-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportResponse"
+                }
+              },
               "application/pdf": {
                 "schema": {
                   "$ref": "#/components/schemas/ReportResponse"
@@ -66510,6 +66565,11 @@
                   "$ref": "#/components/schemas/ReportResponse"
                 }
               },
+              "application/octet-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportResponse"
+                }
+              },
               "application/pdf": {
                 "schema": {
                   "$ref": "#/components/schemas/ReportResponse"
@@ -66569,6 +66629,11 @@
           "200": {
             "content": {
               "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/P32ReportResponse"
+                }
+              },
+              "application/octet-stream": {
                 "schema": {
                   "$ref": "#/components/schemas/P32ReportResponse"
                 }
@@ -66801,6 +66866,11 @@
                   "$ref": "#/components/schemas/PensionMembershipsReportReportResponse"
                 }
               },
+              "application/octet-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/PensionMembershipsReportReportResponse"
+                }
+              },
               "application/pdf": {
                 "schema": {
                   "$ref": "#/components/schemas/PensionMembershipsReportReportResponse"
@@ -66946,6 +67016,11 @@
                   "$ref": "#/components/schemas/TeachersPensionEoyReportReportResponse"
                 }
               },
+              "application/octet-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/TeachersPensionEoyReportReportResponse"
+                }
+              },
               "application/pdf": {
                 "schema": {
                   "$ref": "#/components/schemas/TeachersPensionEoyReportReportResponse"
@@ -67020,6 +67095,11 @@
                   "$ref": "#/components/schemas/P11ReportResponse"
                 }
               },
+              "application/octet-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/P11ReportResponse"
+                }
+              },
               "application/pdf": {
                 "schema": {
                   "$ref": "#/components/schemas/P11ReportResponse"
@@ -67090,6 +67170,11 @@
           "200": {
             "content": {
               "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/P11DetailedReportResponse"
+                }
+              },
+              "application/octet-stream": {
                 "schema": {
                   "$ref": "#/components/schemas/P11DetailedReportResponse"
                 }
@@ -67476,6 +67561,11 @@
                   "$ref": "#/components/schemas/AttachmentOrdersReportReportResponse"
                 }
               },
+              "application/octet-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttachmentOrdersReportReportResponse"
+                }
+              },
               "application/pdf": {
                 "schema": {
                   "$ref": "#/components/schemas/AttachmentOrdersReportReportResponse"
@@ -67555,6 +67645,11 @@
           "200": {
             "content": {
               "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AverageHolidayPayRateReportReportResponse"
+                }
+              },
+              "application/octet-stream": {
                 "schema": {
                   "$ref": "#/components/schemas/AverageHolidayPayRateReportReportResponse"
                 }
@@ -67655,6 +67750,11 @@
                   "$ref": "#/components/schemas/CostAnalysisReportReportResponse"
                 }
               },
+              "application/octet-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/CostAnalysisReportReportResponse"
+                }
+              },
               "application/pdf": {
                 "schema": {
                   "$ref": "#/components/schemas/CostAnalysisReportReportResponse"
@@ -67746,6 +67846,11 @@
                   "$ref": "#/components/schemas/CostOfEmploymentReportReportResponse"
                 }
               },
+              "application/octet-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/CostOfEmploymentReportReportResponse"
+                }
+              },
               "application/pdf": {
                 "schema": {
                   "$ref": "#/components/schemas/CostOfEmploymentReportReportResponse"
@@ -67825,6 +67930,11 @@
           "200": {
             "content": {
               "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FullSummaryOfPayReportReportResponse"
+                }
+              },
+              "application/octet-stream": {
                 "schema": {
                   "$ref": "#/components/schemas/FullSummaryOfPayReportReportResponse"
                 }
@@ -67954,6 +68064,11 @@
                   "$ref": "#/components/schemas/GrossToNetReportReportResponse"
                 }
               },
+              "application/octet-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/GrossToNetReportReportResponse"
+                }
+              },
               "application/pdf": {
                 "schema": {
                   "$ref": "#/components/schemas/GrossToNetReportReportResponse"
@@ -68046,6 +68161,11 @@
           "200": {
             "content": {
               "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HourlyPayReportReportResponse"
+                }
+              },
+              "application/octet-stream": {
                 "schema": {
                   "$ref": "#/components/schemas/HourlyPayReportReportResponse"
                 }
@@ -68150,6 +68270,11 @@
           "200": {
             "content": {
               "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PayElementReportReportResponse"
+                }
+              },
+              "application/octet-stream": {
                 "schema": {
                   "$ref": "#/components/schemas/PayElementReportReportResponse"
                 }
@@ -68361,6 +68486,11 @@
                   "$ref": "#/components/schemas/StatutoryPayReportReportResponse"
                 }
               },
+              "application/octet-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatutoryPayReportReportResponse"
+                }
+              },
               "application/pdf": {
                 "schema": {
                   "$ref": "#/components/schemas/StatutoryPayReportReportResponse"
@@ -68462,6 +68592,11 @@
           "200": {
             "content": {
               "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UmbrellaReconciliationReportReportResponse"
+                }
+              },
+              "application/octet-stream": {
                 "schema": {
                   "$ref": "#/components/schemas/UmbrellaReconciliationReportReportResponse"
                 }
@@ -68616,6 +68751,11 @@
                   "$ref": "#/components/schemas/VarianceReportReportResponse"
                 }
               },
+              "application/octet-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/VarianceReportReportResponse"
+                }
+              },
               "application/pdf": {
                 "schema": {
                   "$ref": "#/components/schemas/VarianceReportReportResponse"
@@ -68705,6 +68845,11 @@
                   "$ref": "#/components/schemas/NiLetterValidationReportReportResponse"
                 }
               },
+              "application/octet-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/NiLetterValidationReportReportResponse"
+                }
+              },
               "application/pdf": {
                 "schema": {
                   "$ref": "#/components/schemas/NiLetterValidationReportReportResponse"
@@ -68785,6 +68930,11 @@
           "200": {
             "content": {
               "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WarningsReportReportResponse"
+                }
+              },
+              "application/octet-stream": {
                 "schema": {
                   "$ref": "#/components/schemas/WarningsReportReportResponse"
                 }
@@ -68873,6 +69023,11 @@
                   "$ref": "#/components/schemas/FurloughReportReportResponse"
                 }
               },
+              "application/octet-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/FurloughReportReportResponse"
+                }
+              },
               "application/pdf": {
                 "schema": {
                   "$ref": "#/components/schemas/FurloughReportReportResponse"
@@ -68957,6 +69112,11 @@
           "200": {
             "content": {
               "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NiYtdReportReportResponse"
+                }
+              },
+              "application/octet-stream": {
                 "schema": {
                   "$ref": "#/components/schemas/NiYtdReportReportResponse"
                 }
@@ -69062,6 +69222,11 @@
           "200": {
             "content": {
               "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PapdisDocumentReportResponse"
+                }
+              },
+              "application/octet-stream": {
                 "schema": {
                   "$ref": "#/components/schemas/PapdisDocumentReportResponse"
                 }
@@ -69182,6 +69347,11 @@
           "200": {
             "content": {
               "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PayrunPaymentsReportReportResponse"
+                }
+              },
+              "application/octet-stream": {
                 "schema": {
                   "$ref": "#/components/schemas/PayrunPaymentsReportReportResponse"
                 }
@@ -69853,6 +70023,11 @@
           "200": {
             "content": {
               "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/YtdReportReportResponse"
+                }
+              },
+              "application/octet-stream": {
                 "schema": {
                   "$ref": "#/components/schemas/YtdReportReportResponse"
                 }
@@ -78152,6 +78327,11 @@
           "200": {
             "content": {
               "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportResponse"
+                }
+              },
+              "application/octet-stream": {
                 "schema": {
                   "$ref": "#/components/schemas/ReportResponse"
                 }
