@@ -38908,7 +38908,7 @@
         ]
       },
       "get": {
-        "description": "Lists DPS Notices.",
+        "description": "Lists DPS Notices. Optional searchTerm filters by employee/HMRC name, current payroll code (partial), or NI number (exact, spaces ignored).",
         "operationId": "ListNoticesDps",
         "parameters": [
           {
@@ -38934,6 +38934,14 @@
             "schema": {
               "format": "int32",
               "type": "integer"
+            }
+          },
+          {
+            "description": "Optional filter. Name and payroll code are partial matches. NI number is an exact match after spaces are stripped. No minimum length.",
+            "in": "query",
+            "name": "searchTerm",
+            "schema": {
+              "type": "string"
             }
           }
         ],
