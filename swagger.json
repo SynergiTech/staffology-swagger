@@ -6720,6 +6720,11 @@
           "currentYear": {
             "$ref": "#/components/schemas/TaxYear"
           },
+          "customEmployeeReportFormat": {
+            "description": "Custom format string for employee report filenames when report naming is enabled.",
+            "nullable": true,
+            "type": "string"
+          },
           "defaultPayOptions": {
             "$ref": "#/components/schemas/Contract.PayOptionsRequest"
           },
@@ -6933,6 +6938,11 @@
           },
           "currentYear": {
             "$ref": "#/components/schemas/TaxYear"
+          },
+          "customEmployeeReportFormat": {
+            "description": "Custom format string for employee report filenames when report naming is enabled.",
+            "nullable": true,
+            "type": "string"
           },
           "defaultPayOptions": {
             "$ref": "#/components/schemas/Contract.PayOptionsResponse"
