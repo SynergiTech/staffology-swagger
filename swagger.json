@@ -30270,6 +30270,11 @@
             "nullable": true,
             "type": "array"
           },
+          "pensionId": {
+            "description": "The pension scheme identifier.",
+            "format": "uuid",
+            "type": "string"
+          },
           "pensionRule": {
             "$ref": "#/components/schemas/PensionRule"
           },
