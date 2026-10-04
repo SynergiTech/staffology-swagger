@@ -11843,6 +11843,11 @@
             "format": "int32",
             "type": "integer"
           },
+          "statePensionAgeMonths": {
+            "description": "Automatically calculated. Additional months component of state pension age.",
+            "format": "int32",
+            "type": "integer"
+          },
           "telephone": {
             "maxLength": 30,
             "nullable": true,
@@ -30491,6 +30496,11 @@
           },
           "statePensionAge": {
             "description": "[readonly] Automatically calculated.",
+            "format": "int32",
+            "type": "integer"
+          },
+          "statePensionAgeMonths": {
+            "description": "[readonly] Automatically calculated. Additional months component of state pension age.",
             "format": "int32",
             "type": "integer"
           },
