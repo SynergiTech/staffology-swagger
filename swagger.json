@@ -51424,6 +51424,65 @@
         ]
       }
     },
+    "/employers/{employerId}/import-result/{jobId}/exports": {
+      "post": {
+        "description": "Queues asynchronous generation of an Excel workbook containing row results and import summary for the specified import job.\r\nThe workbook includes a Row Results worksheet (Row Number, Status, Payroll Code, Message for failed rows only) and an Import Summary worksheet.\r\nReturns a job that can be polled via GET /jobs/{jobId} and downloaded from GET /jobs/{jobId}/document when complete.\r\nThis endpoint is currently being beta tested and subject to un-announced breaking changes.",
+        "operationId": "ExportImportErrorsImportResult",
+        "parameters": [
+          {
+            "description": "The employer unique identifier.",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The import job unique identifier returned when the import was queued.",
+            "in": "path",
+            "name": "jobId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.JobResponse"
+                }
+              }
+            },
+            "description": "Export queued; response body contains the created job."
+          },
+          "400": {
+            "description": "Invalid parameters."
+          },
+          "401": {
+            "description": "Not authenticated."
+          },
+          "403": {
+            "description": "Caller does not have access to the employer."
+          },
+          "404": {
+            "description": "Import result does not exist for this import job."
+          },
+          "409": {
+            "description": "ImportEnhancements is not enabled for this employer, or the employer has reached the maximum number of incomplete async jobs."
+          }
+        },
+        "summary": "Export Import Errors (Beta)",
+        "tags": [
+          "ImportResult"
+        ]
+      }
+    },
     "/employers/{employerId}/import/average-holidays": {
       "post": {
         "description": "Each valid row creates a Holiday leave record with Average Days pay type.\r\nLeaveManager then updates balances and the open pay run; PayRunManager adds AVGHOLDAYS lines on processing.",
