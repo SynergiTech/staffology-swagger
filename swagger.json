@@ -10437,6 +10437,10 @@
       "Contract.PayrollSquadMemberRequest": {
         "additionalProperties": false,
         "properties": {
+          "allowPayCodeSetup": {
+            "description": "When assigning an Operator, controls whether they can set up pay codes for employers in this squad.",
+            "type": "boolean"
+          },
           "payrollSquadId": {
             "description": "UniqueId of Payroll Squad",
             "format": "uuid",
@@ -16018,6 +16022,9 @@
       "EmployerItem": {
         "additionalProperties": false,
         "properties": {
+          "allowPayCodeSetup": {
+            "type": "boolean"
+          },
           "id": {
             "format": "uuid",
             "type": "string"
@@ -19796,6 +19803,10 @@
         "additionalProperties": false,
         "description": "Invitations are used to invite other users to access an existing Employer",
         "properties": {
+          "allowPayCodeSetup": {
+            "description": "When inviting an Operator, controls whether they can set up pay codes for this employer.",
+            "type": "boolean"
+          },
           "emailAddress": {
             "description": "The email address of the user that is being invited to access the Employer",
             "format": "email",
@@ -32732,7 +32743,15 @@
             "description": "Indicates whether all Admin users of a tenant can manage report templates.",
             "type": "boolean"
           },
+          "enableAdvancedBureauDashboard": {
+            "description": "Enables advanced bureau dashboard features including enhanced analytics and reporting.\r\nCan only be set by Super Admin. Automatically reset to false when EnableBureauFeatures is disabled.",
+            "type": "boolean"
+          },
           "enableBureauFeatures": {
+            "type": "boolean"
+          },
+          "enableNewSquadRoles": {
+            "description": "Enables adding new payroll squad roles.\r\nCan only be set by Super Admin. Automatically reset to false when EnableBureauFeatures is disabled.",
             "type": "boolean"
           },
           "enableReportWriterFeature": {
@@ -32770,9 +32789,8 @@
             "type": "array"
           },
           "id": {
-            "description": "[readonly] The unique id of the object",
+            "description": "Dedicated setter compared to ModelBase so only tenant JSON deserialization writes \"id\" into Tenant.UniqueId.",
             "format": "uuid",
-            "readOnly": true,
             "type": "string"
           },
           "logOutUrl": {
@@ -33333,6 +33351,9 @@
           "address": {
             "$ref": "#/components/schemas/Address"
           },
+          "allowPayCodeSetup": {
+            "type": "boolean"
+          },
           "apiMailingEnabled": {
             "description": "Flag to keep the user up-to-date with any API changes and inform about upcoming breaking changes.",
             "type": "boolean"
@@ -33636,6 +33657,9 @@
       "UserEmployer": {
         "additionalProperties": false,
         "properties": {
+          "allowPayCodeSetup": {
+            "type": "boolean"
+          },
           "employerId": {
             "format": "int32",
             "type": "integer"
@@ -35885,6 +35909,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
           }
         },
         "summary": "Create an Employer",
@@ -36129,7 +36156,7 @@
     },
     "/employers/import": {
       "post": {
-        "description": "Import employers from a CSV file.",
+        "description": "Import employers from a CSV file.\r\nRequirePermission is retained for API documentation consistency but is not enforced here\r\nbecause [SkipEmployerCheck] bypasses EmployerItemFilter permission checks; authorization\r\nis enforced explicitly below via IsAllowedToCreateEmployer().",
         "operationId": "ImportCsvEmployer",
         "parameters": [
           {
@@ -37906,6 +37933,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
           },
           "404": {
             "description": "Not Found"
@@ -40626,6 +40656,9 @@
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "403": {
+            "description": "Forbidden"
           }
         },
         "summary": "Resets employee accrual scheme",
@@ -76858,8 +76891,46 @@
       }
     },
     "/employers/{id}/can-use-premium-connectors": {
+      "get": {
+        "description": "Returns whether the employer can use premium connectors.",
+        "operationId": "GetEmployerCanUsePremiumConnectorsEmployer",
+        "parameters": [
+          {
+            "description": "The Id of the Employer you want to retrieve.",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Get Can Use Premium Connectors Setting",
+        "tags": [
+          "Employer"
+        ]
+      },
       "put": {
-        "description": "Sets Can Use Premium Connectors Setting\r\nA boolean value needs to be sent in the body to indicate if the employer can use premium connectors.\r\nSo sending false would result in the employer not being able to use the premium connectors.",
+        "description": "Sets Can Use Premium Connectors Setting.\r\nA boolean value needs to be sent in the body to indicate if the employer can use premium connectors.\r\nSo sending false would result in the employer not being able to use the premium connectors.",
         "operationId": "UpdateEmployerCanUsePremiumConnectorsEmployer",
         "parameters": [
           {
@@ -80972,6 +81043,46 @@
         ]
       }
     },
+    "/tenants/{id}/users/bureau-members": {
+      "get": {
+        "description": "Returns all tenant users marked as bureau members. Use when assigning members to a Payroll Squad.\r\nRequires Payroll Squads view permission; bureau features must be enabled on the tenant.",
+        "operationId": "GetBureauMembersTenant",
+        "parameters": [
+          {
+            "description": "Current tenant id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Item"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Get Bureau Members",
+        "tags": [
+          "Tenant"
+        ]
+      }
+    },
     "/tenants/{id}/users/employers": {
       "get": {
         "description": "Returns all the employers of all the users of the Tenant",
@@ -82268,7 +82379,7 @@
     },
     "/{employerId}/employees/AverageHolidayPay/PayHistory/import": {
       "post": {
-        "description": "Import Pay History from a CSV file.",
+        "description": "Import Pay History from a CSV file.\r\nRequirePermission is retained for API documentation consistency but is not enforced here\r\nbecause [SkipEmployerCheck] bypasses EmployerItemFilter permission checks; authorization\r\nis enforced explicitly below via HasPermission(AverageHolidayPayHistory, Create).",
         "operationId": "ImportCsvAverageHolidayPayHistory",
         "parameters": [
           {
