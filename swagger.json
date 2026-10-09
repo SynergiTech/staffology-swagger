@@ -25202,6 +25202,10 @@
             "description": "Automatically calculate back pay and add or modify the necessary pay lines for this addition/deduction when a pay run is created.\r\nApplicable only to employee level addition/deduction pay lines.\r\nIf set to false then you must manually handle the calculation and adding of back pay lines.",
             "type": "boolean"
           },
+          "isBasicPayLeaveBackPayLine": {
+            "description": "True when this leave-based historic back pay line was generated from auto-generated basic pay\r\nor a Staffology.Model.PayLine.ContributesToBasicPay source, and should trigger PercentageOfGross companions.",
+            "type": "boolean"
+          },
           "isLeaveBasedBackPayLine": {
             "type": "boolean"
           },
@@ -25254,6 +25258,12 @@
           },
           "netToGrossDiscrepancy": {
             "description": "The discrepancy between the targeted and the calculated grossed up value during a net to gross calculation.",
+            "format": "double",
+            "nullable": true,
+            "type": "number"
+          },
+          "originalPercentage": {
+            "description": "Historic percentage rate from the parent PercentageOfGross / PercentageOfNet line.\r\nHistoric percentage companion back pay lines store a monetary Staffology.Model.PayLine.Value and keep\r\nthe parent rate here so payslip secondary description can show the same percentage\r\nas the original line (ADO #98011 AC3).",
             "format": "double",
             "nullable": true,
             "type": "number"
