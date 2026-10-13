@@ -1856,7 +1856,8 @@
           "NotEnoughPayrollData",
           "TaxYearNotSupported",
           "TwoRelatedSchemes",
-          "NeonatalCareDateMissing"
+          "NeonatalCareDateMissing",
+          "NoEarningsOrSalaryAvailable"
         ],
         "type": "string"
       },
