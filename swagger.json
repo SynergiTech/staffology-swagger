@@ -15800,7 +15800,8 @@
           "AdvancedHolidays",
           "IncomingPensionApi",
           "ReportNamingFormat",
-          "Alabaster"
+          "Alabaster",
+          "UpdateAppend"
         ],
         "type": "string"
       },
@@ -16514,7 +16515,8 @@
           "PaySchedule",
           "Eps",
           "EmployeeRole",
-          "Fps"
+          "Fps",
+          "WorkingPattern"
         ],
         "type": "string"
       },
