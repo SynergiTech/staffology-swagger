@@ -15801,6 +15801,7 @@
           "IncomingPensionApi",
           "ReportNamingFormat",
           "Alabaster",
+          "EnhancedOnboarding",
           "UpdateAppend"
         ],
         "type": "string"
