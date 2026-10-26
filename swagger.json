@@ -66445,7 +66445,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/p11d": {
       "get": {
-        "description": "Returns all P11Ds in a single PDF file for the TaxYear and Employer specified\r\nIf you set the accept header to \"text/html\" then unlike other reports the html is NOT in the ```Content``` field.\r\nAs there are multiple HTML documents they are encoded as a JSON array of strings in the ```Model``` field.",
+        "description": "Returns all P11Ds in a single PDF file for the TaxYear and Employer specified\r\nIf you set the accept header to TextHtml then unlike other reports the html is NOT in the ```Content``` field.\r\nAs there are multiple HTML documents they are encoded as a JSON array of strings in the ```Model``` field.",
         "operationId": "P11DMultipleReports",
         "parameters": [
           {
@@ -66594,7 +66594,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/p11detailed": {
       "get": {
-        "description": "Returns all detailed P11s in a single PDF file for the TaxYear and Employer specified\r\nIf you set the accept header to \"text/html\" then unlike other reports the html is NOT in the ```Content``` field.\r\nAs there are multiple HTML documents they are encoded as a JSON array of strings in the ```Model``` field.",
+        "description": "Returns all detailed P11s in a single PDF file for the TaxYear and Employer specified\r\nIf you set the accept header to TextHtml then unlike other reports the html is NOT in the ```Content``` field.\r\nAs there are multiple HTML documents they are encoded as a JSON array of strings in the ```Model``` field.",
         "operationId": "P11DetailedMultipleReports",
         "parameters": [
           {
@@ -66659,7 +66659,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/p30/{periodEnding}": {
       "get": {
-        "description": "Returns a P30 Report summarising the employers HMRC liabilities for the period.\r\nFor available periods retrieve a list of HmrcLiability and examine the metadata.\r\nIf the accept header is set to \"text/csv\" then the periodEnding parameter is ignored and you'll receive a CSV for the entire TaxYear.",
+        "description": "Returns a P30 Report summarising the employers HMRC liabilities for the period.\r\nFor available periods retrieve a list of HmrcLiability and examine the metadata.\r\nIf the accept header is set to TextCsv then the periodEnding parameter is ignored and you'll receive a CSV for the entire TaxYear.",
         "operationId": "P30Reports",
         "parameters": [
           {
@@ -66804,7 +66804,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/p60": {
       "get": {
-        "description": "Returns all P60s in a single PDF file for the TaxYear and Employer specified\r\nIf you set the accept header to \"text/html\" then unlike other reports the html is NOT in the ```Content``` field.\r\nAs there are multiple HTML documents they are encoded as a JSON array of strings in the ```Model``` field.",
+        "description": "Returns all P60s in a single PDF file for the TaxYear and Employer specified\r\nIf you set the accept header to TextHtml then unlike other reports the html is NOT in the ```Content``` field.\r\nAs there are multiple HTML documents they are encoded as a JSON array of strings in the ```Model``` field.",
         "operationId": "P60MultipleReports",
         "parameters": [
           {
@@ -69963,7 +69963,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/{payPeriod}/{periodNumber}/payslips": {
       "get": {
-        "description": "Returns all Payslips for the given PayRun\r\nIf you set the accept header to \"text/html\" then unlike other reports the html is NOT in the ```Content``` field.\r\nAs there are multiple HTML documents they are encoded as a JSON array of strings in the ```Model``` field.",
+        "description": "Returns all Payslips for the given PayRun\r\nIf you set the accept header to TextHtml then unlike other reports the html is NOT in the ```Content``` field.\r\nAs there are multiple HTML documents they are encoded as a JSON array of strings in the ```Model``` field.",
         "operationId": "PayslipsReports",
         "parameters": [
           {
