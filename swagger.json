@@ -190,7 +190,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -198,7 +198,7 @@
             "$ref": "#/components/schemas/AdvancedVarianceReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -1026,7 +1026,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -1034,7 +1034,7 @@
             "$ref": "#/components/schemas/AnalysisReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -1303,7 +1303,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -1311,7 +1311,7 @@
             "$ref": "#/components/schemas/AttachmentOrder"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -1412,7 +1412,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -1420,7 +1420,7 @@
             "$ref": "#/components/schemas/AttachmentOrdersReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -1735,7 +1735,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -1743,7 +1743,7 @@
             "$ref": "#/components/schemas/AverageHolidayPayRateReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -1975,7 +1975,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -1983,7 +1983,7 @@
             "$ref": "#/components/schemas/BankPaymentInstruction"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -2734,12 +2734,12 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
           "model": {
-            "description": "[readonly] If the type is application.json then this will contain a JSON representation of the relevant model",
+            "description": "[readonly] If the type is application/json then this will contain a JSON representation of the relevant model.",
             "items": {
               "$ref": "#/components/schemas/ChangeSummary"
             },
@@ -2747,7 +2747,7 @@
             "type": "array"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -2840,7 +2840,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -2848,7 +2848,7 @@
             "$ref": "#/components/schemas/Cis300"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -3058,12 +3058,12 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
           "model": {
-            "description": "[readonly] If the type is application.json then this will contain a JSON representation of the relevant model",
+            "description": "[readonly] If the type is application/json then this will contain a JSON representation of the relevant model.",
             "items": {
               "$ref": "#/components/schemas/CisStatement"
             },
@@ -3071,7 +3071,7 @@
             "type": "array"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -3260,12 +3260,12 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
           "model": {
-            "description": "[readonly] If the type is application.json then this will contain a JSON representation of the relevant model",
+            "description": "[readonly] If the type is application/json then this will contain a JSON representation of the relevant model.",
             "items": {
               "$ref": "#/components/schemas/CisSubContractorSummary"
             },
@@ -3273,7 +3273,7 @@
             "type": "array"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -13906,7 +13906,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -13914,7 +13914,7 @@
             "$ref": "#/components/schemas/CostAnalysisReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -14084,7 +14084,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -14092,7 +14092,7 @@
             "$ref": "#/components/schemas/CostOfEmploymentReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -14346,7 +14346,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -14354,7 +14354,7 @@
             "$ref": "#/components/schemas/CyclicReenrolmentReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -14880,7 +14880,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -14888,7 +14888,7 @@
             "$ref": "#/components/schemas/EmployeeBenefitsReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -15097,7 +15097,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -15105,7 +15105,7 @@
             "$ref": "#/components/schemas/EmployeeLeaveReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -15198,7 +15198,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -15206,7 +15206,7 @@
             "$ref": "#/components/schemas/EmployeeLoanExportReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -15483,12 +15483,12 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
           "model": {
-            "description": "[readonly] If the type is application.json then this will contain a JSON representation of the relevant model",
+            "description": "[readonly] If the type is application/json then this will contain a JSON representation of the relevant model.",
             "items": {
               "$ref": "#/components/schemas/EmployeePaymentsReportLine"
             },
@@ -15496,7 +15496,7 @@
             "type": "array"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -16987,7 +16987,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -16995,7 +16995,7 @@
             "$ref": "#/components/schemas/Exb"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -18126,7 +18126,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -18134,7 +18134,7 @@
             "$ref": "#/components/schemas/Fps"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -18282,7 +18282,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -18290,7 +18290,7 @@
             "$ref": "#/components/schemas/FullSummaryOfPayReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -18562,7 +18562,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -18570,7 +18570,7 @@
             "$ref": "#/components/schemas/FurloughReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -18666,7 +18666,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -18674,7 +18674,7 @@
             "$ref": "#/components/schemas/GenderPayGapReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -19050,7 +19050,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -19058,7 +19058,7 @@
             "$ref": "#/components/schemas/GrossToNetReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -19498,7 +19498,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -19506,7 +19506,7 @@
             "$ref": "#/components/schemas/HolidayReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -19639,7 +19639,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -19647,7 +19647,7 @@
             "$ref": "#/components/schemas/HourlyPayReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -19878,12 +19878,12 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
           "model": {
-            "description": "[readonly] If the type is application.json then this will contain a JSON representation of the relevant model",
+            "description": "[readonly] If the type is application/json then this will contain a JSON representation of the relevant model.",
             "items": {
               "$ref": "#/components/schemas/Item"
             },
@@ -19891,7 +19891,7 @@
             "type": "array"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -21011,7 +21011,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -21019,7 +21019,7 @@
             "$ref": "#/components/schemas/LoanBalancesReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -21756,7 +21756,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -21764,7 +21764,7 @@
             "$ref": "#/components/schemas/NiLetterValidationReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -21811,7 +21811,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -21819,7 +21819,7 @@
             "$ref": "#/components/schemas/NiYtdReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -23223,7 +23223,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -23231,7 +23231,7 @@
             "$ref": "#/components/schemas/P11Detailed"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -23649,7 +23649,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -23657,7 +23657,7 @@
             "$ref": "#/components/schemas/P11"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -23810,7 +23810,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -23818,7 +23818,7 @@
             "$ref": "#/components/schemas/P32"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -23870,7 +23870,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -23878,7 +23878,7 @@
             "$ref": "#/components/schemas/PapdisDocument"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -24925,7 +24925,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -24933,7 +24933,7 @@
             "$ref": "#/components/schemas/PayElementReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -24977,7 +24977,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -24985,7 +24985,7 @@
             "$ref": "#/components/schemas/PayGradesReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -26438,12 +26438,12 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
           "model": {
-            "description": "[readonly] If the type is application.json then this will contain a JSON representation of the relevant model",
+            "description": "[readonly] If the type is application/json then this will contain a JSON representation of the relevant model.",
             "items": {
               "$ref": "#/components/schemas/PayRunSummaryLine"
             },
@@ -26451,7 +26451,7 @@
             "type": "array"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -27256,7 +27256,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -27264,7 +27264,7 @@
             "$ref": "#/components/schemas/PaySpineReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -27783,7 +27783,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -27791,7 +27791,7 @@
             "$ref": "#/components/schemas/PayrollAnalysisCostBreakdownReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -27975,7 +27975,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -27983,7 +27983,7 @@
             "$ref": "#/components/schemas/PayrollAnalysisEmployeeRoleBreakdownReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -28268,7 +28268,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -28276,7 +28276,7 @@
             "$ref": "#/components/schemas/PayrunPaymentsReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -28703,7 +28703,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -28711,7 +28711,7 @@
             "$ref": "#/components/schemas/Payslip"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -29349,7 +29349,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -29357,7 +29357,7 @@
             "$ref": "#/components/schemas/PensionMembershipsReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -30907,16 +30907,16 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
           "model": {
-            "description": "[readonly] If the type is application.json then this will contain a JSON representation of the relevant model",
+            "description": "[readonly] If the type is application/json then this will contain a JSON representation of the relevant model.",
             "nullable": true
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -31040,7 +31040,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -31048,7 +31048,7 @@
             "$ref": "#/components/schemas/RightToWorkReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -31502,7 +31502,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -31510,7 +31510,7 @@
             "$ref": "#/components/schemas/SpinePointReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -31724,7 +31724,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -31732,7 +31732,7 @@
             "$ref": "#/components/schemas/StatutoryPayReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -32008,7 +32008,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -32016,7 +32016,7 @@
             "$ref": "#/components/schemas/TaxCodeChangeReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -32698,7 +32698,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -32706,7 +32706,7 @@
             "$ref": "#/components/schemas/TeachersPensionEoyReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -33255,7 +33255,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -33263,7 +33263,7 @@
             "$ref": "#/components/schemas/UmbrellaReconciliationReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -33916,7 +33916,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -33924,7 +33924,7 @@
             "$ref": "#/components/schemas/VarianceReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -33996,7 +33996,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -34004,7 +34004,7 @@
             "$ref": "#/components/schemas/WarningsReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -34519,7 +34519,7 @@
         "description": "Used to encapsulate a response for any of the reports.\r\nSee the Introduction Guide for Reports for more details",
         "properties": {
           "content": {
-            "description": "[readonly] This could contain a link to a PDF file, HTML content or other content, depending on the Type value.",
+            "description": "[readonly] Contains the filename for application/octet-stream, HTML or other text content depending on Type.\r\nFor the deprecated application/pdf type, this contains a link to the PDF file; its end-of-life date is 1st February 2027.",
             "nullable": true,
             "type": "string"
           },
@@ -34527,7 +34527,7 @@
             "$ref": "#/components/schemas/YtdReport"
           },
           "stream": {
-            "description": "byte array",
+            "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
             "format": "byte",
             "nullable": true,
             "type": "string"
@@ -35227,7 +35227,7 @@
     },
     "/aeo/{employeeId}/{id}": {
       "get": {
-        "description": "Returns a statement for an Attachment Order, listing payments that have been made.",
+        "description": "Returns a statement for an Attachment Order, listing payments that have been made.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "AeoStatementReports",
         "parameters": [
           {
@@ -36641,7 +36641,7 @@
     },
     "/employers/{employerId}/aeassessments/employees/{employeeId}/{id}/letter": {
       "get": {
-        "description": "Returns PDF letter that needs to be sent to an employee as a result of the assessment.\r\nThe same ReportResponse model that is used for reports is used here.",
+        "description": "Returns PDF letter that needs to be sent to an employee as a result of the assessment.\r\nThe same ReportResponse model that is used for reports is used here.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "GetAeLetterAeEmployeeAssessment",
         "parameters": [
           {
@@ -41603,7 +41603,7 @@
     },
     "/employers/{employerId}/employees/{employeeId}/autoenrolment/assessments/{id}/letter": {
       "get": {
-        "description": "Returns either a PDF or HTML (depending on accept header) of the letter that needs to be sent to an employee as a result of the assessment.\r\nThe same ReportResponse model that is used for reports is used here.",
+        "description": "Returns either a PDF or HTML (depending on accept header) of the letter that needs to be sent to an employee as a result of the assessment.\r\nThe same ReportResponse model that is used for reports is used here.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "GetLetterAutoEnrolment",
         "parameters": [
           {
@@ -64009,7 +64009,7 @@
     },
     "/employers/{employerId}/reports/NiLetterValidationReport": {
       "get": {
-        "description": "Checks the NI Letters allocated to your employees. If no pay date is provided, the checks are based on today's date.",
+        "description": "Checks the NI Letters allocated to your employees. If no pay date is provided, the checks are based on today's date.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "NiLetterValidationReportEmployeesReports",
         "parameters": [
           {
@@ -64237,7 +64237,7 @@
     },
     "/employers/{employerId}/reports/cissummary": {
       "get": {
-        "description": "Returns a list of all CIS Subcontractors along with verification details",
+        "description": "Returns a list of all CIS Subcontractors along with verification details<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "CisSubContractorSummaryReports",
         "parameters": [
           {
@@ -64297,7 +64297,7 @@
     },
     "/employers/{employerId}/reports/cyclicreenrolment": {
       "get": {
-        "description": "Returns a report for Cyclic Re-enrolments for a given re-enrolment date.",
+        "description": "Returns a report for Cyclic Re-enrolments for a given re-enrolment date.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "CyclicReenrolmentReports",
         "parameters": [
           {
@@ -64362,7 +64362,7 @@
     },
     "/employers/{employerId}/reports/downloadmaternityschedules": {
       "get": {
-        "description": "Returns a Maternity Pay schedule for employee",
+        "description": "Returns a Maternity Pay schedule for employee<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "DownloadMaternitySchedulesReports",
         "parameters": [
           {
@@ -64610,7 +64610,7 @@
     },
     "/employers/{employerId}/reports/holiday": {
       "get": {
-        "description": "Returns a report summarising holiday usage for all employees.",
+        "description": "Returns a report summarising holiday usage for all employees.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "HolidayReports",
         "parameters": [
           {
@@ -64777,7 +64777,7 @@
     },
     "/employers/{employerId}/reports/p45": {
       "get": {
-        "description": "Get a P45 for an Employee you've marked as a leaver",
+        "description": "Get a P45 for an Employee you've marked as a leaver<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "P45Reports",
         "parameters": [
           {
@@ -65427,7 +65427,7 @@
     },
     "/employers/{employerId}/reports/right-to-work": {
       "get": {
-        "description": "Returns a report summarising RightToWork information for all employees.",
+        "description": "Returns a report summarising RightToWork information for all employees.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "RightToWorkReports",
         "parameters": [
           {
@@ -65698,7 +65698,7 @@
     },
     "/employers/{employerId}/reports/{payPeriod}/loanbalances": {
       "get": {
-        "description": "Returns the Loan Balances report for the given pay schedule",
+        "description": "Returns the Loan Balances report for the given pay schedule<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "LoanBalancesReports",
         "parameters": [
           {
@@ -65846,7 +65846,7 @@
     },
     "/employers/{employerId}/reports/{payPeriod}/{period}/{ordinal}/p45-multiple": {
       "get": {
-        "description": "Get P45s for multiple employees for a specific period in the employer's current tax year",
+        "description": "Get P45s for multiple employees for a specific period in the employer's current tax year<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "P45MultipleReports",
         "parameters": [
           {
@@ -66002,7 +66002,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/GenderPayGap": {
       "get": {
-        "description": "Returns a report containing details for gender pay gap analysis.",
+        "description": "Returns a report containing details for gender pay gap analysis.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "GenderPayGapReports",
         "parameters": [
           {
@@ -66093,6 +66093,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/apprenticeshiplevy": {
       "get": {
+        "description": "<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "ApprenticeshipLevyDetailsReports",
         "parameters": [
           {
@@ -66157,7 +66158,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/cis300/{id}": {
       "get": {
-        "description": "Returns a CIS300 as a CSV or human-readable report",
+        "description": "Returns a CIS300 as a CSV or human-readable report<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "Cis300Reports",
         "parameters": [
           {
@@ -66235,7 +66236,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/cisstatement/{taxMonth}": {
       "get": {
-        "description": "Returns a CIS Statement for the employee specified.",
+        "description": "Returns a CIS Statement for the employee specified.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "CisStatementReports",
         "parameters": [
           {
@@ -66445,7 +66446,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/p11d": {
       "get": {
-        "description": "Returns all P11Ds in a single PDF file for the TaxYear and Employer specified\r\nIf you set the accept header to TextHtml then unlike other reports the html is NOT in the ```Content``` field.\r\nAs there are multiple HTML documents they are encoded as a JSON array of strings in the ```Model``` field.",
+        "description": "Returns all P11Ds in a single PDF file for the TaxYear and Employer specified\r\nIf you set the accept header to TextHtml then unlike other reports the html is NOT in the ```Content``` field.\r\nAs there are multiple HTML documents they are encoded as a JSON array of strings in the ```Model``` field.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "P11DMultipleReports",
         "parameters": [
           {
@@ -66519,7 +66520,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/p11d/{employeeId}": {
       "get": {
-        "description": "Gets a P11D in PDF format for the TaxYear and Employee specified. A URL is returned which points to the PDF file.",
+        "description": "Gets a P11D in PDF format for the TaxYear and Employee specified. A URL is returned which points to the PDF file.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "P11DReports",
         "parameters": [
           {
@@ -66594,7 +66595,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/p11detailed": {
       "get": {
-        "description": "Returns all detailed P11s in a single PDF file for the TaxYear and Employer specified\r\nIf you set the accept header to TextHtml then unlike other reports the html is NOT in the ```Content``` field.\r\nAs there are multiple HTML documents they are encoded as a JSON array of strings in the ```Model``` field.",
+        "description": "Returns all detailed P11s in a single PDF file for the TaxYear and Employer specified\r\nIf you set the accept header to TextHtml then unlike other reports the html is NOT in the ```Content``` field.\r\nAs there are multiple HTML documents they are encoded as a JSON array of strings in the ```Model``` field.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "P11DetailedMultipleReports",
         "parameters": [
           {
@@ -66659,7 +66660,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/p30/{periodEnding}": {
       "get": {
-        "description": "Returns a P30 Report summarising the employers HMRC liabilities for the period.\r\nFor available periods retrieve a list of HmrcLiability and examine the metadata.\r\nIf the accept header is set to TextCsv then the periodEnding parameter is ignored and you'll receive a CSV for the entire TaxYear.",
+        "description": "Returns a P30 Report summarising the employers HMRC liabilities for the period.\r\nFor available periods retrieve a list of HmrcLiability and examine the metadata.\r\nIf the accept header is set to TextCsv then the periodEnding parameter is ignored and you'll receive a CSV for the entire TaxYear.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "P30Reports",
         "parameters": [
           {
@@ -66736,7 +66737,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/p32": {
       "get": {
-        "description": "Returns a P32 Report detailing the employers HMRC liabilities for the year.",
+        "description": "Returns a P32 Report detailing the employers HMRC liabilities for the year.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "P32Reports",
         "parameters": [
           {
@@ -66804,7 +66805,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/p60": {
       "get": {
-        "description": "Returns all P60s in a single PDF file for the TaxYear and Employer specified\r\nIf you set the accept header to TextHtml then unlike other reports the html is NOT in the ```Content``` field.\r\nAs there are multiple HTML documents they are encoded as a JSON array of strings in the ```Model``` field.",
+        "description": "Returns all P60s in a single PDF file for the TaxYear and Employer specified\r\nIf you set the accept header to TextHtml then unlike other reports the html is NOT in the ```Content``` field.\r\nAs there are multiple HTML documents they are encoded as a JSON array of strings in the ```Model``` field.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "P60MultipleReports",
         "parameters": [
           {
@@ -66878,7 +66879,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/p60/{employeeId}": {
       "get": {
-        "description": "Gets a P60 in PDF format for the TaxYear and Employee specified. A URL is returned which points to the PDF file.",
+        "description": "Gets a P60 in PDF format for the TaxYear and Employee specified. A URL is returned which points to the PDF file.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "P60Reports",
         "parameters": [
           {
@@ -66953,7 +66954,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/pensionmemberships": {
       "get": {
-        "description": "Returns a report for Multiple Pension Memberships",
+        "description": "Returns a report for Multiple Pension Memberships<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "PensionMembershipsReports",
         "parameters": [
           {
@@ -67037,7 +67038,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/taxcode": {
       "get": {
-        "description": "Returns a CSV file containing Tax Code Changes values for all Employees.",
+        "description": "Returns a CSV file containing Tax Code Changes values for all Employees.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "TaxCodeChangesReports",
         "parameters": [
           {
@@ -67105,7 +67106,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/teachersPensionEoy": {
       "get": {
-        "description": "Returns a report response containing the Teachers Pension EOYC Report",
+        "description": "Returns a report response containing the Teachers Pension EOYC Report<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "TeachersPensionEoyReports",
         "parameters": [
           {
@@ -67187,7 +67188,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/{employeeId}/p11": {
       "get": {
-        "description": "Returns a P11 Report, detailing all payments and deductions for the given employee",
+        "description": "Returns a P11 Report, detailing all payments and deductions for the given employee<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "P11Reports",
         "parameters": [
           {
@@ -67266,7 +67267,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/{employeeId}/p11detailed": {
       "get": {
-        "description": "Returns a detailed P11 Report for the given employee.",
+        "description": "Returns a detailed P11 Report for the given employee.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "P11DetailedReports",
         "parameters": [
           {
@@ -67631,7 +67632,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/{payPeriod}/attachmentorders": {
       "get": {
-        "description": "Returns a report detailing attachment of earning order deductions for one or multiple periods.",
+        "description": "Returns a report detailing attachment of earning order deductions for one or multiple periods.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "AttachmentOrdersReports",
         "parameters": [
           {
@@ -67727,7 +67728,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/{payPeriod}/averageholidaypayrate": {
       "get": {
-        "description": "Returns a report for average holiday pay rate.",
+        "description": "Returns a report for average holiday pay rate.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "AverageHolidayPayRateReports",
         "parameters": [
           {
@@ -67820,7 +67821,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/{payPeriod}/costanalysis": {
       "get": {
-        "description": "Returns a report analysing the costs of a payrun or range of payruns.",
+        "description": "Returns a report analysing the costs of a payrun or range of payruns.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "CostAnalysisReports",
         "parameters": [
           {
@@ -67916,7 +67917,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/{payPeriod}/costofemployment": {
       "get": {
-        "description": "Returns a report detailing the employment cost per employee for a payrun or range of payruns.",
+        "description": "Returns a report detailing the employment cost per employee for a payrun or range of payruns.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "CostOfEmploymentReports",
         "parameters": [
           {
@@ -68012,7 +68013,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/{payPeriod}/fullsummaryofpay": {
       "get": {
-        "description": "Returns a report detailing the employment cost per employee for a payrun or range of payruns.",
+        "description": "Returns a report detailing the employment cost per employee for a payrun or range of payruns.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "FullSummaryOfPayReports",
         "parameters": [
           {
@@ -68100,7 +68101,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/{payPeriod}/gross-to-net": {
       "get": {
-        "description": "Returns a report comparing employees' gross pay with their net pay for one or more pay periods.",
+        "description": "Returns a report comparing employees' gross pay with their net pay for one or more pay periods.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "GrossToNetReports",
         "parameters": [
           {
@@ -68240,7 +68241,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/{payPeriod}/hourly-pay": {
       "get": {
-        "description": "Returns a report summarising the hourly pay for employees for one or more pay periods.",
+        "description": "Returns a report summarising the hourly pay for employees for one or more pay periods.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "HourlyPayReports",
         "parameters": [
           {
@@ -68341,7 +68342,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/{payPeriod}/pay-element": {
       "get": {
-        "description": "Returns a report detailing pay elements for one or more pay periods.",
+        "description": "Returns a report detailing pay elements for one or more pay periods.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "PayElementReports",
         "parameters": [
           {
@@ -68553,7 +68554,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/{payPeriod}/statutory-pay": {
       "get": {
-        "description": "Returns a report detailing statutory pay for one or more pay periods.",
+        "description": "Returns a report detailing statutory pay for one or more pay periods.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "StatutoryPayReports",
         "parameters": [
           {
@@ -68662,7 +68663,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/{payPeriod}/umbrella-reconciliation": {
       "get": {
-        "description": "Returns an Umbrella Reconciliation report.",
+        "description": "Returns an Umbrella Reconciliation report.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "UmbrellaReconciliationReports",
         "parameters": [
           {
@@ -68772,7 +68773,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/{payPeriod}/variance": {
       "get": {
-        "description": "Returns a report comparing two pay periods or two ranges of pay periods.",
+        "description": "Returns a report comparing two pay periods or two ranges of pay periods.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "VarianceReportReports",
         "parameters": [
           {
@@ -68927,7 +68928,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/{payPeriod}/{periodNumber}/NiLetterValidationReport": {
       "get": {
-        "description": "Checks the NI Letters allocated to employees on a specific payrun",
+        "description": "Checks the NI Letters allocated to employees on a specific payrun<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "NiLetterValidationReportReports",
         "parameters": [
           {
@@ -69016,7 +69017,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/{payPeriod}/{periodNumber}/PayrollRunWarnings": {
       "get": {
-        "description": "Returns a report for payroll warnings",
+        "description": "Returns a report for payroll warnings<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "WarningsReports",
         "parameters": [
           {
@@ -69105,7 +69106,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/{payPeriod}/{periodNumber}/furlough": {
       "get": {
-        "description": "Returns a Furlough Report.",
+        "description": "Returns a Furlough Report.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "FurloughReportReports",
         "parameters": [
           {
@@ -69199,7 +69200,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/{payPeriod}/{periodNumber}/niytd": {
       "get": {
-        "description": "Returns a CSV file containing NI YTD values for all Employees on the payrun.",
+        "description": "Returns a CSV file containing NI YTD values for all Employees on the payrun.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "PayrunNiYtdReports",
         "parameters": [
           {
@@ -69292,7 +69293,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/{payPeriod}/{periodNumber}/papdis": {
       "get": {
-        "description": "Returns a PAPDIS compliant file for the PayRun and Pension Provider PAPDIS Id specified",
+        "description": "Returns a PAPDIS compliant file for the PayRun and Pension Provider PAPDIS Id specified<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "PapdisFileReports",
         "parameters": [
           {
@@ -69407,7 +69408,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/{payPeriod}/{periodNumber}/payments/employee": {
       "get": {
-        "description": "Returns a list of all employee payments that need to be made as a result of a Payrun.\r\nIf you specifically want just bank payments (employees where PayMethod is Credit) then you\r\nmay find the Bank Payment Instructions API call more useful",
+        "description": "Returns a list of all employee payments that need to be made as a result of a Payrun.\r\nIf you specifically want just bank payments (employees where PayMethod is Credit) then you\r\nmay find the Bank Payment Instructions API call more useful<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "PayRunPaymentsReports",
         "parameters": [
           {
@@ -70110,7 +70111,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/{payPeriod}/{periodNumber}/ytd": {
       "get": {
-        "description": "Returns a CSV file containing YTD values for all Employees on the payrun.",
+        "description": "Returns a CSV file containing YTD values for all Employees on the payrun.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "PayrunYtdReports",
         "parameters": [
           {
@@ -70203,7 +70204,7 @@
     },
     "/employers/{employerId}/reports/{taxYear}/{payPeriod}/{periodNumber}/{id}/payslip": {
       "get": {
-        "description": "Returns a single Payslip for the given PayRunEntry of a PayRun. The type of response depends on the accept header.",
+        "description": "Returns a single Payslip for the given PayRunEntry of a PayRun. The type of response depends on the accept header.<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "PayslipReports",
         "parameters": [
           {
@@ -78461,7 +78462,7 @@
     },
     "/payslip/example/pdf": {
       "post": {
-        "description": "Use this operation to test your PayslipCustomisation.\r\nWe'll use dummy date and create a Payslip PDF or HTML document based on the customisation that you submit",
+        "description": "Use this operation to test your PayslipCustomisation.\r\nWe'll use dummy date and create a Payslip PDF or HTML document based on the customisation that you submit<p><strong>Deprecation notice:</strong> <code>Accept: application/pdf</code> returns a PDF link and is deprecated. Use <code>Accept: application/octet-stream</code> to retrieve PDF bytes through the authenticated API. The end-of-life date for PDF-link responses is 1st February 2027. Legacy PDF-link responses include <code>Deprecation</code> (RFC 9745 date <code>@&lt;unix-seconds&gt;</code>), <code>Sunset</code>, <code>Warning</code>, and optional <code>Link</code> headers.</p>",
         "operationId": "ExamplePayslipReports",
         "parameters": [
           {
