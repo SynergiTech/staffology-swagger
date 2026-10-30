@@ -6726,6 +6726,11 @@
             "nullable": true,
             "type": "string"
           },
+          "customEmployerReportFormat": {
+            "description": "Custom format string for employer report filenames when report naming is enabled.",
+            "nullable": true,
+            "type": "string"
+          },
           "defaultPayOptions": {
             "$ref": "#/components/schemas/Contract.PayOptionsRequest"
           },
@@ -6853,6 +6858,11 @@
             "nullable": true,
             "type": "boolean"
           },
+          "useCustomEmployerReportFormat": {
+            "description": "When enabled, employer report downloads use the configured report naming format.",
+            "nullable": true,
+            "type": "boolean"
+          },
           "useTenantRtiSubmissionSettings": {
             "description": "If the Tenant for this employer has Bureau Features enabled then they can set RtiSubmissionSettings to be used across multiple employers.\r\nIf this is set to true then those settings will be used instead of any set at the Employer level",
             "type": "boolean"
@@ -6942,6 +6952,11 @@
           },
           "customEmployeeReportFormat": {
             "description": "Custom format string for employee report filenames when report naming is enabled.",
+            "nullable": true,
+            "type": "string"
+          },
+          "customEmployerReportFormat": {
+            "description": "Custom format string for employer report filenames when report naming is enabled.",
             "nullable": true,
             "type": "string"
           },
@@ -7069,6 +7084,11 @@
           },
           "useCustomEmployeeReportFormat": {
             "description": "When enabled, employee report downloads use the configured report naming format.",
+            "nullable": true,
+            "type": "boolean"
+          },
+          "useCustomEmployerReportFormat": {
+            "description": "When enabled, employer report downloads use the configured report naming format.",
             "nullable": true,
             "type": "boolean"
           },
