@@ -11409,6 +11409,9 @@
           "subtractBasicRateTax": {
             "type": "boolean"
           },
+          "tierablePayCalculationMethod": {
+            "$ref": "#/components/schemas/TierablePayCalculationMethod"
+          },
           "tierablePayCustomPayCodes": {
             "description": "If UseCustomPayCodesForTierablePay is set to true then this contains a list of PayCodes.Code\r\nthat we'll treat as being tierable.",
             "items": {
@@ -11554,6 +11557,9 @@
           },
           "subtractBasicRateTax": {
             "type": "boolean"
+          },
+          "tierablePayCalculationMethod": {
+            "$ref": "#/components/schemas/TierablePayCalculationMethod"
           },
           "tierablePayCustomPayCodes": {
             "description": "If UseCustomPayCodesForTierablePay is set to true then this contains a list of PayCodes.Code\r\nthat we'll treat as being tierable.",
@@ -29802,6 +29808,9 @@
           "subtractBasicRateTax": {
             "type": "boolean"
           },
+          "tierablePayCalculationMethod": {
+            "$ref": "#/components/schemas/TierablePayCalculationMethod"
+          },
           "tierablePayCustomPayCodes": {
             "description": "If UseCustomPayCodesForTierablePay is set to true then this contains a list of PayCodes.Code\r\nthat we'll treat as being tierable.",
             "items": {
@@ -30205,6 +30214,9 @@
           "subtractedBasicRateTax": {
             "description": "[readonly] The SubtractedBasicRateTax applied from the PensionScheme SubtractBasicRateTax.",
             "type": "boolean"
+          },
+          "tierablePayCalculationMethod": {
+            "$ref": "#/components/schemas/TierablePayCalculationMethod"
           },
           "tierablePayPayCodes": {
             "description": "[readonly] If the pension scheme is set to override the TierablePay PayCodes, then this is what they've been set to.",
@@ -33035,6 +33047,13 @@
           }
         },
         "type": "object"
+      },
+      "TierablePayCalculationMethod": {
+        "enum": [
+          "PayPeriodPay",
+          "UsualPay"
+        ],
+        "type": "string"
       },
       "TieredPension": {
         "additionalProperties": false,
