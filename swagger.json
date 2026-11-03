@@ -77826,6 +77826,14 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "description": "Shared secret supplied via the BrandingCredentials header.",
+            "in": "header",
+            "name": "BrandingCredentials",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
