@@ -770,6 +770,13 @@
         ],
         "type": "string"
       },
+      "AiFeature": {
+        "enum": [
+          "None",
+          "ProcessingNotesWritingAssistant"
+        ],
+        "type": "string"
+      },
       "AllowanceType": {
         "enum": [
           "Fixed",
@@ -12943,6 +12950,74 @@
           "week1Month1": {
             "description": "Determines whether PAYE should be calculated on a Week1/Month1 basis instead of on a cumulative basis.\r\nThis is automatically set to false for any existing Employees when you start a new Tax Year.",
             "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.TenantAiSettingRowRequest": {
+        "additionalProperties": false,
+        "description": "A single AI feature setting to apply to a tenant.",
+        "properties": {
+          "feature": {
+            "$ref": "#/components/schemas/AiFeature"
+          },
+          "isEnabled": {
+            "description": "Whether the AI feature should be enabled for the tenant.",
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.TenantAiSettingRowResponse": {
+        "additionalProperties": false,
+        "description": "A single AI feature setting for a tenant.",
+        "properties": {
+          "displayName": {
+            "description": "Human-readable display name for the AI feature.",
+            "nullable": true,
+            "type": "string"
+          },
+          "feature": {
+            "$ref": "#/components/schemas/AiFeature"
+          },
+          "isEnabled": {
+            "description": "Whether the AI feature is enabled for the tenant.",
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.TenantAiSettingsRequest": {
+        "additionalProperties": false,
+        "description": "Request body for replacing all AI settings for a tenant.",
+        "properties": {
+          "rows": {
+            "description": "Exactly one row for every AI feature. The supplied rows replace the tenant's existing AI settings.",
+            "items": {
+              "$ref": "#/components/schemas/Contract.TenantAiSettingRowRequest"
+            },
+            "nullable": true,
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.TenantAiSettingsResponse": {
+        "additionalProperties": false,
+        "description": "Tenant AI settings returned to Tenant Admins.",
+        "properties": {
+          "rows": {
+            "description": "Per-feature AI settings for the tenant. Each row represents one AI feature and whether it is enabled.",
+            "items": {
+              "$ref": "#/components/schemas/Contract.TenantAiSettingRowResponse"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "tenantId": {
+            "description": "The unique identifier of the tenant these AI settings belong to.",
+            "format": "uuid",
+            "type": "string"
           }
         },
         "type": "object"
@@ -32784,6 +32859,9 @@
           "disableEvc": {
             "description": "Indicates whether FPS should be submitted to EVC for employees/employers under this tenant.",
             "type": "boolean"
+          },
+          "disabledAiFeatures": {
+            "$ref": "#/components/schemas/AiFeature"
           },
           "enableAdminsToManageReportWriter": {
             "description": "Indicates whether all Admin users of a tenant can manage report templates.",
@@ -79016,6 +79094,102 @@
           }
         },
         "summary": "Set Evc",
+        "tags": [
+          "Tenant"
+        ]
+      }
+    },
+    "/tenants/{id}/ai-settings": {
+      "get": {
+        "operationId": "GetAiSettingsTenant",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.TenantAiSettingsResponse"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Get tenant AI settings",
+        "tags": [
+          "Tenant"
+        ]
+      },
+      "put": {
+        "description": "Replaces all AI settings for the tenant. The request must contain exactly one row for every AI feature.",
+        "operationId": "UpdateAiSettingsTenant",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.TenantAiSettingsRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.TenantAiSettingsRequest"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.TenantAiSettingsRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.TenantAiSettingsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.TenantAiSettingsResponse"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Update tenant AI settings",
         "tags": [
           "Tenant"
         ]
