@@ -3415,6 +3415,27 @@
         },
         "type": "object"
       },
+      "Contract.AdvancePayRunEntriesRequest": {
+        "additionalProperties": false,
+        "description": "Request to advance the same number of periods for selected pay run entries and recalculate them.",
+        "properties": {
+          "advancedPeriods": {
+            "description": "Absolute number of periods to advance each selected entry by (0..max remaining in tax year).\r\nZero clears a previous advance (same as single-entry).",
+            "format": "int32",
+            "type": "integer"
+          },
+          "payRunEntryIds": {
+            "description": "UniqueIds of the pay run entries to advance.",
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "nullable": true,
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
       "Contract.AeAssessmentAction": {
         "additionalProperties": false,
         "properties": {
@@ -25274,6 +25295,12 @@
           "employeeRoleReference": {
             "nullable": true,
             "type": "string"
+          },
+          "fullPeriodMultiplier": {
+            "description": "Used for Advanced pay, count of periods paid at 100%, periods without leaves",
+            "format": "int32",
+            "nullable": true,
+            "type": "integer"
           },
           "fullTimeAnnualValue": {
             "description": "Used to set Full Time Annual Value for payline",
@@ -57634,6 +57661,97 @@
           }
         },
         "summary": "Add PayRunEntries (deprecated)",
+        "tags": [
+          "PayRun"
+        ]
+      }
+    },
+    "/employers/{employerId}/payrun/{taxYear}/{payPeriod}/{periodNumber}/advanceperiods": {
+      "post": {
+        "description": "Applies the same absolute AdvancedPeriods value to each selected pay run entry and recalculates those entries.\r\nSuccess/failure reporting matches Recalculate Record bulk semantics.",
+        "operationId": "AdvancePayRunEntriesPayRun",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "payPeriod",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/PayPeriods"
+            }
+          },
+          {
+            "in": "path",
+            "name": "periodNumber",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "taxYear",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/TaxYear"
+            }
+          },
+          {
+            "in": "query",
+            "name": "ordinal",
+            "schema": {
+              "default": 1,
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.AdvancePayRunEntriesRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.AdvancePayRunEntriesRequest"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.AdvancePayRunEntriesRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.AdvancePayRunEntriesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.RecalculatePayRunEntriesResponse"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Advance Periods for PayRunEntries",
         "tags": [
           "PayRun"
         ]
