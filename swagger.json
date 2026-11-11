@@ -2463,6 +2463,217 @@
         ],
         "type": "string"
       },
+      "BulkReassignBlockingReason": {
+        "enum": [
+          "None",
+          "SelectionOutsideSupervisedSquads",
+          "NoCommonSquadCoverage",
+          "NoOtherEligibleUser"
+        ],
+        "type": "string"
+      },
+      "BulkReassignEligibleTargetsRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "employerIds": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "nullable": true,
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "BulkReassignEligibleTargetsResult": {
+        "additionalProperties": false,
+        "properties": {
+          "blockingReason": {
+            "$ref": "#/components/schemas/BulkReassignBlockingReason"
+          },
+          "message": {
+            "nullable": true,
+            "type": "string"
+          },
+          "targetProcessors": {
+            "items": {
+              "$ref": "#/components/schemas/Item"
+            },
+            "nullable": true,
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "BulkReassignEmployerItem": {
+        "additionalProperties": false,
+        "properties": {
+          "employerId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "rowVersion": {
+            "format": "byte",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "BulkReassignEmployerResult": {
+        "additionalProperties": false,
+        "properties": {
+          "currentRowVersion": {
+            "format": "byte",
+            "nullable": true,
+            "type": "string"
+          },
+          "employerId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "employerName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "errorCode": {
+            "nullable": true,
+            "type": "string"
+          },
+          "errorMessage": {
+            "nullable": true,
+            "type": "string"
+          },
+          "skippedBecauseAlreadyAssigned": {
+            "type": "boolean"
+          },
+          "succeeded": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "BulkReassignProcessorRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "employers": {
+            "items": {
+              "$ref": "#/components/schemas/BulkReassignEmployerItem"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "targetProcessorUserId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "BulkReassignProcessorResult": {
+        "additionalProperties": false,
+        "properties": {
+          "failureCount": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "message": {
+            "nullable": true,
+            "type": "string"
+          },
+          "results": {
+            "items": {
+              "$ref": "#/components/schemas/BulkReassignEmployerResult"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "successCount": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "targetProcessorName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "targetProcessorUserId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "BureauEmployerComplianceStatusFilter": {
+        "enum": [
+          "AllStatuses",
+          "Completed",
+          "Pending",
+          "Overdue",
+          "Failed",
+          "NotApplicable"
+        ],
+        "type": "string"
+      },
+      "BureauEmployerDeadlineStatusFilter": {
+        "enum": [
+          "AllClients",
+          "Overdue",
+          "DueToday",
+          "DueSoon"
+        ],
+        "type": "string"
+      },
+      "BureauEmployerListItem": {
+        "additionalProperties": false,
+        "description": "Bureau employer list entry returned by GET /bureau/employers and GET /bureau/employers/paged.",
+        "properties": {
+          "bureauSettingsRowVersion": {
+            "description": "Optimistic concurrency token for bureau settings updates.",
+            "format": "byte",
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "metadata": {
+            "nullable": true
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          },
+          "url": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "BureauEmployerSortBy": {
+        "enum": [
+          "Name",
+          "ProcessorName",
+          "CurrentStage",
+          "NextStage",
+          "PayDate"
+        ],
+        "type": "string"
+      },
+      "BureauEmployerStageFilter": {
+        "enum": [
+          "AllStages",
+          "Open",
+          "Submitted",
+          "Processing",
+          "AwaitingApproval",
+          "Approved",
+          "Finalised"
+        ],
+        "type": "string"
+      },
       "BureauSettings": {
         "additionalProperties": false,
         "description": "Represents the BureauSettings for an Employer.",
@@ -2494,6 +2705,12 @@
           "reportPackId": {
             "description": "The Id of the ReportPack, if any, to present to the Payroll Client",
             "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "rowVersion": {
+            "description": "Optimistic concurrency token for bureau settings updates",
+            "format": "byte",
             "nullable": true,
             "type": "string"
           },
@@ -4612,6 +4829,40 @@
             "description": "Loan amount at the start of the year",
             "format": "double",
             "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.BureauEmployerPagedResponse": {
+        "additionalProperties": false,
+        "description": "Paged list of bureau employer (client) rows for the dashboard table.",
+        "properties": {
+          "availableSchedules": {
+            "description": "Pay schedule frequencies present in the current processor/tax-year/search scope (for the Schedule filter dropdown).",
+            "items": {
+              "$ref": "#/components/schemas/PayPeriods"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/BureauEmployerListItem"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "pageNum": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "pageSize": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "totalCount": {
+            "format": "int32",
+            "type": "integer"
           }
         },
         "type": "object"
@@ -16639,7 +16890,8 @@
           "Eps",
           "EmployeeRole",
           "Fps",
-          "WorkingPattern"
+          "WorkingPattern",
+          "Bureau"
         ],
         "type": "string"
       },
@@ -35685,6 +35937,27 @@
         ]
       }
     },
+    "/bureau/can-use-bulk-reassign": {
+      "get": {
+        "operationId": "CanUseBulkReassignActionBureau",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "Whether the current user can use bulk processor reassignment",
+        "tags": [
+          "Bureau"
+        ]
+      }
+    },
     "/bureau/employers": {
       "get": {
         "description": "Returns a list of Employers.\r\nThis differs from the main Employer list end point in that the metadata included is more relevant to Bureau activities\r\nIt also gives you the ability to filter based on the allocated Processor.\r\nNote: an entry is returned for each PaySchedule. So if the employer has both a Monthly and a Weekly PaySchedule then they'll appear twice",
@@ -35698,6 +35971,22 @@
               "format": "uuid",
               "type": "string"
             }
+          },
+          {
+            "description": "The column to sort by. Defaults to Name.",
+            "in": "query",
+            "name": "sortBy",
+            "schema": {
+              "$ref": "#/components/schemas/BureauEmployerSortBy"
+            }
+          },
+          {
+            "description": "True to sort descending. Defaults to ascending. Rows with no value for the sorted column are always listed last.",
+            "in": "query",
+            "name": "sortDescending",
+            "schema": {
+              "type": "boolean"
+            }
           }
         ],
         "responses": {
@@ -35706,7 +35995,7 @@
               "application/json": {
                 "schema": {
                   "items": {
-                    "$ref": "#/components/schemas/Item"
+                    "$ref": "#/components/schemas/BureauEmployerListItem"
                   },
                   "type": "array"
                 }
@@ -35716,6 +36005,229 @@
           }
         },
         "summary": "List Employers",
+        "tags": [
+          "Bureau"
+        ]
+      }
+    },
+    "/bureau/employers/paged": {
+      "get": {
+        "description": "Returns a filtered, sorted, and paged set of bureau employer rows for the advanced bureau dashboard.\r\nNote: an entry is returned for each PaySchedule.",
+        "operationId": "EmployersPagedBureau",
+        "parameters": [
+          {
+            "description": "The Id of the Processor (User) you want to restrict the list to.",
+            "in": "query",
+            "name": "processor",
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Restricts results to the specified tax year.",
+            "in": "query",
+            "name": "taxYear",
+            "schema": {
+              "$ref": "#/components/schemas/TaxYear"
+            }
+          },
+          {
+            "description": "Filters by employer name, id, alternative id, or PAYE reference (minimum 3 characters).",
+            "in": "query",
+            "name": "searchTerm",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "When set, only rows with or without approvals enabled are returned.",
+            "in": "query",
+            "name": "approvalsEnabled",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Zero-based page index.",
+            "in": "query",
+            "name": "pageNum",
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Number of rows per page.",
+            "in": "query",
+            "name": "pageSize",
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "The column to sort by. Defaults to Name.",
+            "in": "query",
+            "name": "sortBy",
+            "schema": {
+              "$ref": "#/components/schemas/BureauEmployerSortBy"
+            }
+          },
+          {
+            "description": "True to sort descending. Defaults to ascending. Rows with no value for the sorted column are always listed last.",
+            "in": "query",
+            "name": "sortDescending",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Filters rows by deadline urgency (Overdue, Due today, Due soon).",
+            "in": "query",
+            "name": "deadlineStatus",
+            "schema": {
+              "$ref": "#/components/schemas/BureauEmployerDeadlineStatusFilter"
+            }
+          },
+          {
+            "description": "Filters rows by displayed current payroll stage.",
+            "in": "query",
+            "name": "stage",
+            "schema": {
+              "$ref": "#/components/schemas/BureauEmployerStageFilter"
+            }
+          },
+          {
+            "description": "Filters rows by pay schedule frequency.",
+            "in": "query",
+            "name": "schedule",
+            "schema": {
+              "$ref": "#/components/schemas/PayPeriods"
+            }
+          },
+          {
+            "description": "Filters rows by aggregate compliance status.",
+            "in": "query",
+            "name": "complianceStatus",
+            "schema": {
+              "$ref": "#/components/schemas/BureauEmployerComplianceStatusFilter"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.BureauEmployerPagedResponse"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "List Employers (filtered and paged)",
+        "tags": [
+          "Bureau"
+        ]
+      }
+    },
+    "/bureau/employers/reassign-processor": {
+      "put": {
+        "description": "Reassigns the allocated processor for multiple employers in a single operation.\r\nRequires Supervisor access on each selected employer's payroll squad.",
+        "operationId": "BulkReassignProcessorsBureau",
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BulkReassignProcessorRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BulkReassignProcessorRequest"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BulkReassignProcessorRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BulkReassignProcessorRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BulkReassignProcessorResult"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "409": {
+            "description": "Conflict"
+          }
+        },
+        "summary": "Bulk reassign processors",
+        "tags": [
+          "Bureau"
+        ]
+      }
+    },
+    "/bureau/employers/reassign-processor/eligible-targets": {
+      "post": {
+        "operationId": "GetBulkReassignEligibleTargetsBureau",
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BulkReassignEligibleTargetsRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BulkReassignEligibleTargetsRequest"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BulkReassignEligibleTargetsRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BulkReassignEligibleTargetsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BulkReassignEligibleTargetsResult"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Get eligible processor targets for bulk reassignment",
         "tags": [
           "Bureau"
         ]
@@ -38131,6 +38643,9 @@
               }
             },
             "description": "Success"
+          },
+          "403": {
+            "description": "Forbidden"
           }
         },
         "summary": "Get BureauSettings",
@@ -80274,6 +80789,9 @@
           "400": {
             "description": "Bad Request"
           },
+          "403": {
+            "description": "Forbidden"
+          },
           "404": {
             "description": "Not Found"
           }
@@ -80341,6 +80859,9 @@
           "400": {
             "description": "Bad Request"
           },
+          "403": {
+            "description": "Forbidden"
+          },
           "404": {
             "description": "Not Found"
           }
@@ -80405,6 +80926,9 @@
           "400": {
             "description": "Bad Request"
           },
+          "403": {
+            "description": "Forbidden"
+          },
           "404": {
             "description": "Not Found"
           }
@@ -80447,6 +80971,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
           },
           "404": {
             "description": "Not Found"
@@ -80495,6 +81022,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
           },
           "404": {
             "content": {
@@ -80555,6 +81085,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
           },
           "404": {
             "description": "Not Found"
