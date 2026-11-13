@@ -33939,6 +33939,12 @@
           "role": {
             "$ref": "#/components/schemas/UserRole"
           },
+          "salesforceAccountId": {
+            "description": "Optional Salesforce account identifier for the billpayer user. SuperAdmin-only; max 18 characters.",
+            "maxLength": 18,
+            "nullable": true,
+            "type": "string"
+          },
           "salutation": {
             "maxLength": 35,
             "nullable": true,
