@@ -2638,9 +2638,7 @@
             "format": "uuid",
             "type": "string"
           },
-          "metadata": {
-            "nullable": true
-          },
+          "metadata": {},
           "name": {
             "nullable": true,
             "type": "string"
@@ -2712,6 +2710,7 @@
             "description": "Optimistic concurrency token for bureau settings updates",
             "format": "byte",
             "nullable": true,
+            "readOnly": true,
             "type": "string"
           },
           "showContactCard": {
@@ -5097,9 +5096,7 @@
             "format": "uuid",
             "type": "string"
           },
-          "metadata": {
-            "nullable": true
-          },
+          "metadata": {},
           "name": {
             "nullable": true,
             "type": "string"
@@ -5253,9 +5250,7 @@
             "format": "uuid",
             "type": "string"
           },
-          "metadata": {
-            "nullable": true
-          },
+          "metadata": {},
           "name": {
             "nullable": true,
             "type": "string"
@@ -5442,9 +5437,7 @@
             "format": "uuid",
             "type": "string"
           },
-          "metadata": {
-            "nullable": true
-          },
+          "metadata": {},
           "name": {
             "nullable": true,
             "type": "string"
@@ -5582,9 +5575,7 @@
             "format": "uuid",
             "type": "string"
           },
-          "metadata": {
-            "nullable": true
-          },
+          "metadata": {},
           "name": {
             "nullable": true,
             "type": "string"
@@ -6259,9 +6250,7 @@
             "format": "uuid",
             "type": "string"
           },
-          "metadata": {
-            "nullable": true
-          },
+          "metadata": {},
           "name": {
             "nullable": true,
             "type": "string"
@@ -6412,9 +6401,7 @@
             "format": "uuid",
             "type": "string"
           },
-          "metadata": {
-            "nullable": true
-          },
+          "metadata": {},
           "name": {
             "nullable": true,
             "type": "string"
@@ -8365,9 +8352,7 @@
             "$ref": "#/components/schemas/Contract.JobResultFileResponse"
           },
           "metadata": {
-            "additionalProperties": {
-              "nullable": true
-            },
+            "additionalProperties": {},
             "description": "Job result metadata, e.g. Employee Import stats",
             "nullable": true,
             "type": "object"
@@ -8470,9 +8455,7 @@
             "format": "uuid",
             "type": "string"
           },
-          "metadata": {
-            "nullable": true
-          },
+          "metadata": {},
           "name": {
             "nullable": true,
             "type": "string"
@@ -9883,9 +9866,7 @@
             "format": "uuid",
             "type": "string"
           },
-          "metadata": {
-            "nullable": true
-          },
+          "metadata": {},
           "name": {
             "nullable": true,
             "type": "string"
@@ -9968,9 +9949,7 @@
             "format": "uuid",
             "type": "string"
           },
-          "metadata": {
-            "nullable": true
-          },
+          "metadata": {},
           "name": {
             "nullable": true,
             "type": "string"
@@ -13743,6 +13722,7 @@
           "workerGroupId": {
             "description": "[readonly]",
             "format": "uuid",
+            "readOnly": true,
             "type": "string"
           }
         },
@@ -16408,9 +16388,7 @@
           "isOwner": {
             "type": "boolean"
           },
-          "metadata": {
-            "nullable": true
-          },
+          "metadata": {},
           "name": {
             "nullable": true,
             "type": "string"
@@ -20233,9 +20211,7 @@
             "format": "uuid",
             "type": "string"
           },
-          "metadata": {
-            "nullable": true
-          },
+          "metadata": {},
           "name": {
             "nullable": true,
             "type": "string"
@@ -25215,7 +25191,6 @@
           "payCodeTotals": {
             "additionalProperties": {
               "format": "double",
-              "nullable": true,
               "type": "number"
             },
             "nullable": true,
@@ -25276,7 +25251,6 @@
           "payElements": {
             "additionalProperties": {
               "format": "double",
-              "nullable": true,
               "type": "number"
             },
             "nullable": true,
@@ -25476,7 +25450,6 @@
           "contributingPayLineValues": {
             "additionalProperties": {
               "format": "double",
-              "nullable": true,
               "type": "number"
             },
             "description": "Deserialised breakdown of per-source-payline deductions that comprise this AUTHUPL line.",
@@ -27390,6 +27363,7 @@
           "periodEventsConfig": {
             "additionalProperties": false,
             "description": "Only applicable if Bureau functionality is enabled. Defines the number of days each event occurs before the Payment Date.",
+            "example": "\r\n            Approval date to be 3 days before the Payment date, value should be -3.\r\n            ",
             "nullable": true,
             "properties": {
               "Approval": {
@@ -29426,9 +29400,7 @@
             "nullable": true,
             "type": "string"
           },
-          "submissionData": {
-            "nullable": true
-          },
+          "submissionData": {},
           "taxYear": {
             "$ref": "#/components/schemas/TaxYear"
           }
@@ -30472,7 +30444,6 @@
           "nonPensionableStatutoryPays": {
             "additionalProperties": {
               "format": "double",
-              "nullable": true,
               "type": "number"
             },
             "description": "Non pensionable statutory pay per leave",
@@ -31298,8 +31269,7 @@
             "type": "string"
           },
           "model": {
-            "description": "[readonly] If the type is application/json then this will contain a JSON representation of the relevant model.",
-            "nullable": true
+            "description": "[readonly] If the type is application/json then this will contain a JSON representation of the relevant model."
           },
           "stream": {
             "description": "[readonly] Contains PDF bytes when Type is application/octet-stream.",
@@ -33391,9 +33361,7 @@
             "format": "uuid",
             "type": "string"
           },
-          "metadata": {
-            "nullable": true
-          },
+          "metadata": {},
           "name": {
             "nullable": true,
             "type": "string"
@@ -34497,8 +34465,7 @@
             "type": "string"
           },
           "payload": {
-            "description": "[readonly] the JSON payload that will be sent to the URl",
-            "nullable": true
+            "description": "[readonly] the JSON payload that will be sent to the URl"
           },
           "statusCode": {
             "description": "[readonly] The status code received from the Url",
@@ -34663,6 +34630,7 @@
           "workerGroupId": {
             "description": "[readonly]",
             "format": "uuid",
+            "readOnly": true,
             "type": "string"
           }
         },
@@ -34990,7 +34958,7 @@
     "title": "Staffology Payroll API",
     "version": "v1"
   },
-  "openapi": "3.0.1",
+  "openapi": "3.0.4",
   "paths": {
     "/account": {
       "get": {
@@ -35023,7 +34991,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Account Details",
@@ -35061,7 +35029,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Tenant",
@@ -35193,7 +35161,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get EmployerDefaults",
@@ -35237,7 +35205,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Set EmployerDefaults",
@@ -35262,7 +35230,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Invitations",
@@ -35287,7 +35255,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List ApiKeys",
@@ -35388,7 +35356,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get ApiKey",
@@ -35412,6 +35380,7 @@
               "schema": {
                 "properties": {
                   "file": {
+                    "description": "The file to upload. Maximum allowed file size is 5 MB",
                     "format": "binary",
                     "type": "string"
                   }
@@ -35430,7 +35399,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update Photo",
@@ -35476,7 +35445,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update Profile",
@@ -35512,7 +35481,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List User Employers",
@@ -35527,7 +35496,7 @@
         "operationId": "VerifyAccount",
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Re-send Verification Email",
@@ -35569,7 +35538,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Verify Email Address",
@@ -35618,7 +35587,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Assess an employee",
@@ -35658,13 +35627,6 @@
               "format": "uuid",
               "type": "string"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -35696,7 +35658,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "AEO Statement",
@@ -35729,7 +35691,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Bill",
@@ -35767,7 +35729,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Bill CSV",
@@ -35792,7 +35754,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Bills",
@@ -35827,7 +35789,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get DirectDebitMandate",
@@ -35851,7 +35813,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Confirm Direct Debit Setup",
@@ -35882,7 +35844,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Setup DirectDebitMandate",
@@ -35911,13 +35873,6 @@
               "format": "date-time",
               "type": "string"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -35934,7 +35889,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get UsageStats Report",
@@ -35955,7 +35910,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Whether the current user can use bulk processor reassignment",
@@ -36007,7 +35962,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Employers",
@@ -36130,7 +36085,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Employers (filtered and paged)",
@@ -36176,7 +36131,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "403": {
             "description": "Forbidden"
@@ -36227,7 +36182,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "403": {
             "description": "Forbidden"
@@ -36255,7 +36210,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Allocated Processors",
@@ -36294,7 +36249,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -36322,7 +36277,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Content Dictionary For Report Template Column Type(beta)",
@@ -36343,13 +36298,6 @@
               "format": "uuid",
               "type": "string"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -36366,7 +36314,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Employee Export Roles Details",
@@ -36429,13 +36377,6 @@
             "schema": {
               "type": "boolean"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -36452,7 +36393,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Employee Export Details",
@@ -36537,7 +36478,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Employers",
@@ -36631,7 +36572,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Search Employees",
@@ -36656,7 +36597,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List EmployerGroups",
@@ -36761,7 +36702,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "EmployerGroup Not Found"
@@ -36818,7 +36759,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "EmployerGroup Not Found"
@@ -36856,6 +36797,7 @@
               "schema": {
                 "properties": {
                   "file": {
+                    "description": "The file to upload. Maximum allowed file size is 10 MB",
                     "format": "binary",
                     "type": "string"
                   }
@@ -36877,7 +36819,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Import CSV",
@@ -36908,7 +36850,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Gets the re-enrolment status for the employer",
@@ -36941,7 +36883,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Search Employers",
@@ -36987,7 +36929,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -37046,7 +36988,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -37107,7 +37049,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -37159,7 +37101,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -37231,7 +37173,7 @@
                 "schema": {}
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Create employee auto enrolment assessment",
@@ -37286,7 +37228,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -37335,13 +37277,6 @@
               "format": "uuid",
               "type": "string"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -37368,7 +37303,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get AeLetter",
@@ -37422,7 +37357,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Email AeLetter",
@@ -37469,7 +37404,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Mark Letter as Sent",
@@ -37505,7 +37440,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -37545,7 +37480,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -37578,7 +37513,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Mark All Letters as Sent",
@@ -37615,7 +37550,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Gets a list of re-enrolment dates for the employer",
@@ -37668,7 +37603,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -37807,7 +37742,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List AnalysisCategoryCodes",
@@ -37994,7 +37929,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -38082,7 +38017,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update AnalysisCategoryCode",
@@ -38172,7 +38107,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -38252,7 +38187,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update AnalysisCategory",
@@ -38339,7 +38274,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Employer Audit Log",
@@ -38366,7 +38301,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Email All Letters",
@@ -38419,7 +38354,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Pending Letters",
@@ -38463,7 +38398,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Pending Letters Count",
@@ -38516,7 +38451,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Pending Postponement Letters",
@@ -38543,7 +38478,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Mark All Letters as Sent",
@@ -38605,7 +38540,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -38648,7 +38583,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "403": {
             "description": "Forbidden"
@@ -38707,7 +38642,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update BureauSettings",
@@ -38741,7 +38676,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -38778,7 +38713,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get BureauSettings ReportPack",
@@ -38851,7 +38786,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Cost Centres",
@@ -38974,7 +38909,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update Cost Centre",
@@ -39016,7 +38951,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Cost Centre",
@@ -39093,7 +39028,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Cost Centre (deprecated)",
@@ -39156,7 +39091,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update Cost Centre (deprecated)",
@@ -39193,7 +39128,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Departments",
@@ -39296,7 +39231,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -39397,7 +39332,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -39477,7 +39412,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Department (deprecated)",
@@ -39540,7 +39475,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Employer Not Found"
@@ -39604,7 +39539,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Employee Notices",
@@ -39691,7 +39626,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Notices",
@@ -39723,7 +39658,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Check for new Notices",
@@ -39781,7 +39716,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Parse notices from XML",
@@ -39861,7 +39796,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Notice",
@@ -39902,7 +39837,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -39952,7 +39887,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Reapply DpsNotices",
@@ -39986,7 +39921,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get DPS Settings",
@@ -40042,7 +39977,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update DPS Settings",
@@ -40094,7 +40029,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Emails",
@@ -40127,7 +40062,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Microsoft login for authorization",
@@ -40161,7 +40096,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get MailSettings",
@@ -40217,7 +40152,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update MailSettings",
@@ -40286,7 +40221,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Email Verification (Request)",
@@ -40336,7 +40271,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Email Verification (Respond)",
@@ -40370,7 +40305,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update token details by Authorization code",
@@ -40412,7 +40347,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Email",
@@ -40452,7 +40387,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Re-send Email",
@@ -40548,7 +40483,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Employees",
@@ -40732,7 +40667,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Expiring RightToWork",
@@ -40794,6 +40729,7 @@
               "schema": {
                 "properties": {
                   "file": {
+                    "description": "The file to upload. Maximum allowed file size is 10 MB",
                     "format": "binary",
                     "type": "string"
                   }
@@ -40815,7 +40751,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "409": {
             "description": "Conflict"
@@ -40864,7 +40800,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Leavers",
@@ -40946,7 +40882,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -41029,7 +40965,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get list of FPS Employees for EYFPS for the given Ids",
@@ -41104,7 +41040,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -41163,7 +41099,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -41209,7 +41145,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           },
           "409": {
             "description": "Conflict"
@@ -41263,7 +41199,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           },
           "409": {
             "description": "Conflict"
@@ -41391,7 +41327,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Search Employer for Employees",
@@ -41433,7 +41369,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Employee by Payroll Code",
@@ -41478,7 +41414,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List AttachmentOrders",
@@ -41597,7 +41533,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Payments",
@@ -41698,7 +41634,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -41774,7 +41710,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -41837,6 +41773,7 @@
               "schema": {
                 "properties": {
                   "file": {
+                    "description": "Maximum allowed file size is 10 MB",
                     "format": "binary",
                     "type": "string"
                   }
@@ -41848,7 +41785,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Add Document",
@@ -41965,7 +41902,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -42031,7 +41968,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get AE Assessments",
@@ -42145,7 +42082,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Last AE Assessment",
@@ -42257,7 +42194,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get AE Assessment",
@@ -42300,13 +42237,6 @@
               "format": "uuid",
               "type": "string"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -42333,7 +42263,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Letter",
@@ -42397,7 +42327,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Email Letter",
@@ -42444,7 +42374,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Mark Letter as Sent",
@@ -42618,7 +42548,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Benefits",
@@ -42788,7 +42718,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -42864,7 +42794,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -42915,7 +42845,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Leave",
@@ -43057,7 +42987,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Find Linked Piw",
@@ -43111,7 +43041,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -43195,7 +43125,7 @@
             "in": "query",
             "name": "averageWeeklyEarnings",
             "schema": {
-              "default": 0,
+              "default": 0.0,
               "format": "double",
               "type": "number"
             }
@@ -43230,7 +43160,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -43334,7 +43264,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -43410,7 +43340,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -43473,6 +43403,7 @@
               "schema": {
                 "properties": {
                   "file": {
+                    "description": "Maximum allowed file size is 5 MB",
                     "format": "binary",
                     "type": "string"
                   }
@@ -43484,7 +43415,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Add Document",
@@ -43601,7 +43532,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -43702,7 +43633,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -43753,7 +43684,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Loans",
@@ -43920,7 +43851,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -43996,7 +43927,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -44059,6 +43990,7 @@
               "schema": {
                 "properties": {
                   "file": {
+                    "description": "Maximum allowed file size is 10 MB",
                     "format": "binary",
                     "type": "string"
                   }
@@ -44070,7 +44002,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Add Document",
@@ -44187,7 +44119,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -44235,7 +44167,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Notes",
@@ -44396,7 +44328,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -44472,7 +44404,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -44529,6 +44461,7 @@
               "schema": {
                 "properties": {
                   "file": {
+                    "description": "Maximum allowed file size is 5 MB",
                     "format": "binary",
                     "type": "string"
                   }
@@ -44540,7 +44473,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Add Document",
@@ -44657,7 +44590,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -44714,7 +44647,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -44793,7 +44726,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -44880,7 +44813,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -45060,7 +44993,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -45199,7 +45132,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -45297,7 +45230,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -45378,7 +45311,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -45462,7 +45395,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -45532,7 +45465,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Retrieve P11 Historical data",
@@ -45603,7 +45536,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -45728,7 +45661,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "content": {
@@ -45836,7 +45769,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Pension (deprecated)",
@@ -45912,7 +45845,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -45994,7 +45927,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -46063,7 +45996,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Pensions",
@@ -46178,7 +46111,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Pension",
@@ -46264,7 +46197,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -46341,7 +46274,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get last PayRunEntry for a Pension (deprecated)",
@@ -46386,7 +46319,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Pension Refunds",
@@ -46494,7 +46427,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -46607,7 +46540,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -46683,7 +46616,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -46741,7 +46674,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -46797,7 +46730,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "403": {
             "description": "Forbidden"
@@ -46986,7 +46919,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "403": {
             "description": "Forbidden"
@@ -47068,7 +47001,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -47180,7 +47113,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -47243,7 +47176,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -47303,7 +47236,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -47397,7 +47330,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -47460,7 +47393,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -47554,7 +47487,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -47648,7 +47581,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -47714,7 +47647,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "403": {
             "description": "Forbidden"
@@ -47933,7 +47866,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -48023,7 +47956,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -48114,7 +48047,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -48205,7 +48138,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -48288,7 +48221,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get an Employee",
@@ -48353,7 +48286,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -48441,7 +48374,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Average Weekly Earnings",
@@ -48510,7 +48443,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Calculate Base Daily Rate (deprecated)",
@@ -48579,7 +48512,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Calculate Base Hourly Rate (deprecated)",
@@ -48625,7 +48558,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Employee Cost Centres",
@@ -48705,7 +48638,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Set Employee Cost Centres",
@@ -48751,7 +48684,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Employee Departments",
@@ -48831,7 +48764,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Set Employee Departments",
@@ -48874,7 +48807,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get EvcSettings",
@@ -48939,7 +48872,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update EvcSettings",
@@ -49015,7 +48948,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get employee navigation details for a specific employee",
@@ -49071,7 +49004,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "PayRunEntries for Employee",
@@ -49152,6 +49085,7 @@
               "schema": {
                 "properties": {
                   "file": {
+                    "description": "The file to upload. Maximum allowed file size is 5 MB",
                     "format": "binary",
                     "type": "string"
                   }
@@ -49170,7 +49104,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update Photo",
@@ -49270,7 +49204,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Minimum Wage",
@@ -49367,7 +49301,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -49405,7 +49339,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Employer Notes",
@@ -49538,7 +49472,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -49604,7 +49538,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -49654,6 +49588,7 @@
               "schema": {
                 "properties": {
                   "file": {
+                    "description": "Maximum allowed file size is 5 MB.",
                     "format": "binary",
                     "type": "string"
                   }
@@ -49665,7 +49600,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Add Document to Employer Note",
@@ -49762,7 +49697,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -49802,7 +49737,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -49850,7 +49785,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get StackOne session token",
@@ -49901,7 +49836,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Authorization Url",
@@ -49988,7 +49923,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Set Credentials",
@@ -50032,7 +49967,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Companies",
@@ -50073,7 +50008,7 @@
                 "schema": {}
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Config Data",
@@ -50128,7 +50063,7 @@
                 "schema": {}
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Set Config Data",
@@ -50212,7 +50147,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Contributions CSV File",
@@ -50248,7 +50183,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Disconnect",
@@ -50292,7 +50227,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Employees",
@@ -50371,7 +50306,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "409": {
             "description": "Conflict"
@@ -50418,7 +50353,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "409": {
             "description": "Conflict"
@@ -50465,7 +50400,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Push Employees",
@@ -50515,7 +50450,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Employee",
@@ -50587,7 +50522,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "409": {
             "description": "Conflict"
@@ -50643,7 +50578,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Employee Logs",
@@ -50693,7 +50628,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "409": {
             "description": "Conflict"
@@ -50740,7 +50675,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Nominal Codes",
@@ -50789,7 +50724,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Push P11D",
@@ -50830,7 +50765,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Push P11Ds",
@@ -50872,7 +50807,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Push P45",
@@ -50943,7 +50878,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -50998,7 +50933,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Push P60",
@@ -51039,7 +50974,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -51122,7 +51057,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Push Payslips",
@@ -51172,7 +51107,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Push Pension Letter",
@@ -51206,7 +51141,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Push Pension Letters",
@@ -51266,7 +51201,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Time And Attendance Data",
@@ -51352,7 +51287,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Post Journal",
@@ -51420,7 +51355,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Sync Leave",
@@ -51564,7 +51499,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Post Payments",
@@ -51609,7 +51544,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List HmrcLiabilities",
@@ -51660,7 +51595,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get HmrcLiability",
@@ -51733,7 +51668,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -51777,13 +51712,6 @@
             }
           },
           {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "in": "query",
             "name": "bankHoliday",
             "schema": {
@@ -51805,7 +51733,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "HMRC Bank Payment",
@@ -51840,7 +51768,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -51982,7 +51910,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -52051,7 +51979,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -52121,13 +52049,13 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
           },
           "500": {
-            "description": "Server Error"
+            "description": "Internal Server Error"
           }
         },
         "summary": "Get Import Results (beta)",
@@ -52222,6 +52150,7 @@
               "schema": {
                 "properties": {
                   "file": {
+                    "description": "CSV file. Maximum allowed file size is 10 MB.",
                     "format": "binary",
                     "type": "string"
                   }
@@ -52243,7 +52172,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Import Average Holiday Days for Payment from a CSV file (synchronous).",
@@ -52376,6 +52305,7 @@
               "schema": {
                 "properties": {
                   "file": {
+                    "description": "The CSV file.",
                     "format": "binary",
                     "type": "string"
                   }
@@ -52452,6 +52382,7 @@
               "schema": {
                 "properties": {
                   "file": {
+                    "description": "The file to upload. Maximum allowed file size is 10 MB",
                     "format": "binary",
                     "type": "string"
                   }
@@ -52473,7 +52404,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Import EmployeeRoles from csv file",
@@ -52650,7 +52581,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -52779,7 +52710,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List PaymentsCsvMappings",
@@ -52909,7 +52840,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get PaymentsCsvMapping",
@@ -52974,7 +52905,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update PaymentsCsvMapping",
@@ -53017,7 +52948,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get PaymentsCsvMapping CSV File",
@@ -53069,6 +53000,7 @@
               "schema": {
                 "properties": {
                   "file": {
+                    "description": "The file to upload. Maximum allowed file size is 10 MB",
                     "format": "binary",
                     "type": "string"
                   }
@@ -53090,7 +53022,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Import PensionMemberships from csv file",
@@ -53135,6 +53067,7 @@
               "schema": {
                 "properties": {
                   "file": {
+                    "description": "The CSV file.",
                     "format": "binary",
                     "type": "string"
                   }
@@ -53314,7 +53247,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Invitations",
@@ -53462,7 +53395,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Invitation",
@@ -53506,7 +53439,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -53655,7 +53588,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update Journal Template",
@@ -53708,7 +53641,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -53843,7 +53776,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -54049,7 +53982,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -54118,7 +54051,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -54324,7 +54257,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -54420,7 +54353,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -54497,7 +54430,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update Journal Token",
@@ -54534,7 +54467,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -54687,7 +54620,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -54759,7 +54692,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -54826,7 +54759,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List OccupationalSickLeaveHistory",
@@ -55019,7 +54952,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get OccupationalSickLeaveHistory",
@@ -55103,7 +55036,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -55237,6 +55170,7 @@
               "schema": {
                 "properties": {
                   "file": {
+                    "description": "The file to upload. Maximum allowed file size is 10 MB",
                     "format": "binary",
                     "type": "string"
                   }
@@ -55274,7 +55208,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Import OccupationalSickLeaveHistory from csv file",
@@ -55320,7 +55254,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List PayCodes",
@@ -55418,7 +55352,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Nominal Code Mappings",
@@ -55488,7 +55422,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Updates Nominal Code Mappings",
@@ -55564,7 +55498,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -55629,7 +55563,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -55710,7 +55644,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -55776,7 +55710,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -55816,7 +55750,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List PayCodeSets",
@@ -55959,7 +55893,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -56026,7 +55960,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -56069,7 +56003,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Payees",
@@ -56209,7 +56143,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Payee",
@@ -56273,7 +56207,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Employer Not Found"
@@ -56662,7 +56596,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "202": {
             "content": {
@@ -56750,7 +56684,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Check if the FPS late reason is applicable",
@@ -56800,7 +56734,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Gets the last closed pay run entry for an employee.",
@@ -56864,7 +56798,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Calculate Average Holiday Pay Rate",
@@ -56966,7 +56900,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get PayRunEntryNavigation for a specific PayRunEntry",
@@ -57011,6 +56945,7 @@
               "schema": {
                 "properties": {
                   "file": {
+                    "description": "Maximum allowed file size is 5 MB",
                     "format": "binary",
                     "type": "string"
                   }
@@ -57022,7 +56957,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Add Document",
@@ -57121,7 +57056,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -57239,7 +57174,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -57302,7 +57237,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Import Time And Attendance",
@@ -57388,7 +57323,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Import Umbrella Pay",
@@ -57448,7 +57383,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -57511,7 +57446,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List PayRuns",
@@ -57932,7 +57867,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -58178,7 +58113,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Add PayRunEntries (deprecated)",
@@ -58269,7 +58204,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Advance Periods for PayRunEntries",
@@ -58339,7 +58274,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List AttachmentOrders related to a PayRun",
@@ -58414,7 +58349,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List PayRun Changes",
@@ -58497,7 +58432,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "(Re)send Payslip Emails",
@@ -58566,7 +58501,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get PayPeriodEvents",
@@ -58669,7 +58604,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Finalise a PayRun (deprecated)",
@@ -58763,7 +58698,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Journal for PayRun",
@@ -58833,7 +58768,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Leave related to a PayRun",
@@ -58900,7 +58835,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "(Re)send P45 Emails",
@@ -58969,7 +58904,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get PayCodes for a PayRun",
@@ -59072,7 +59007,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Set PaymentDate",
@@ -59150,7 +59085,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List ProcessingNotes for a PayRun",
@@ -59320,7 +59255,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get a ProcessingNote",
@@ -59533,7 +59468,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Recalculate PayRunEntries",
@@ -59640,7 +59575,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Remove PayRunEntries (deprecated)",
@@ -59715,7 +59650,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Re-open a PayRun (deprecated)",
@@ -59790,7 +59725,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "content": {
@@ -59902,7 +59837,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get PayRun Warnings",
@@ -59991,7 +59926,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update YTD",
@@ -60098,7 +60033,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Zeroise PayRunEntries",
@@ -60182,7 +60117,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get a PayRunEntry",
@@ -60288,7 +60223,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update a PayRunEntry",
@@ -60383,7 +60318,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List PayRun Changes for PayRunEntry",
@@ -60483,7 +60418,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "PayRunEntry Umbrella Payment",
@@ -60520,7 +60455,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -60622,6 +60557,7 @@
               "schema": {
                 "properties": {
                   "file": {
+                    "description": "The file to upload. Maximum allowed file size is 10 MB",
                     "format": "binary",
                     "type": "string"
                   }
@@ -60643,7 +60579,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Import PaySpine from csv file",
@@ -60679,6 +60615,7 @@
               "schema": {
                 "properties": {
                   "file": {
+                    "description": "The file to upload. Maximum allowed file size is 10 MB",
                     "format": "binary",
                     "type": "string"
                   }
@@ -60700,7 +60637,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Import SpineGrades from csv file",
@@ -60735,6 +60672,7 @@
               "schema": {
                 "properties": {
                   "file": {
+                    "description": "The file to upload. Maximum allowed file size is 10 MB",
                     "format": "binary",
                     "type": "string"
                   }
@@ -60756,7 +60694,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Import SpinalPoints from csv file",
@@ -60836,7 +60774,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -60906,7 +60844,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update PaySpine",
@@ -61012,7 +60950,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Employee or PaySpine Not Found"
@@ -61106,7 +61044,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Employee or PaySpine Not Found"
@@ -61194,7 +61132,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -61435,7 +61373,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update Multiple SpineAllowances",
@@ -61540,7 +61478,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -61811,7 +61749,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update Multiple AllowanceGrades",
@@ -61933,7 +61871,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -62025,7 +61963,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update AllowanceGrade",
@@ -62127,7 +62065,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -62209,7 +62147,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update SpineAllowance",
@@ -62256,7 +62194,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -62433,7 +62371,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -62515,7 +62453,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update LondonAllowance",
@@ -62562,7 +62500,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -62736,7 +62674,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -62818,7 +62756,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update PaySpine Grade",
@@ -62903,7 +62841,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -63142,7 +63080,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update Multiple SpinalPoints",
@@ -63244,7 +63182,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -63326,7 +63264,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update SpinalPoint",
@@ -63362,7 +63300,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List PensionSchemes",
@@ -63503,7 +63441,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get a PensionScheme",
@@ -63566,7 +63504,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -63625,7 +63563,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Contributions",
@@ -63704,7 +63642,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -63770,7 +63708,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Contributions Data",
@@ -63824,7 +63762,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Re-submit Contributions",
@@ -63887,7 +63825,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Mark as Sent",
@@ -63934,7 +63872,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Employees",
@@ -63998,7 +63936,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Pension Notices (Beta)",
@@ -64079,7 +64017,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Pension Notice Retrieve State (Beta)",
@@ -64133,7 +64071,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Pension Notice Detail (Beta)",
@@ -64187,7 +64125,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Mark Pension Notice as Actioned (Beta)",
@@ -64241,7 +64179,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Retry Pension Notice (Beta)",
@@ -64731,13 +64669,6 @@
               "format": "uuid",
               "type": "string"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -64754,7 +64685,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "AutoEnrolment Assessments",
@@ -64774,13 +64705,6 @@
             "required": true,
             "schema": {
               "format": "uuid",
-              "type": "string"
-            }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
               "type": "string"
             }
           },
@@ -64824,7 +64748,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "NI Letter Validation (Employees)",
@@ -64898,13 +64822,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -64921,7 +64838,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Advanced Variance Report",
@@ -64959,13 +64876,6 @@
               "format": "date-time",
               "type": "string"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -64982,7 +64892,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Gets audit changes of all employees within a company.",
@@ -65002,13 +64912,6 @@
             "required": true,
             "schema": {
               "format": "uuid",
-              "type": "string"
-            }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
               "type": "string"
             }
           }
@@ -65042,7 +64945,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "CIS Subcontractor Summary",
@@ -65074,13 +64977,6 @@
               "format": "date-time",
               "type": "string"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -65107,7 +65003,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Export Cyclic Re-enrolments",
@@ -65195,7 +65091,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Download Maternity Payment Schedule",
@@ -65225,13 +65121,6 @@
             "schema": {
               "$ref": "#/components/schemas/TaxYear"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -65248,7 +65137,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Employee Leave",
@@ -65286,13 +65175,6 @@
               "format": "date-time",
               "type": "string"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -65309,7 +65191,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Gets audit changes for a company.",
@@ -65332,13 +65214,6 @@
               "format": "uuid",
               "type": "string"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -65355,7 +65230,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Employer Export",
@@ -65375,13 +65250,6 @@
             "required": true,
             "schema": {
               "format": "uuid",
-              "type": "string"
-            }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
               "type": "string"
             }
           },
@@ -65433,7 +65301,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Holiday",
@@ -65477,7 +65345,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Email P11D to all Employees",
@@ -65522,7 +65390,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Email P11D to an Employee",
@@ -65554,13 +65422,6 @@
               "format": "uuid",
               "type": "string"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -65587,7 +65448,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "P45 For Employee",
@@ -65624,7 +65485,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -65666,7 +65527,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Email P45 to Employee",
@@ -65710,7 +65571,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Email P60 to all Employees",
@@ -65755,7 +65616,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Email P60 to an Employee",
@@ -65792,7 +65653,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List ReportPacks",
@@ -65932,7 +65793,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get ReportPack",
@@ -65996,7 +65857,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Employer Not Found"
@@ -66042,13 +65903,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -66070,7 +65924,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Pay Grade",
@@ -66092,13 +65946,6 @@
               "format": "uuid",
               "type": "string"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -66115,7 +65962,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Pay Code Export Details",
@@ -66144,13 +65991,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -66172,7 +66012,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Pay Spine",
@@ -66192,13 +66032,6 @@
             "required": true,
             "schema": {
               "format": "uuid",
-              "type": "string"
-            }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
               "type": "string"
             }
           }
@@ -66232,7 +66065,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "RightToWork",
@@ -66275,13 +66108,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -66303,7 +66129,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Spine Point",
@@ -66336,13 +66162,6 @@
             }
           },
           {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "in": "query",
             "name": "ordinal",
             "schema": {
@@ -66366,7 +66185,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Employee Loan Export",
@@ -66395,13 +66214,6 @@
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/PayPeriods"
-            }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -66443,7 +66255,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Employee Payments Report",
@@ -66473,13 +66285,6 @@
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/PayPeriods"
-            }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
             }
           },
           {
@@ -66529,7 +66334,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Loan Balances",
@@ -66585,7 +66390,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -66643,13 +66448,6 @@
               "format": "int32",
               "type": "integer"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -66676,7 +66474,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -66719,13 +66517,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -66747,7 +66538,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Employee Benefits",
@@ -66800,13 +66591,6 @@
               "format": "uuid",
               "type": "string"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -66838,7 +66622,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Gender Pay Gap",
@@ -66870,13 +66654,6 @@
             "schema": {
               "$ref": "#/components/schemas/TaxYear"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -66903,7 +66680,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Apprenticeship Levy Details",
@@ -66943,13 +66720,6 @@
               "format": "uuid",
               "type": "string"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -66981,7 +66751,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "CIS300",
@@ -67029,13 +66799,6 @@
               "format": "uuid",
               "type": "string"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -67057,7 +66820,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "CIS Statement",
@@ -67097,13 +66860,6 @@
               "format": "uuid",
               "type": "string"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -67120,7 +66876,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "EXB",
@@ -67168,13 +66924,6 @@
             "schema": {
               "type": "boolean"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -67191,7 +66940,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "FPS",
@@ -67222,13 +66971,6 @@
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/TaxYear"
-            }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
             }
           },
           {
@@ -67265,7 +67007,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "All P11Ds For TaxYear",
@@ -67307,13 +67049,6 @@
             "schema": {
               "$ref": "#/components/schemas/TaxYear"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -67340,7 +67075,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "P11D For Employee",
@@ -67372,13 +67107,6 @@
             "schema": {
               "$ref": "#/components/schemas/TaxYear"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -67405,7 +67133,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "All Detailed P11s For TaxYear",
@@ -67444,13 +67172,6 @@
               "format": "date-time",
               "type": "string"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -67482,7 +67203,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "P30",
@@ -67512,13 +67233,6 @@
             "schema": {
               "$ref": "#/components/schemas/TaxYear"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -67550,7 +67264,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "P32",
@@ -67581,13 +67295,6 @@
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/TaxYear"
-            }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
             }
           },
           {
@@ -67624,7 +67331,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "All P60s For TaxYear",
@@ -67666,13 +67373,6 @@
             "schema": {
               "$ref": "#/components/schemas/TaxYear"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -67699,7 +67399,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "P60 For Employee",
@@ -67735,13 +67435,6 @@
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/TaxYear"
-            }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
             }
           },
           {
@@ -67783,7 +67476,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Export Multiple Pension Memberships Report",
@@ -67812,13 +67505,6 @@
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/TaxYear"
-            }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -67851,7 +67537,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Taxcode Change",
@@ -67895,13 +67581,6 @@
             "schema": {
               "$ref": "#/components/schemas/TaxYear"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -67933,7 +67612,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Teachers Pension Eoy Report",
@@ -67974,13 +67653,6 @@
             "schema": {
               "$ref": "#/components/schemas/TaxYear"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -68012,7 +67684,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "P11",
@@ -68053,13 +67725,6 @@
             "schema": {
               "$ref": "#/components/schemas/TaxYear"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -68086,7 +67751,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "P11 (Detailed)",
@@ -68142,13 +67807,6 @@
             }
           },
           {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "in": "query",
             "name": "ordinal",
             "schema": {
@@ -68189,7 +67847,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Analysis",
@@ -68245,13 +67903,6 @@
             }
           },
           {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "in": "query",
             "name": "ordinal",
             "schema": {
@@ -68283,7 +67934,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Analysis Cost Breakdown",
@@ -68339,13 +67990,6 @@
             }
           },
           {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "in": "query",
             "name": "ordinal",
             "schema": {
@@ -68377,7 +68021,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Payroll Analysis with Employee Role Breakdown",
@@ -68433,13 +68077,6 @@
             }
           },
           {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "in": "query",
             "name": "ordinal",
             "schema": {
@@ -68473,7 +68110,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Attachment Orders",
@@ -68521,13 +68158,6 @@
             }
           },
           {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "in": "query",
             "name": "ordinal",
             "schema": {
@@ -68566,7 +68196,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Average Holiday Pay Rate",
@@ -68622,13 +68252,6 @@
             }
           },
           {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "in": "query",
             "name": "ordinal",
             "schema": {
@@ -68662,7 +68285,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Cost Analysis",
@@ -68718,13 +68341,6 @@
             }
           },
           {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "in": "query",
             "name": "ordinal",
             "schema": {
@@ -68758,7 +68374,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Cost Of Employment",
@@ -68806,13 +68422,6 @@
             }
           },
           {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "in": "query",
             "name": "ordinal",
             "schema": {
@@ -68846,7 +68455,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Cost Of Employment",
@@ -68899,13 +68508,6 @@
             "schema": {
               "format": "int32",
               "type": "integer"
-            }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
             }
           },
           {
@@ -68986,7 +68588,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Gross To Net",
@@ -69042,13 +68644,6 @@
             }
           },
           {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "in": "query",
             "name": "ordinal",
             "schema": {
@@ -69087,7 +68682,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Hourly Pay",
@@ -69151,13 +68746,6 @@
             }
           },
           {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "in": "query",
             "name": "ordinal",
             "schema": {
@@ -69196,7 +68784,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Pay Element",
@@ -69252,13 +68840,6 @@
             }
           },
           {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "in": "query",
             "name": "ordinal",
             "schema": {
@@ -69299,7 +68880,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "PayRunSummary",
@@ -69363,13 +68944,6 @@
             }
           },
           {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "in": "query",
             "name": "ordinal",
             "schema": {
@@ -69408,7 +68982,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Statutory Pay",
@@ -69464,13 +69038,6 @@
             }
           },
           {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "in": "query",
             "name": "ordinal",
             "schema": {
@@ -69518,7 +69085,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Umbrella Reconciliation",
@@ -69635,13 +69202,6 @@
               "format": "double",
               "type": "number"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -69673,7 +69233,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Variance Report",
@@ -69722,13 +69282,6 @@
             }
           },
           {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "in": "query",
             "name": "ordinal",
             "schema": {
@@ -69762,7 +69315,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "NI Letter Validation (Payrun)",
@@ -69811,13 +69364,6 @@
             }
           },
           {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "in": "query",
             "name": "ordinal",
             "schema": {
@@ -69851,7 +69397,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Export Payroll Run Warnings",
@@ -69900,13 +69446,6 @@
             }
           },
           {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "in": "query",
             "name": "ordinal",
             "schema": {
@@ -69945,7 +69484,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "FurloughReport",
@@ -70000,13 +69539,6 @@
               "format": "int32",
               "type": "integer"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -70038,7 +69570,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "NI Year To Date Values",
@@ -70096,13 +69628,6 @@
             }
           },
           {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "in": "query",
             "name": "ordinal",
             "schema": {
@@ -70153,7 +69678,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "PAPDIS File",
@@ -70199,13 +69724,6 @@
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/TaxYear"
-            }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
             }
           },
           {
@@ -70273,7 +69791,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "PayRun Payments",
@@ -70319,13 +69837,6 @@
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/TaxYear"
-            }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
             }
           },
           {
@@ -70418,7 +69929,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Bank Payment Instructions",
@@ -70447,13 +69958,6 @@
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/PayPeriods"
-            }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
             }
           },
           {
@@ -70524,7 +70028,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Payroll Journal CSV",
@@ -70573,13 +70077,6 @@
             }
           },
           {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "in": "query",
             "name": "ordinal",
             "schema": {
@@ -70612,7 +70109,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "PayRun CSV (deprecated)",
@@ -70685,14 +70182,6 @@
               "format": "uuid",
               "type": "string"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "default": "application/json",
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -70709,7 +70198,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get PayRun CSV",
@@ -70755,13 +70244,6 @@
             "required": true,
             "schema": {
               "$ref": "#/components/schemas/TaxYear"
-            }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
             }
           },
           {
@@ -70856,7 +70338,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Payslips",
@@ -70911,13 +70393,6 @@
               "format": "int32",
               "type": "integer"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -70949,7 +70424,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Year To Date Values",
@@ -71008,13 +70483,6 @@
             }
           },
           {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "in": "query",
             "name": "ordinal",
             "schema": {
@@ -71057,7 +70525,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Payslip",
@@ -71094,7 +70562,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Report Templates (beta)",
@@ -71238,7 +70706,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -71310,7 +70778,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -71352,7 +70820,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "CisVerificationRequest Requiring Attention",
@@ -71396,7 +70864,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List CisVerificationRequest",
@@ -71550,7 +71018,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get CisVerificationRequest",
@@ -71622,7 +71090,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update CisVerificationRequest",
@@ -71672,7 +71140,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Mark as Sent",
@@ -71731,7 +71199,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Submit CisVerificationRequest",
@@ -71781,7 +71249,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get XML Request",
@@ -71817,7 +71285,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Cis300 Requiring Attention",
@@ -71861,7 +71329,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Cis300",
@@ -72015,7 +71483,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Cis300",
@@ -72087,7 +71555,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update Cis300",
@@ -72137,7 +71605,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Mark as Sent",
@@ -72196,7 +71664,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Submit Cis300",
@@ -72246,7 +71714,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get XML Request",
@@ -72282,7 +71750,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "EPS Requiring Attention",
@@ -72326,7 +71794,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List EPS",
@@ -72480,7 +71948,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get EPS",
@@ -72552,7 +72020,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update EPS",
@@ -72602,7 +72070,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Mark as Sent",
@@ -72661,7 +72129,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Submit EPS",
@@ -72711,7 +72179,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get XML Request",
@@ -72761,7 +72229,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Apprenticeship Levy",
@@ -72811,7 +72279,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Recoverable Amounts",
@@ -72847,7 +72315,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "EXB Requiring Attention",
@@ -72891,7 +72359,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List EXB",
@@ -72995,7 +72463,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Annual Values",
@@ -73086,7 +72554,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get EXB",
@@ -73158,7 +72626,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update EXB",
@@ -73208,7 +72676,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Mark as Sent",
@@ -73267,7 +72735,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Submit EXB",
@@ -73317,7 +72785,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get XML Request",
@@ -73456,7 +72924,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update FPS with multiple employees",
@@ -73492,7 +72960,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "FPS Requiring Attention",
@@ -73536,7 +73004,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List FPS",
@@ -73652,7 +73120,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -73714,7 +73182,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -73810,7 +73278,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -73904,7 +73372,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get FPS",
@@ -73976,7 +73444,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update FPS",
@@ -74026,7 +73494,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Mark as Sent",
@@ -74085,7 +73553,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Submit FPS",
@@ -74144,7 +73612,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get XML Request",
@@ -74180,7 +73648,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "NVR Requiring Attention",
@@ -74224,7 +73692,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List NVR",
@@ -74378,7 +73846,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get NVR",
@@ -74450,7 +73918,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update NVR",
@@ -74500,7 +73968,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Mark as Sent",
@@ -74558,7 +74026,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Submit an existing NVR",
@@ -74608,7 +74076,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get XML Request",
@@ -74645,7 +74113,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get PaySchedules for Employer (for active tax years)",
@@ -74691,7 +74159,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get PaySchedules",
@@ -74805,7 +74273,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get PaySchedule (deprecated)",
@@ -74965,7 +74433,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -75088,7 +74556,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get PaySchedule",
@@ -75254,7 +74722,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -75339,7 +74807,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -75438,7 +74906,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -75481,7 +74949,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Tags",
@@ -75586,7 +75054,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -75692,7 +75160,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -75775,7 +75243,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Tag (deprecated)",
@@ -75841,7 +75309,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Employer Not Found"
@@ -75881,7 +75349,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List EmployerTemplates",
@@ -75924,7 +75392,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get EmployerTemplate",
@@ -75989,7 +75457,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update EmployerTemplate",
@@ -76026,7 +75494,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -76176,7 +75644,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -76248,7 +75716,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -76301,7 +75769,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -76484,7 +75952,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -76566,7 +76034,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -76616,7 +76084,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -76656,7 +76124,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Webhooks",
@@ -76751,7 +76219,7 @@
                 "schema": {}
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Sample Value",
@@ -76830,7 +76298,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Webhook",
@@ -76894,7 +76362,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Employer Not Found"
@@ -76958,7 +76426,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List WebhookPayloads",
@@ -77009,7 +76477,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get WebhookPayload",
@@ -77046,7 +76514,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List WorkingPatterns",
@@ -77187,7 +76655,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "403": {
             "description": "Forbidden"
@@ -77257,7 +76725,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -77320,7 +76788,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get an Employer",
@@ -77375,7 +76843,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -77412,7 +76880,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "NotFound -\r\nWe don't yet support the tax year following the employers current tax year"
@@ -77476,7 +76944,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "NotFound -\r\nWe don't yet support the tax year following the employers current tax year"
@@ -77514,7 +76982,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get List of Employees with Holiday Accrual Scheme",
@@ -77548,7 +77016,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Automation Settings",
@@ -77604,7 +77072,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update Automation Settings",
@@ -77657,7 +77125,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Employer Calendar",
@@ -77691,7 +77159,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "403": {
             "description": "Forbidden"
@@ -77786,7 +77254,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Payslip Customisations",
@@ -77842,7 +77310,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update Payslip Customisations",
@@ -77879,7 +77347,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get EVC OptIn History",
@@ -77928,7 +77396,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update EVC OptIn",
@@ -77964,7 +77432,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Employer Groups",
@@ -78034,7 +77502,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Set Employer Groups",
@@ -78070,6 +77538,7 @@
               "schema": {
                 "properties": {
                   "file": {
+                    "description": "Maximum allowed file size is 5 MB",
                     "format": "binary",
                     "type": "string"
                   }
@@ -78088,7 +77557,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update Employer Logo",
@@ -78122,7 +77591,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get EmployerOpeningBalances",
@@ -78178,7 +77647,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update EmployerOpeningBalances",
@@ -78215,7 +77684,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "RTI Documents Requiring Attention",
@@ -78249,7 +77718,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Suggest Payroll Code",
@@ -78286,7 +77755,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Users",
@@ -78342,7 +77811,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Set Owner",
@@ -78376,7 +77845,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -78413,7 +77882,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "204": {
             "description": "No Content"
@@ -78478,7 +77947,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -78562,7 +78031,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Tenant Branding",
@@ -78594,7 +78063,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Configuration",
@@ -78661,7 +78130,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get National Insurance Thresholds",
@@ -78718,7 +78187,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Calculate NI due.",
@@ -78805,7 +78274,7 @@
             "in": "query",
             "name": "grossToDate",
             "schema": {
-              "default": 0,
+              "default": 0.0,
               "format": "double",
               "type": "number"
             }
@@ -78815,7 +78284,7 @@
             "in": "query",
             "name": "taxToDate",
             "schema": {
-              "default": 0,
+              "default": 0.0,
               "format": "double",
               "type": "number"
             }
@@ -78831,7 +78300,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Calculate Tax due",
@@ -78863,7 +78332,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "3rd Party Response",
@@ -78965,7 +78434,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -79029,7 +78498,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -79070,7 +78539,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -79131,7 +78600,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -79158,13 +78627,6 @@
               "format": "uuid",
               "type": "string"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -79181,7 +78643,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "NI Year To Date Values",
@@ -79215,7 +78677,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get list of open payruns",
@@ -79234,13 +78696,6 @@
             "name": "employerId",
             "schema": {
               "format": "uuid",
-              "type": "string"
-            }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
               "type": "string"
             }
           }
@@ -79294,7 +78749,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Example Payslip",
@@ -79343,7 +78798,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List PaySchedules",
@@ -79392,7 +78847,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List PaySchedules By Date Range",
@@ -79507,7 +78962,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Api Mailing List Report",
@@ -79540,7 +78995,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get RtiSubmissionSettings",
@@ -79595,7 +79050,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -79632,7 +79087,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get a Tenant",
@@ -79688,7 +79143,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -79726,7 +79181,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -79761,7 +79216,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -79819,7 +79274,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -79888,7 +79343,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Bills",
@@ -79950,7 +79405,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Bill",
@@ -80034,7 +79489,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update Bill",
@@ -80072,13 +79527,6 @@
               "format": "date-time",
               "type": "string"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -80095,7 +79543,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get UsageStats Report",
@@ -80153,7 +79601,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update CSS",
@@ -80226,7 +79674,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update CSS Colors",
@@ -80278,7 +79726,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Emails",
@@ -80312,7 +79760,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get MailSettings",
@@ -80368,7 +79816,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Update MailSettings",
@@ -80452,7 +79900,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Email",
@@ -80492,7 +79940,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Re-send Email",
@@ -80539,7 +79987,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Employer Usage",
@@ -80586,7 +80034,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Employer Users",
@@ -80622,6 +80070,7 @@
               "schema": {
                 "properties": {
                   "file": {
+                    "description": "The file to upload. Maximum allowed file size is 5 MB",
                     "format": "binary",
                     "type": "string"
                   }
@@ -80640,7 +80089,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Upload Favicon",
@@ -80676,6 +80125,7 @@
               "schema": {
                 "properties": {
                   "file": {
+                    "description": "The file to upload. Maximum allowed file size is 5 MB",
                     "format": "binary",
                     "type": "string"
                   }
@@ -80694,7 +80144,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Upload Logo",
@@ -80731,7 +80181,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -81024,7 +80474,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -81133,7 +80583,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -81172,7 +80622,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get PricingTables",
@@ -81265,7 +80715,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -81308,7 +80758,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -81385,7 +80835,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -81426,7 +80876,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Api Mailing List Report",
@@ -81459,7 +80909,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -81511,13 +80961,6 @@
             }
           },
           {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "description": "If set to true then the report will include all Tenants to which you have access",
             "in": "query",
             "name": "allTenants",
@@ -81541,7 +80984,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "NetSuite Billing Report",
@@ -81596,7 +81039,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Users with no Billable Activity.",
@@ -81637,13 +81080,6 @@
             }
           },
           {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "description": "If set to true then the report will include all Tenants to which you have access",
             "in": "query",
             "name": "allTenants",
@@ -81667,7 +81103,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Weekly Activity Report",
@@ -81722,7 +81158,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get Usage",
@@ -81797,7 +81233,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Users",
@@ -81848,7 +81284,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Remove Admin User",
@@ -81883,7 +81319,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "List Admin Users",
@@ -81932,7 +81368,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Add Admin User",
@@ -81969,7 +81405,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -82009,7 +81445,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -82056,7 +81492,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Search Users",
@@ -82099,7 +81535,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get a User",
@@ -82166,7 +81602,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -82326,7 +81762,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get User Bills",
@@ -82546,7 +81982,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -82642,7 +82078,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -82691,7 +82127,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get User Employers",
@@ -83053,7 +82489,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -83080,13 +82516,6 @@
               "format": "uuid",
               "type": "string"
             }
-          },
-          {
-            "in": "header",
-            "name": "accept",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -83103,7 +82532,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Year To Date Values",
@@ -83138,7 +82567,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Get AverageHolidayPayHistory for Employer",
@@ -83199,7 +82628,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -83263,7 +82692,7 @@
         },
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "OK"
           },
           "404": {
             "description": "Not Found"
@@ -83310,6 +82739,7 @@
               "schema": {
                 "properties": {
                   "file": {
+                    "description": "The file to upload. Maximum allowed file size is 10 MB",
                     "format": "binary",
                     "type": "string"
                   }
@@ -83331,7 +82761,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           }
         },
         "summary": "Import AverageHistoryPayHistory from csv file",
@@ -83465,17 +82895,19 @@
               "application/json": {
                 "schema": {
                   "format": "date-time",
+                  "nullable": true,
                   "type": "string"
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "204": {
             "content": {
               "application/json": {
                 "schema": {
                   "format": "date-time",
+                  "nullable": true,
                   "type": "string"
                 }
               }
@@ -83542,7 +82974,7 @@
                 }
               }
             },
-            "description": "Success"
+            "description": "OK"
           },
           "400": {
             "description": "Bad Request"
@@ -83562,12 +82994,215 @@
     {
       "Basic": []
     },
+    {}
+  ],
+  "tags": [
     {
-      "oauth2": [
-        "openid",
-        "profile",
-        "email"
-      ]
+      "name": "Account"
+    },
+    {
+      "name": "AeAssessment"
+    },
+    {
+      "name": "AeEmployeeAssessment"
+    },
+    {
+      "name": "AnalysisCategory"
+    },
+    {
+      "name": "AttachmentOrder"
+    },
+    {
+      "name": "Audit"
+    },
+    {
+      "name": "AutoEnrolment"
+    },
+    {
+      "name": "AverageHolidayPayHistory"
+    },
+    {
+      "name": "Benefits"
+    },
+    {
+      "name": "Billing"
+    },
+    {
+      "name": "Bureau"
+    },
+    {
+      "name": "Cis300"
+    },
+    {
+      "name": "CisVerification"
+    },
+    {
+      "name": "CostCentre"
+    },
+    {
+      "name": "Department"
+    },
+    {
+      "name": "Dps"
+    },
+    {
+      "name": "Email"
+    },
+    {
+      "name": "Employee"
+    },
+    {
+      "name": "EmployeeRole"
+    },
+    {
+      "name": "Employer"
+    },
+    {
+      "name": "EmployerGroup"
+    },
+    {
+      "name": "EmployerNote"
+    },
+    {
+      "name": "EmployerTemplate"
+    },
+    {
+      "name": "Engine"
+    },
+    {
+      "name": "Eps"
+    },
+    {
+      "name": "Exb"
+    },
+    {
+      "name": "ExternalData"
+    },
+    {
+      "name": "Fps"
+    },
+    {
+      "name": "HmrcPayment"
+    },
+    {
+      "name": "HolidayScheme"
+    },
+    {
+      "name": "Import"
+    },
+    {
+      "name": "ImportResult"
+    },
+    {
+      "name": "Invitation"
+    },
+    {
+      "name": "Job"
+    },
+    {
+      "name": "JournalTemplate"
+    },
+    {
+      "name": "JournalToken"
+    },
+    {
+      "name": "Leave"
+    },
+    {
+      "name": "Loan"
+    },
+    {
+      "name": "Note"
+    },
+    {
+      "name": "Nvr"
+    },
+    {
+      "name": "OccupationalPolicy"
+    },
+    {
+      "name": "OccupationalSickLeaveHistory"
+    },
+    {
+      "name": "OpeningBalances"
+    },
+    {
+      "name": "P11History"
+    },
+    {
+      "name": "PayCode"
+    },
+    {
+      "name": "PayCodeSet"
+    },
+    {
+      "name": "Payee"
+    },
+    {
+      "name": "PayRun"
+    },
+    {
+      "name": "PayRunAsync"
+    },
+    {
+      "name": "PaySchedule"
+    },
+    {
+      "name": "PaySpine"
+    },
+    {
+      "name": "Pension"
+    },
+    {
+      "name": "PensionRefund"
+    },
+    {
+      "name": "PensionScheme"
+    },
+    {
+      "name": "ProcessingNote"
+    },
+    {
+      "name": "ReportBuilder"
+    },
+    {
+      "name": "ReportPack"
+    },
+    {
+      "name": "Reports"
+    },
+    {
+      "name": "ReportsAsync"
+    },
+    {
+      "name": "ReportTemplate"
+    },
+    {
+      "name": "Tag"
+    },
+    {
+      "name": "Tenant"
+    },
+    {
+      "name": "TenantEmail"
+    },
+    {
+      "name": "TermCalendar"
+    },
+    {
+      "name": "TermCalendarYear"
+    },
+    {
+      "name": "TierablePay"
+    },
+    {
+      "name": "Tools"
+    },
+    {
+      "name": "Webhook"
+    },
+    {
+      "name": "WorkingPattern"
     }
   ]
 }
