@@ -6447,6 +6447,97 @@
         },
         "type": "object"
       },
+      "Contract.EmployerAiFeaturesResponse": {
+        "additionalProperties": false,
+        "description": "Enabled AI features for an employer and its owner tenant.",
+        "properties": {
+          "employerEnabledAiFeatures": {
+            "description": "The AI features effectively enabled for the employer (turned on for both the owner tenant and the employer).",
+            "items": {
+              "$ref": "#/components/schemas/AiFeature"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "tenantEnabledAiFeatures": {
+            "description": "The AI features turned on for the tenant that owns the employer.",
+            "items": {
+              "$ref": "#/components/schemas/AiFeature"
+            },
+            "nullable": true,
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.EmployerAiSettingRowRequest": {
+        "additionalProperties": false,
+        "description": "A single AI feature setting to apply to an employer.",
+        "properties": {
+          "feature": {
+            "$ref": "#/components/schemas/AiFeature"
+          },
+          "isEnabled": {
+            "description": "Whether the AI feature should be enabled for the employer.",
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.EmployerAiSettingRowResponse": {
+        "additionalProperties": false,
+        "description": "A single AI feature setting for an employer.",
+        "properties": {
+          "displayName": {
+            "description": "Human-readable display name for the AI feature.",
+            "nullable": true,
+            "type": "string"
+          },
+          "feature": {
+            "$ref": "#/components/schemas/AiFeature"
+          },
+          "isEnabled": {
+            "description": "Whether the AI feature is enabled for the employer.",
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.EmployerAiSettingsRequest": {
+        "additionalProperties": false,
+        "description": "Request body for replacing all AI settings for an employer.",
+        "properties": {
+          "rows": {
+            "description": "One row for each AI feature to change. Features without a row keep the employer's saved value.\r\nFeatures the tenant has turned off cannot be changed.",
+            "items": {
+              "$ref": "#/components/schemas/Contract.EmployerAiSettingRowRequest"
+            },
+            "nullable": true,
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.EmployerAiSettingsResponse": {
+        "additionalProperties": false,
+        "description": "Employer AI settings returned to Admins and Supervisors.",
+        "properties": {
+          "employerId": {
+            "description": "The unique identifier of the employer these AI settings belong to.",
+            "format": "uuid",
+            "type": "string"
+          },
+          "rows": {
+            "description": "Per-feature AI settings for the employer. Each row represents one AI feature and whether it is enabled.",
+            "items": {
+              "$ref": "#/components/schemas/Contract.EmployerAiSettingRowResponse"
+            },
+            "nullable": true,
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
       "Contract.EmployerBase": {
         "additionalProperties": false,
         "properties": {
@@ -12153,6 +12244,244 @@
           "gender",
           "maritalStatus"
         ],
+        "type": "object"
+      },
+      "Contract.ProcessingNoteItem": {
+        "additionalProperties": false,
+        "description": "Lightweight item representation used by processing note API contracts.",
+        "properties": {
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "metadata": {},
+          "name": {
+            "nullable": true,
+            "type": "string"
+          },
+          "url": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.ProcessingNoteRequest": {
+        "additionalProperties": false,
+        "description": "Request body for creating a processing note.",
+        "properties": {
+          "completedDate": {
+            "description": "Date the processing note was completed, when applicable.",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "date": {
+            "description": "Date associated with the processing note.",
+            "format": "date",
+            "type": "string"
+          },
+          "documentCount": {
+            "description": "Number of documents associated with the processing note.",
+            "format": "int32",
+            "type": "integer"
+          },
+          "documents": {
+            "description": "Documents associated with the processing note.",
+            "items": {
+              "$ref": "#/components/schemas/Contract.ProcessingNoteItem"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "id": {
+            "description": "Unique identifier of the processing note.",
+            "format": "uuid",
+            "type": "string"
+          },
+          "note": {
+            "description": "Note text entered by the processor.",
+            "minLength": 1,
+            "type": "string"
+          },
+          "payRun": {
+            "$ref": "#/components/schemas/Contract.ProcessingNoteItem"
+          },
+          "payRunEntryId": {
+            "description": "Pay run entry the note relates to, when applicable.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ProcessingNoteStatus"
+          },
+          "updatedByName": {
+            "description": "Name of the user who last updated the processing note.",
+            "nullable": true,
+            "type": "string"
+          },
+          "user": {
+            "$ref": "#/components/schemas/Contract.ProcessingNoteItem"
+          }
+        },
+        "required": [
+          "note"
+        ],
+        "type": "object"
+      },
+      "Contract.ProcessingNoteResponse": {
+        "additionalProperties": false,
+        "description": "Processing note detail including documents and chat eligibility.",
+        "properties": {
+          "completedDate": {
+            "description": "When the note was marked completed, if applicable.",
+            "format": "date",
+            "nullable": true,
+            "type": "string"
+          },
+          "date": {
+            "description": "Date the note was created.",
+            "format": "date",
+            "type": "string"
+          },
+          "documentCount": {
+            "description": "Number of attached documents.",
+            "format": "int32",
+            "type": "integer"
+          },
+          "documents": {
+            "description": "Attached document summaries.",
+            "items": {
+              "$ref": "#/components/schemas/Contract.ProcessingNoteItem"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "id": {
+            "description": "Unique identifier of the processing note.",
+            "format": "uuid",
+            "type": "string"
+          },
+          "isChatEnabled": {
+            "description": "Whether processor chat is offered for this note's pay run.",
+            "type": "boolean"
+          },
+          "note": {
+            "description": "Note text entered by the processor.",
+            "nullable": true,
+            "type": "string"
+          },
+          "payRun": {
+            "$ref": "#/components/schemas/Contract.ProcessingNoteItem"
+          },
+          "payRunEntryId": {
+            "description": "Pay run entry the note relates to, when applicable.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          },
+          "payRunState": {
+            "$ref": "#/components/schemas/PayRunState"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ProcessingNoteStatus"
+          },
+          "updatedByName": {
+            "description": "Name of the user who last updated the note.",
+            "nullable": true,
+            "type": "string"
+          },
+          "user": {
+            "$ref": "#/components/schemas/Contract.ProcessingNoteItem"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.ProcessingNoteThreadMessageItem": {
+        "additionalProperties": false,
+        "description": "A single message in a processing note conversation thread.",
+        "properties": {
+          "authorDisplayName": {
+            "description": "Display name shown for the author.",
+            "nullable": true,
+            "type": "string"
+          },
+          "authorRoleName": {
+            "description": "Role or organisation label shown for the author (for example bureau name).",
+            "nullable": true,
+            "type": "string"
+          },
+          "createdDate": {
+            "description": "When the message was sent (UTC).",
+            "format": "date",
+            "type": "string"
+          },
+          "id": {
+            "description": "Unique identifier of the message.",
+            "format": "uuid",
+            "type": "string"
+          },
+          "isAuthoredByCurrentUser": {
+            "description": "Whether the authenticated user authored this message.",
+            "nullable": true,
+            "type": "boolean"
+          },
+          "messageText": {
+            "description": "Message body text.",
+            "nullable": true,
+            "type": "string"
+          },
+          "sequence": {
+            "description": "Order of this message within the thread (1-based).",
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.ProcessingNoteThreadMessageRequest": {
+        "additionalProperties": false,
+        "description": "Request body for sending a message on a processing note conversation thread.",
+        "properties": {
+          "message": {
+            "description": "Message text to append to the processing note conversation.",
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "Contract.ProcessingNoteThreadResponse": {
+        "additionalProperties": false,
+        "description": "Processing note conversation thread and its messages.",
+        "properties": {
+          "eTag": {
+            "description": "Cosmos entity tag for optimistic concurrency on subsequent writes.",
+            "nullable": true,
+            "type": "string"
+          },
+          "messages": {
+            "description": "Messages in sequence order.",
+            "items": {
+              "$ref": "#/components/schemas/Contract.ProcessingNoteThreadMessageItem"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "state": {
+            "$ref": "#/components/schemas/ProcessingNoteThreadState"
+          },
+          "threadId": {
+            "description": "Cosmos thread identifier, when a thread exists.",
+            "format": "uuid",
+            "nullable": true,
+            "type": "string"
+          }
+        },
         "type": "object"
       },
       "Contract.ReapplyDpsNoticeResponse": {
@@ -30982,72 +31311,17 @@
         ],
         "type": "string"
       },
-      "ProcessingNote": {
-        "additionalProperties": false,
-        "properties": {
-          "completedDate": {
-            "description": "UpdatedDate is assigned to this to get around the base implementation of UpdatedDate having [JsonIgnore] tag",
-            "format": "date",
-            "nullable": true,
-            "type": "string"
-          },
-          "date": {
-            "format": "date",
-            "type": "string"
-          },
-          "documentCount": {
-            "description": "[readonly] The number of attachments associated with this model",
-            "format": "int32",
-            "type": "integer"
-          },
-          "documents": {
-            "description": "[readonly] The attachments associated with this model",
-            "items": {
-              "$ref": "#/components/schemas/Item"
-            },
-            "nullable": true,
-            "type": "array"
-          },
-          "id": {
-            "description": "[readonly] The unique id of the object",
-            "format": "uuid",
-            "readOnly": true,
-            "type": "string"
-          },
-          "note": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "payRun": {
-            "$ref": "#/components/schemas/Item"
-          },
-          "payRunEntryId": {
-            "description": "The Id of the payrunEntry this ProcessingNote relates to, if any",
-            "format": "uuid",
-            "nullable": true,
-            "type": "string"
-          },
-          "status": {
-            "$ref": "#/components/schemas/ProcessingNoteStatus"
-          },
-          "updatedByName": {
-            "description": "Name of the user who was last to update the record",
-            "nullable": true,
-            "type": "string"
-          },
-          "user": {
-            "$ref": "#/components/schemas/Item"
-          }
-        },
-        "required": [
-          "note"
-        ],
-        "type": "object"
-      },
       "ProcessingNoteStatus": {
         "enum": [
           "New",
           "Complete"
+        ],
+        "type": "string"
+      },
+      "ProcessingNoteThreadState": {
+        "enum": [
+          "Open",
+          "Closed"
         ],
         "type": "string"
       },
@@ -59145,22 +59419,22 @@
           "content": {
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ProcessingNote"
+                "$ref": "#/components/schemas/Contract.ProcessingNoteRequest"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ProcessingNote"
+                "$ref": "#/components/schemas/Contract.ProcessingNoteRequest"
               }
             },
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/ProcessingNote"
+                "$ref": "#/components/schemas/Contract.ProcessingNoteRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ProcessingNote"
+                "$ref": "#/components/schemas/Contract.ProcessingNoteRequest"
               }
             }
           }
@@ -59170,7 +59444,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProcessingNote"
+                  "$ref": "#/components/schemas/Contract.ProcessingNoteResponse"
                 }
               }
             },
@@ -59251,7 +59525,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProcessingNote"
+                  "$ref": "#/components/schemas/Contract.ProcessingNoteResponse"
                 }
               }
             },
@@ -59351,7 +59625,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProcessingNote"
+                  "$ref": "#/components/schemas/Contract.ProcessingNoteResponse"
                 }
               }
             },
@@ -59365,6 +59639,200 @@
           }
         },
         "summary": "Set a ProcessingNote status",
+        "tags": [
+          "ProcessingNote"
+        ]
+      }
+    },
+    "/employers/{employerId}/payrun/{taxYear}/{payPeriod}/{periodNumber}/processingnotes/{id}/thread": {
+      "get": {
+        "description": "Bureau roles only. Requires Staffology.Model.Authorization.Permission.View on Staffology.Model.Authorization.PermissableEntity.ProcessingNote\r\n(includes Supervisor; Operator is excluded from thread read).",
+        "operationId": "GetThreadProcessingNote",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "payPeriod",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/PayPeriods"
+            }
+          },
+          {
+            "in": "path",
+            "name": "periodNumber",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "taxYear",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/TaxYear"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "ordinal",
+            "schema": {
+              "default": 1,
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.ProcessingNoteThreadResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Get the conversation thread for a processing note.",
+        "tags": [
+          "ProcessingNote"
+        ]
+      }
+    },
+    "/employers/{employerId}/payrun/{taxYear}/{payPeriod}/{periodNumber}/processingnotes/{id}/thread/messages": {
+      "post": {
+        "description": "The first message creates the conversation if one does not yet exist. Send is limited to bureau Admin,\r\nSupervisor, and Editor (Reviewer may create notes but cannot post on the thread).",
+        "operationId": "SendThreadMessageProcessingNote",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "payPeriod",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/PayPeriods"
+            }
+          },
+          {
+            "in": "path",
+            "name": "periodNumber",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "taxYear",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/TaxYear"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "ordinal",
+            "schema": {
+              "default": 1,
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.ProcessingNoteThreadMessageRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.ProcessingNoteThreadMessageRequest"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.ProcessingNoteThreadMessageRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.ProcessingNoteThreadMessageRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.ProcessingNoteThreadResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "409": {
+            "description": "Conflict"
+          }
+        },
+        "summary": "Send a processor message on a processing note conversation thread.",
         "tags": [
           "ProcessingNote"
         ]
@@ -76986,6 +77454,152 @@
           }
         },
         "summary": "Get List of Employees with Holiday Accrual Scheme",
+        "tags": [
+          "Employer"
+        ]
+      }
+    },
+    "/employers/{id}/ai-features": {
+      "get": {
+        "description": "Returns the AI features turned on for the employer owner's tenant and those effectively enabled for the employer.\r\nThe signed-in user's own tenant is not considered.",
+        "operationId": "GetAiFeaturesAsyncEmployer",
+        "parameters": [
+          {
+            "description": "The unique identifier of the Employer.",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.EmployerAiFeaturesResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Get enabled AI features for an employer",
+        "tags": [
+          "Employer"
+        ]
+      }
+    },
+    "/employers/{id}/ai-settings": {
+      "get": {
+        "description": "Returns the employer's saved choice for each AI feature the employer owner's tenant has turned on.\r\nFeatures the tenant has turned off are not returned.\r\nOnly Admins and Supervisors can read this setting. The request is rejected when the tenant has turned every AI feature off.",
+        "operationId": "GetAiSettingsEmployer",
+        "parameters": [
+          {
+            "description": "The unique identifier of the Employer.",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.EmployerAiSettingsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Get employer AI settings",
+        "tags": [
+          "Employer"
+        ]
+      },
+      "put": {
+        "description": "Sets the employer's choice for the AI features supplied in the request. Features not supplied keep their saved value.\r\nOnly Admins and Supervisors can change this setting. The change is rejected, and the saved value left unchanged,\r\nwhen the tenant has turned off any feature in the request.",
+        "operationId": "UpdateAiSettingsEmployer",
+        "parameters": [
+          {
+            "description": "The unique identifier of the Employer.",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.EmployerAiSettingsRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.EmployerAiSettingsRequest"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.EmployerAiSettingsRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.EmployerAiSettingsRequest"
+              }
+            }
+          },
+          "description": "The AI settings to save."
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.EmployerAiSettingsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "summary": "Update employer AI settings",
         "tags": [
           "Employer"
         ]
