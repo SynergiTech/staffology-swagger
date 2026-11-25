@@ -20718,19 +20718,19 @@
             "type": "string"
           },
           "historicOmpRequiresProcessing": {
-            "description": "Only used during the creation and update of occupational maternity leaves.\r\nWhen creating or updating historical occupational leaves, this will determine whether to pay the historic payments or correction in the next PayRun.",
+            "description": "Only used during the creation and update of occupational maternity leaves.\r\nWhen creating or updating historical occupational leaves, this will determine whether to pay the historic payments or correction in the next PayRun.\r\nDeprecated; use Staffology.Model.Leave.RequiresHistoricProcessing instead.\r\nWhen Staffology.Model.Leave.RequiresHistoricProcessing is set on the same request, the unified flag wins.\r\nWhen Staffology.Model.Leave.RequiresHistoricProcessing is omitted or null, this flag behaves as today.",
             "type": "boolean"
           },
           "historicOspRequiresProcessing": {
-            "description": "Only used during the creation of sickness Occupational Policy.\r\nWhen creating historical SOP, this will determine whether to pay that leave in the next PayRun.",
+            "description": "Only used during the creation of sickness Occupational Policy.\r\nWhen creating historical SOP, this will determine whether to pay that leave in the next PayRun.\r\nDeprecated; use Staffology.Model.Leave.RequiresHistoricProcessing instead.\r\nWhen Staffology.Model.Leave.RequiresHistoricProcessing is set on the same request, the unified flag wins.\r\nWhen Staffology.Model.Leave.RequiresHistoricProcessing is omitted or null, this flag behaves as today.",
             "type": "boolean"
           },
           "historicSmpRequiresProcessing": {
-            "description": "Only used during the creation and update of statutory maternity leaves.\r\nWhen creating or updating historical statutory maternity leaves, this will determine whether to pay the historic payments or correction in the next PayRun.",
+            "description": "Only used during the creation and update of statutory maternity leaves.\r\nWhen creating or updating historical statutory maternity leaves, this will determine whether to pay the historic payments or correction in the next PayRun.\r\nDeprecated; use Staffology.Model.Leave.RequiresHistoricProcessing instead.\r\nWhen Staffology.Model.Leave.RequiresHistoricProcessing is set on the same request, the unified flag wins.\r\nWhen Staffology.Model.Leave.RequiresHistoricProcessing is omitted or null, this flag behaves as today.",
             "type": "boolean"
           },
           "historicSspRequiresProcessing": {
-            "description": "Only used during the creation of historical SSP.\r\nWhen creating historical SSP, this will determine whether to pay that leave in the next PayRun.",
+            "description": "Only used during the creation of historical SSP.\r\nWhen creating historical SSP, this will determine whether to pay that leave in the next PayRun.\r\nDeprecated; use Staffology.Model.Leave.RequiresHistoricProcessing instead.\r\nWhen Staffology.Model.Leave.RequiresHistoricProcessing is set on the same request, the unified flag wins.\r\nWhen Staffology.Model.Leave.RequiresHistoricProcessing is omitted or null, this flag behaves as today.",
             "type": "boolean"
           },
           "historicSxpRequiresProcessing": {
@@ -20829,6 +20829,11 @@
           },
           "providerId": {
             "$ref": "#/components/schemas/ExternalDataProviderId"
+          },
+          "requiresHistoricProcessing": {
+            "description": "Optional unified historic processing flag: `true`, `false`, or omitted (`null`).\r\nJSON: `requiresHistoricProcessing`. Preferred over the legacy\r\n`historicSspRequiresProcessing`, `historicOspRequiresProcessing`,\r\n`historicSmpRequiresProcessing`, and `historicOmpRequiresProcessing` flags.\r\nWhen set, its value is applied to the matching legacy flag on create/update.\r\nWhen `null`, legacy flags are authoritative and this field is not derived from them on read.\r\nDoes not affect opening-balance (`historicSxpRequiresProcessing`) behaviour.",
+            "nullable": true,
+            "type": "boolean"
           },
           "secondaryBabyDate": {
             "description": "Only used for Parental Leave with Statutory Pay\r\nIf Type is Maternity, Paternity, SharedParental (Birth) then this is the the Baby Born Date.\r\nFor Adoption or SharedParental (Adoption) this is the Expected Placement Date.",
