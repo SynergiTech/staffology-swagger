@@ -11177,10 +11177,40 @@
         },
         "type": "object"
       },
+      "Contract.PensionNoticeRetrieveErrorResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "errorMessage": {
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "noticeTypeName": {
+            "nullable": true,
+            "type": "string"
+          },
+          "timestampUtc": {
+            "format": "date",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "Contract.PensionNoticeRetrieveStateResponse": {
         "additionalProperties": false,
         "description": "Manual-check button state for the pension scheme notifications tab.",
         "properties": {
+          "activeErrors": {
+            "description": "Active (non-dismissed) retrieve errors for this scheme.",
+            "items": {
+              "$ref": "#/components/schemas/Contract.PensionNoticeRetrieveErrorResponse"
+            },
+            "nullable": true,
+            "type": "array"
+          },
           "isRetrieveInProgress": {
             "description": "True when any notice-type retrieve run is Queued or Processing for this scheme.",
             "type": "boolean"
@@ -11199,7 +11229,7 @@
         "description": "Settings controlling automatic retrieval of incoming pension notices for a scheme.",
         "properties": {
           "incomingRetrieveEnabled": {
-            "description": "Whether the scheme is opted in to automatically retrieving opt-outs\r\nand ceased contributions from NEST and applying them to employee records.\r\nMay only be set to true when the provider is NEST, NEST is connected, and the\r\nIncomingPensionApi employer feature flag is enabled; the server coerces this to\r\nfalse when those preconditions are not met.",
+            "description": "Whether the scheme is opted in to automatically retrieving opt-outs\r\nand ceased contributions from the connected pension provider and applying them\r\nto employee records.\r\nMay only be set to true when the provider is NEST, People's Pension, or Smart Pension\r\n(Employer or Adviser), the provider is connected, and the IncomingPensionApi employer\r\nfeature flag is enabled.\r\nSupported providers auto-clear this to false when the scheme becomes ineligible\r\n(disconnect or provider change). The server coerces this to false when those\r\npreconditions are not met.",
             "type": "boolean"
           }
         },
@@ -11210,7 +11240,7 @@
         "description": "Read model for a scheme's incoming pension notice settings.",
         "properties": {
           "incomingRetrieveEnabled": {
-            "description": "Whether the scheme is opted in to automatically retrieving opt-outs\r\nand ceased contributions from NEST.",
+            "description": "Whether the scheme is opted in to automatically retrieving opt-outs\r\nand ceased contributions from the connected pension provider (NEST, People's Pension, or Smart Pension).",
             "type": "boolean"
           }
         },
@@ -26447,6 +26477,10 @@
             "nullable": true,
             "type": "string"
           },
+          "pensionNoticesLocked": {
+            "description": "When true, incoming NEST pension notices are matched but held (not written to the employee\r\nrecord and not recalculated into this PayRun) until the lock is switched off or the PayRun is\r\nfinalised. Only relevant when the Pay Run Notices Lock feature is enabled for the Employer.\r\nDefaults to off for every new pay run cycle; a reopened run keeps its pre-finalisation value and\r\na supplementary run inherits it from the previous version.",
+            "type": "boolean"
+          },
           "period": {
             "description": "[readonly] The period (i.e, Tax Week or Tax Month) that this PayRun is for.",
             "format": "int32",
@@ -26923,6 +26957,27 @@
           "title": {
             "description": "[readonly] The status of the task for posting this journal to an ExternalDataProvider",
             "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "PayRunNoticesLockSettings": {
+        "additionalProperties": false,
+        "description": "Per-employer settings for the Pay Run Notices Lock feature.\r\nWhen enabled, a per-cycle pension lock toggle is shown on the pay run screen.",
+        "properties": {
+          "enabled": {
+            "description": "If enabled, the per-pay-run pension lock toggle is available for this employer.\r\nThe toggle itself always defaults to off for every new pay run cycle.",
+            "type": "boolean"
+          },
+          "hasIncomingPensionRetrieveScheme": {
+            "description": "Populated on read only. True when at least one connected pension provider scheme has\r\nretrieve-and-apply enabled.",
+            "type": "boolean"
+          },
+          "id": {
+            "description": "[readonly] The unique id of the object",
+            "format": "uuid",
+            "readOnly": true,
             "type": "string"
           }
         },
@@ -30058,6 +30113,7 @@
       },
       "PensionNoticeSettings": {
         "additionalProperties": false,
+        "description": "Per-scheme settings for incoming pension notice retrieval and retrieve state.",
         "properties": {
           "businessError": {
             "nullable": true,
@@ -30070,7 +30126,7 @@
             "type": "string"
           },
           "incomingRetrieveEnabled": {
-            "description": "Whether the scheme is opted in to automatically retrieving opt-outs\r\nand ceased contributions from NEST and applying them to employee records.\r\nMay only be true when the scheme is connected to NEST and the employer has\r\nthe IncomingPensionApi beta feature flag enabled; the server coerces this to\r\nfalse when those preconditions are not met.",
+            "description": "Whether the scheme is opted in to automatically retrieving opt-outs\r\nand ceased contributions from the connected pension provider and applying them\r\nto employee records.\r\nMay only be true when the provider is NEST, People's Pension, or Smart Pension (Employer or Adviser),\r\nthe provider is connected, and the employer has the IncomingPensionApi beta feature flag enabled.\r\nSupported providers auto-clear this to false when the scheme becomes ineligible\r\n(disconnect or provider change). The server coerces this to false when those\r\npreconditions are not met.",
             "type": "boolean"
           },
           "lastOptOutSuccessAt": {
@@ -57188,6 +57244,78 @@
         ]
       }
     },
+    "/employers/{employerId}/payrun/pensionlock/jobs": {
+      "get": {
+        "operationId": "HasPensionNoticeJobsInProgressPayRun",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "releaseInProgress",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Returns whether a NEST pension notice retrieve or apply job is in progress for this employer.",
+        "tags": [
+          "PayRun"
+        ]
+      }
+    },
+    "/employers/{employerId}/payrun/pensionlock/toggleVisible": {
+      "get": {
+        "operationId": "IsPensionLockToggleVisiblePayRun",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Returns whether the per-pay-run pension lock toggle should be shown.",
+        "tags": [
+          "PayRun"
+        ]
+      }
+    },
     "/employers/{employerId}/payrun/{id}/documents": {
       "post": {
         "description": "Adds document to the ProcessingNote",
@@ -59295,6 +59423,105 @@
         ]
       }
     },
+    "/employers/{employerId}/payrun/{taxYear}/{payPeriod}/{periodNumber}/pensionlock": {
+      "put": {
+        "description": "Turns the per-pay-run pension lock on or off. While on, incoming NEST notices are matched but held\r\nrather than applied to employee records and recalculated into this pay run. Only available when the\r\nPay Run Notices Lock feature is enabled and the pay run is Open, Submitted For Processing or Processing.",
+        "operationId": "SetPensionLockPayRun",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "payPeriod",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/PayPeriods"
+            }
+          },
+          {
+            "in": "path",
+            "name": "periodNumber",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "taxYear",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/TaxYear"
+            }
+          },
+          {
+            "in": "query",
+            "name": "ordinal",
+            "schema": {
+              "default": 1,
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "version",
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "type": "boolean"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "boolean"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "type": "boolean"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PayRun"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Set the Pay Run Notices Lock (pension lock)",
+        "tags": [
+          "PayRun"
+        ]
+      }
+    },
     "/employers/{employerId}/payrun/{taxYear}/{payPeriod}/{periodNumber}/processingnotes": {
       "get": {
         "operationId": "ListProcessingNote",
@@ -60897,6 +61124,128 @@
         "summary": "PayRunEntry Umbrella Payment",
         "tags": [
           "PayRun"
+        ]
+      }
+    },
+    "/employers/{employerId}/payrunnoticeslock/hasRetrieveAndApply": {
+      "get": {
+        "operationId": "HasRetrieveAndApplyPayRunNoticesLock",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Returns whether the employer has at least one connected pension provider scheme with\r\nretrieve-and-apply enabled.",
+        "tags": [
+          "PayRunNoticesLock"
+        ]
+      }
+    },
+    "/employers/{employerId}/payrunnoticeslock/settings": {
+      "get": {
+        "description": "Returns the PayRunNoticesLockSettings for the Employer.\r\nOnly available when the IncomingPensionAPI feature flag is enabled for the employer.",
+        "operationId": "GetSettingsPayRunNoticesLock",
+        "parameters": [
+          {
+            "description": "The Id of the Employer",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PayRunNoticesLockSettings"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get Pay Run Notices Lock Settings",
+        "tags": [
+          "PayRunNoticesLock"
+        ]
+      },
+      "put": {
+        "description": "Updates the PayRunNoticesLockSettings for the Employer.\r\nOnly available when the IncomingPensionAPI feature flag is enabled for the employer.",
+        "operationId": "UpdateSettingsPayRunNoticesLock",
+        "parameters": [
+          {
+            "description": "The Id of the Employer",
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PayRunNoticesLockSettings"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PayRunNoticesLockSettings"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PayRunNoticesLockSettings"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PayRunNoticesLockSettings"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PayRunNoticesLockSettings"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update Pay Run Notices Lock Settings",
+        "tags": [
+          "PayRunNoticesLock"
         ]
       }
     },
@@ -64450,6 +64799,49 @@
           }
         },
         "summary": "Manually Retrieve Pension Notices (Beta)",
+        "tags": [
+          "PensionScheme"
+        ]
+      }
+    },
+    "/employers/{employerId}/pensionschemes/{id}/notices/retrieveerrors/{errorId}/dismiss": {
+      "post": {
+        "operationId": "DismissRetrieveErrorPensionScheme",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "errorId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "summary": "Dismiss Pension Notice Retrieve Error (Beta)",
         "tags": [
           "PensionScheme"
         ]
@@ -83762,6 +84154,9 @@
     },
     {
       "name": "PayRunAsync"
+    },
+    {
+      "name": "PayRunNoticesLock"
     },
     {
       "name": "PaySchedule"
