@@ -12276,6 +12276,66 @@
         ],
         "type": "object"
       },
+      "Contract.ProcessingNoteGuidanceDatapointResponse": {
+        "additionalProperties": false,
+        "description": "One datapoint of a live-guidance assessment.",
+        "properties": {
+          "description": {
+            "description": "What the datapoint is.",
+            "nullable": true,
+            "type": "string"
+          },
+          "name": {
+            "description": "Datapoint name, for example opt_out_confirmation.",
+            "nullable": true,
+            "type": "string"
+          },
+          "state": {
+            "$ref": "#/components/schemas/DatapointState"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.ProcessingNoteGuidanceRequest": {
+        "additionalProperties": false,
+        "description": "Request body for live Processing Notes writing-assistant guidance (SPR-305).",
+        "properties": {
+          "note": {
+            "description": "Current note text to assess. Not persisted by this endpoint.",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "Contract.ProcessingNoteGuidanceResponse": {
+        "additionalProperties": false,
+        "description": "Live writing-assistant guidance for a processing note (SPR-305).",
+        "properties": {
+          "datapoints": {
+            "description": "Datapoints for the note, each with a Matched or Unmatched state.",
+            "items": {
+              "$ref": "#/components/schemas/Contract.ProcessingNoteGuidanceDatapointResponse"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "outcome": {
+            "$ref": "#/components/schemas/IntentOutcome"
+          },
+          "subTheme": {
+            "description": "Sub-theme of the note, as sent by the detect function. Only set when the outcome is Resolved.",
+            "nullable": true,
+            "type": "string"
+          },
+          "theme": {
+            "description": "Theme of the note, as sent by the detect function. Only set when the outcome is Resolved.",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "Contract.ProcessingNoteItem": {
         "additionalProperties": false,
         "description": "Lightweight item representation used by processing note API contracts.",
@@ -15078,6 +15138,13 @@
           }
         },
         "type": "object"
+      },
+      "DatapointState": {
+        "enum": [
+          "Unmatched",
+          "Matched"
+        ],
+        "type": "string"
       },
       "DayOfWeek": {
         "enum": [
@@ -20511,6 +20578,13 @@
           "Annual",
           "April",
           "April6m"
+        ],
+        "type": "string"
+      },
+      "IntentOutcome": {
+        "enum": [
+          "Unclassified",
+          "Resolved"
         ],
         "type": "string"
       },
@@ -59690,6 +59764,103 @@
           }
         },
         "summary": "Create ProcessingNote",
+        "tags": [
+          "ProcessingNote"
+        ]
+      }
+    },
+    "/employers/{employerId}/payrun/{taxYear}/{payPeriod}/{periodNumber}/processingnotes/guidance": {
+      "post": {
+        "description": "Runs a live writing-assistant assessment against the current note text without saving the note.",
+        "operationId": "AssessGuidanceProcessingNote",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "employerId",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "taxYear",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/TaxYear"
+            }
+          },
+          {
+            "in": "path",
+            "name": "payPeriod",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/PayPeriods"
+            }
+          },
+          {
+            "in": "path",
+            "name": "periodNumber",
+            "required": true,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "ordinal",
+            "schema": {
+              "default": 1,
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.ProcessingNoteGuidanceRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.ProcessingNoteGuidanceRequest"
+              }
+            },
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.ProcessingNoteGuidanceRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contract.ProcessingNoteGuidanceRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contract.ProcessingNoteGuidanceResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Assess Processing Note guidance",
         "tags": [
           "ProcessingNote"
         ]
